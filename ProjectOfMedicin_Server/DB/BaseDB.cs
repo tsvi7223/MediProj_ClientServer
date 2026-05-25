@@ -41,6 +41,7 @@ namespace ProjectOfMedicin_Server.DB
             this.connection = new OleDbConnection(connectionString);
             command = new OleDbCommand();
             command.Connection = this.connection;
+
         }
 
         protected List<BaseEntity> Select()
