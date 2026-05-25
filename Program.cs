@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.ServiceModel;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ProjectOfMedicine_Host
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            ServiceHost host = new ServiceHost(typeof(ProjectOfMedicin_Server.Service1));
+            host.Open();
+            Console.ReadKey();
+        }
+    }
+}
