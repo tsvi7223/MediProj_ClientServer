@@ -10,20 +10,20 @@ using System.Threading.Tasks;
 
 namespace ProjectOfMedicin_Server.DB
 {
-    [DataContract]
+  //  [DataContract]
 
     public abstract class BaseDB
     {
-        [DataMember]
+      //  [DataMember]
 
         private readonly string connectionString;
-        [DataMember]
+      //  [DataMember]
 
         protected OleDbConnection connection;
-        [DataMember]
+     //   [DataMember]
 
         protected OleDbCommand command;
-        [DataMember]
+      //  [DataMember]
 
         protected OleDbDataReader reader;
 

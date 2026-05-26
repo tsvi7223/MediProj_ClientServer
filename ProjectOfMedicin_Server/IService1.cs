@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectOfMedicin_Server.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -11,6 +12,9 @@ namespace ProjectOfMedicin_Server
     [ServiceContract]
     public interface IService1
     {
+        [OperationContract]
+        PeopleList GetAllPeople();
+
         [OperationContract]
         string GetData(int value);
 

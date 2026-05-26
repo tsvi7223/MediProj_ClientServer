@@ -1,6 +1,5 @@
 ﻿using ProjectOfMedicine_Client;
 using ProjectOfMedicin_Server.Model;
-using ProjectOfMedicine_Client.ServiceReference1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +22,7 @@ namespace ProjectOfMedicine_Client.GUI
     /// </summary>
     public partial class Login : Page
     {
-        Service1Client service = new Service1Client();
+       // Service1Client service = new Service1Client();
         public User user { get; set; } 
         public Login(User user)
         {

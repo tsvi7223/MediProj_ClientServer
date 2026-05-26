@@ -1,6 +1,5 @@
 ﻿using ProjectOfMedicin_Server.DB;
 using ProjectOfMedicin_Server.Model;
-using ProjectOfMedicine_Client.ServiceReference1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,15 +22,15 @@ namespace ProjectOfMedicine_Client
     /// </summary>
     public partial class MainWindow : Window
     {
+         //private Service1Client service = new Service1Client();
         public MainWindow()
         {
             InitializeComponent();
-            Service1Client service = new Service1Client();
 
-            PeopleDB personDB = PeopleDB.GetInstance();
-            PeopleList peopleList = new PeopleList();
-            peopleList = personDB.SelectAll();
-            peopleList.ForEach((person) => { Console.WriteLine(person.FName.ToString()); });
+            //PeopleDB personDB = PeopleDB.GetInstance();
+            //PeopleList peopleList = new PeopleList();
+            //peopleList.ForEach((person) => { Console.WriteLine(person.FName.ToString()); });
+           // PeopleList peopleList = service.GetAllPeople();
 
 
         }
