@@ -1,21 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ProjectOfMedicin_Server.Model
 {
-    public class Medication:BaseEntity
+    [DataContract]
+    public class Medication : BaseEntity
     {
-       
+        [DataMember]
         public string OriginalName { get; set; }
-       public List<String> Alternativies { get; set; }
-       public List<GenericAlternative> generics { get; set; }
-       public Substance ActiveSubstance { get; set; }
-       public bool InHealthBox { get; set; }
-       public bool AvailableInIsrael { get; set; }
 
+        [DataMember]
+        public List<string> Alternativies { get; set; } 
 
+        [DataMember]
+        public List<GenericAlternative> Generics { get; set; } 
+
+        [DataMember]
+        public Substance ActiveSubstance { get; set; }
+
+        [DataMember]
+        public bool InHealthBox { get; set; }
+
+        [DataMember]
+        public bool AvailableInIsrael { get; set; }
     }
 }

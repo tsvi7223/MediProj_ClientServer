@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ProjectOfMedicin_Server.Model
 {
-    public class Prescription:BaseEntity
+    [DataContract] 
+    public class Prescription : BaseEntity
     {
-        
-        public DateTime issueDate { get; set; }
-        public DateTime validFrom { get; set; }
-        public DateTime validUntil { get; set; }
+        [DataMember] 
+        public DateTime IssueDate { get; set; }
+
+        [DataMember] 
+        public DateTime ValidFrom { get; set; }
+
+        [DataMember] 
+        public DateTime ValidUntil { get; set; }
     }
 }

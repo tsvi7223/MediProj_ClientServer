@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 
 namespace ProjectOfMedicin_Server.Model
 {
+    [CollectionDataContract]
     public class KupatHolimList : List<KupatHolim>
     {
         public KupatHolimList() { }
