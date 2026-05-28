@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5554D25D-B70E-4927-B02A-1F8E024F6FFF}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ProjectOfMedicine_Host</RootNamespace>
-    <AssemblyName>ProjectOfMedicine_Host</AssemblyName>
+    <RootNamespace>MediProject_Host</RootNamespace>
+    <AssemblyName>MediProject_Host</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -56,6 +56,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Services" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -72,9 +73,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="ProjectOfMedicin_Server\ProjectOfMedicin_Server.csproj">
+    <ProjectReference Include="..\ProjectOfMedicin_Server\MediProject_Server.csproj">
       <Project>{c4f8cdda-7d3e-4f62-a4bb-143e524ad3db}</Project>
-      <Name>ProjectOfMedicin_Server</Name>
+      <Name>MediProject_Server</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
