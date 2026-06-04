@@ -14,6 +14,9 @@ namespace MediProject_Server
     {
         [OperationContract]
         PeopleList GetAllPeople();
+        [OperationContract]
+        void InsertUser(User user);
+
 
         [OperationContract]
         string GetData(int value);

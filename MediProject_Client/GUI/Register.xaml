@@ -59,11 +59,11 @@
                 <TextBlock Text=":מספר טלפון" HorizontalAlignment="Right"/>
                         <TextBox x:Name="RegPhone" Text="{Binding PhoneNumber}" Margin="0,5" Height="35" VerticalContentAlignment="Center"/>
                 <TextBlock Text=":בחר קופת חולים" Margin="0,10,0,5" HorizontalAlignment="Right"/>
-                        <ComboBox x:Name="RegHMO" Text="{Binding Kupa}" Margin="0,0,0,10" Height="35">
-                    <ComboBoxItem Content="כללית"/>
-                    <ComboBoxItem Content="מכבי"/>
-                    <ComboBoxItem Content="מאוחדת"/>
-                    <ComboBoxItem Content="לאומית"/>
+                        <ComboBox x:Name="RegHMO" Margin="0,0,0,10" Height="35" SelectionChanged="RegHMO_SelectionChanged">
+                    <ComboBoxItem Content="כללית" Tag="1"/>
+                    <ComboBoxItem Content="מכבי" Tag="2"/>
+                    <ComboBoxItem Content="מאוחדת" Tag="3"/>
+                    <ComboBoxItem Content="לאומית" Tag="4"/>
                 </ComboBox>
                 <TextBlock Text="סיסמה:" HorizontalAlignment="Right"/>
                         <PasswordBox x:Name="RegPass" Margin="0,5" Height="35" VerticalContentAlignment="Center"/>

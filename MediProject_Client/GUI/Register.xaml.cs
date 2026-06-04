@@ -1,4 +1,5 @@
 ﻿using MediProject_Client;
+using MediProject_Client.ServiceReference1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace MediProject_Client.GUI
     /// </summary>
     public partial class Register : Page
     {
+        public Service1Client service { get; set; }  = new Service1Client();
         public User user { get; set; }
         public Register(User user)
         {
@@ -38,11 +40,20 @@ namespace MediProject_Client.GUI
         }
         private void BtnFinishRegister_Click(object sender, RoutedEventArgs e)
         {
-
+            service.InsertUser(user);
             
-            MessageBox.Show("Got User:\nUserName is: " + user.UserName + "\n" + "Address is: " + user.FullAddress +
-                "\nPhone Number is: " + user.PhoneNumber + "\nGmail is: " + user.Gmail +
-                "\nPassword is: " + RegPass.Password);
+            
+            
+        }
+
+        private void RegHMO_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //ComboBox cb = sender as ComboBox;
+            //string selectedTag = selectedItem.Tag?.ToString();
+            //switch ()
+            //{
+
+            //}
         }
     }
 }

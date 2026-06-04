@@ -73,7 +73,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProjectOfMedicin_Server\MediProject_Server.csproj">
+    <ProjectReference Include="..\MediProject_Server\MediProject_Server.csproj">
       <Project>{c4f8cdda-7d3e-4f62-a4bb-143e524ad3db}</Project>
       <Name>MediProject_Server</Name>
     </ProjectReference>

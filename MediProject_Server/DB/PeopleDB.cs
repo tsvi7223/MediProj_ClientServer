@@ -52,13 +52,13 @@ namespace MediProject_Server.DB
         public void Update(Person person)
         {
             // תוקן: סינטקס ה-WHERE תוקן, ותוקן ה-LName שקיבל בטעות FName
-            command.CommandText = $"UPDATE people SET fName = '{person.FName}', lName = '{person.LName}', DateOfBirth = #{person.DateOfBirth:#yyyy-MM-dd#}, Gmail = '{person.Gmail}' WHERE ID = {person.ID}";
+            command.CommandText = $"UPDATE people SET fName = '{person.FName}', lName = '{person.LName}', DateOfBirth = #{person.DateOfBirth}#, Gmail = '{person.Gmail}' WHERE ID = {person.ID}";
             base.ExecuteNonQuery();
         }
 
         public void Insert(Person person)
         {
-            command.CommandText = $"INSERT INTO people (fName, lName, DateOfBirth, Gmail) VALUES ('{person.FName}', '{person.LName}', #{person.DateOfBirth:#yyyy-MM-dd#}, '{person.Gmail}')";
+            command.CommandText = $"INSERT INTO people (fName, lName, DateOfBirth, Gmail) VALUES ('{person.FName}', '{person.LName}', #{person.DateOfBirth}#, '{person.Gmail}')";
             base.ExecuteNonQuery();
         }
     }
