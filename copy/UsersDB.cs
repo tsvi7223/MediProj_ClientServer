@@ -46,22 +46,19 @@ namespace MediProject_Server.DB
         }
         public void Delete(User user)
         {
-            base.Delete(user);
-            command.CommandText = $"DELETE FROM users WHERE Id = {user.ID})";
+            command.CommandText = $"DELETE FROM people WHERE Id = {user.ID})";
             base.ExecuteNonQuery();
         }
 
         public void Update(User user)
         {
-            base.Update(user);
             // command.CommandText = $"UPDATE people SET fName = '{user.fName}', lName = '{user.lName}', WHERE ID = {user.Id}   ";
-            command.CommandText = $"UPDATE users SET userName = '{user.UserName}', Password = '{user.Password}', KupaId = {user.Kupa.ID} WHERE(users.ID ={user.ID})";
+            command.CommandText = $"UPDATE people SET fName = '{user.FName}', lName = '{user.LName}', DateOfBirth = #{user.DateOfBirth}#, Gmail = '{user.Gmail}', ID = WHERE(people.ID ={user.ID})";
             base.ExecuteNonQuery();
         }
         public void Insert(User user)
         {
-            base.Insert(user);
-            command.CommandText = $"INSERT INTO users (id, userName, Password, KupaId) VALUES  ({user.ID}, '{user.UserName}', '{user.Password}', {user.Kupa.ID}')";
+            command.CommandText = $"INSERT INTO people (fName, lName, DateOfBirth, Gmail) VALUES  ('{user.FName}', '{user.LName}', #{user.DateOfBirth}#, '{user.Gmail}')";
             base.ExecuteNonQuery();
         }
 
