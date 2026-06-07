@@ -20,6 +20,14 @@ namespace MediProject_Server
             PeopleList people = peopleDB.SelectAll();
             return people;
         }
+        public MedicationsList GetMedicationsByUserId(int userId)
+        {
+          
+            MedicationsDB medicationsDB = MedicationsDB.GetInstance();
+            MedicationsList allMedications = medicationsDB.SelectAll();
+            MedicationsList userMedications = new MedicationsList();
+            return allMedications;
+        }
         public void InsertUser(User user)
         {
             UsersDB usersDB = UsersDB.GetInstance();
