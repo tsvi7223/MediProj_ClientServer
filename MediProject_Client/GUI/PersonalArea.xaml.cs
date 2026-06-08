@@ -29,6 +29,7 @@ namespace MediProject_Client.GUI
         {
             InitializeComponent();
 
+
             this.user = user;
         }
     }
