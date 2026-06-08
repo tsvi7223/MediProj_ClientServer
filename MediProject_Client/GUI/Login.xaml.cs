@@ -41,8 +41,9 @@ namespace MediProject_Client.GUI
             else if (DBUser.Password == this.LoginPass.Password)
             {
                 this.user = DBUser;
-                NavigationService nav = NavigationService.GetNavigationService(this);
-                nav.Navigate(new PersonalArea(user));
+                //NavigationService nav = NavigationService.GetNavigationService(this);
+                //nav.Navigate(new PersonalArea(user));
+                this.NavigationService.Navigate(new PersonalArea(user));
             }
             else
                 MessageBox.Show("סיסמה אינה תקינה, אנא נסה שוב");

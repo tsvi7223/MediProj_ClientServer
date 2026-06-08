@@ -23,13 +23,12 @@ namespace MediProject_Client.GUI
     {
         public User user;
 
-        public PersonalArea()
-        {
-            InitializeComponent();
-        }
+
 
         public PersonalArea(User user)
         {
+            InitializeComponent();
+
             this.user = user;
         }
     }
