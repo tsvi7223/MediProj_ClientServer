@@ -20,12 +20,19 @@ namespace MediProject_Server
             PeopleList people = peopleDB.SelectAll();
             return people;
         }
+
+        public KupatHolimList GetAllKupas()
+        {
+            KupatHolimDB kupatHolimDB = KupatHolimDB.GetInstance();
+            KupatHolimList kupas = kupatHolimDB.SelectAll();
+            return kupas;
+        }
         public MedicationsList GetMedicationsByUserId(int userId)
         {
           
             MedicationsDB medicationsDB = MedicationsDB.GetInstance();
             MedicationsList allMedications = medicationsDB.SelectAll();
-            MedicationsList userMedications = new MedicationsList();
+            MedicationsList userMedications = new MedicationsList(allMedications.FindAll(medi => medi.ID == userId));
             return allMedications;
         }
         public void InsertUser(User user)

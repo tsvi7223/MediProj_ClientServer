@@ -252,6 +252,13 @@ namespace MediProject_Client.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="KupatHolimList", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model", ItemName="KupatHolim")]
+    [System.SerializableAttribute()]
+    public class KupatHolimList : System.Collections.Generic.List<MediProject_Client.ServiceReference1.KupatHolim> {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server")]
     [System.SerializableAttribute()]
     public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -327,6 +334,12 @@ namespace MediProject_Client.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertUser", ReplyAction="http://tempuri.org/IService1/InsertUserResponse")]
         System.Threading.Tasks.Task InsertUserAsync(MediProject_Client.ServiceReference1.User user);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllKupas", ReplyAction="http://tempuri.org/IService1/GetAllKupasResponse")]
+        MediProject_Client.ServiceReference1.KupatHolimList GetAllKupas();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllKupas", ReplyAction="http://tempuri.org/IService1/GetAllKupasResponse")]
+        System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.KupatHolimList> GetAllKupasAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
         string GetData(int value);
         
@@ -381,6 +394,14 @@ namespace MediProject_Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task InsertUserAsync(MediProject_Client.ServiceReference1.User user) {
             return base.Channel.InsertUserAsync(user);
+        }
+        
+        public MediProject_Client.ServiceReference1.KupatHolimList GetAllKupas() {
+            return base.Channel.GetAllKupas();
+        }
+        
+        public System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.KupatHolimList> GetAllKupasAsync() {
+            return base.Channel.GetAllKupasAsync();
         }
         
         public string GetData(int value) {

@@ -49,4 +49,10 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="KupatHolim" nillable="true" type="tns:KupatHolim" />
+  <xs:complexType name="KupatHolimList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KupatHolim" nillable="true" type="tns:KupatHolim" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KupatHolimList" nillable="true" type="tns:KupatHolimList" />
 </xs:schema>

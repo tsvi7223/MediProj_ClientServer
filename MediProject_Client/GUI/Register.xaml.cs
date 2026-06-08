@@ -29,6 +29,7 @@ namespace MediProject_Client.GUI
             InitializeComponent();
             this.user = user;
             this.DataContext = this.user;
+            this.RegHMO.ItemsSource = service.GetAllKupas();
 
         }
 
@@ -40,20 +41,13 @@ namespace MediProject_Client.GUI
         }
         private void BtnFinishRegister_Click(object sender, RoutedEventArgs e)
         {
+            user.Kupa = RegHMO.SelectedItem as KupatHolim;
             service.InsertUser(user);
             
             
             
         }
 
-        private void RegHMO_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //ComboBox cb = sender as ComboBox;
-            //string selectedTag = selectedItem.Tag?.ToString();
-            //switch ()
-            //{
 
-            //}
-        }
     }
 }

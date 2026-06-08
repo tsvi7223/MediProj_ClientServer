@@ -59,13 +59,20 @@
                 <TextBlock Text=":מספר טלפון" HorizontalAlignment="Right"/>
                         <TextBox x:Name="RegPhone" Text="{Binding PhoneNumber}" Margin="0,5" Height="35" VerticalContentAlignment="Center"/>
                 <TextBlock Text=":בחר קופת חולים" Margin="0,10,0,5" HorizontalAlignment="Right"/>
-                        <ComboBox x:Name="RegHMO" Margin="0,0,0,10" Height="35" SelectionChanged="RegHMO_SelectionChanged">
-                    <ComboBoxItem Content="כללית" Tag="1"/>
-                    <ComboBoxItem Content="מכבי" Tag="2"/>
-                    <ComboBoxItem Content="מאוחדת" Tag="3"/>
-                    <ComboBoxItem Content="לאומית" Tag="4"/>
-                </ComboBox>
-                <TextBlock Text="סיסמה:" HorizontalAlignment="Right"/>
+                        <ComboBox x:Name="RegHMO" 
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Id" 
+                                  SelectedValue="{Binding SelectedHmoId}" 
+                                  Margin="0,0,0,10" Height="35" />
+
+
+
+
+                        <TextBlock Text=":בחר תאריך לידה" Margin="0,10,0,5" HorizontalAlignment="Right"/>
+                        <DatePicker x:Name="DateOfBirth" SelectedDate="{Binding DateOfBirth}"  Margin="0,5" Height="35" VerticalContentAlignment="Center"/>
+
+
+                        <TextBlock Text="סיסמה:" HorizontalAlignment="Right"/>
                         <PasswordBox x:Name="RegPass" Margin="0,5" Height="35" VerticalContentAlignment="Center"/>
                 <Button Content="סיום הרשמה" Background="#27AE60" Foreground="White" Height="40" Margin="0,15,0,5" Click="BtnFinishRegister_Click"/>
                 <TextBlock Text="חזור להתחברות" Foreground="#666" Cursor="Hand" HorizontalAlignment="Center" MouseLeftButtonUp="BackToLogin_Click"  Margin="0,5"/>

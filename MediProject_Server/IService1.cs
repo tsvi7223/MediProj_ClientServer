@@ -16,6 +16,8 @@ namespace MediProject_Server
         PeopleList GetAllPeople();
         [OperationContract]
         void InsertUser(User user);
+        [OperationContract]
+        KupatHolimList GetAllKupas();
 
 
         [OperationContract]
