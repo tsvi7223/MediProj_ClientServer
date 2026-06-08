@@ -29,8 +29,8 @@ namespace MediProject_Server.DB
             if (person == null) person = new Person();
 
             person.ID = int.Parse(reader["ID"].ToString());
-            person.FName = reader["fName"].ToString();
-            person.LName = reader["lName"].ToString();
+            person.fName = reader["fName"].ToString();
+            person.lName = reader["lName"].ToString();
             person.DateOfBirth = (DateTime)reader["DateOfBirth"];
             person.Gmail = reader["Gmail"].ToString();
 
@@ -52,13 +52,13 @@ namespace MediProject_Server.DB
         public void Update(Person person)
         {
             // תוקן: סינטקס ה-WHERE תוקן, ותוקן ה-LName שקיבל בטעות FName
-            command.CommandText = $"UPDATE people SET fName = '{person.FName}', lName = '{person.LName}', DateOfBirth = #{person.DateOfBirth}#, Gmail = '{person.Gmail}' WHERE ID = {person.ID}";
+            command.CommandText = $"UPDATE people SET fName = '{person.fName}', lName = '{person.lName}', DateOfBirth = #{person.DateOfBirth}#, Gmail = '{person.Gmail}' WHERE ID = {person.ID}";
             base.ExecuteNonQuery();
         }
 
         public void Insert(Person person)
         {
-            command.CommandText = $"INSERT INTO people (fName, lName, DateOfBirth, Gmail) VALUES ('{person.FName}', '{person.LName}', #{person.DateOfBirth}#, '{person.Gmail}')";
+            command.CommandText = $"INSERT INTO people (fName, lName, DateOfBirth, Gmail, FullAddress, PhoneNumber) VALUES ('{person.fName}', '{person.lName}', #{person.DateOfBirth}#, '{person.Gmail}', '{person.FullAddress}','{person.PhoneNumber}')";
             base.ExecuteNonQuery();
         }
     }

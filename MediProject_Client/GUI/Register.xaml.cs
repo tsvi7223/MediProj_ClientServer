@@ -29,7 +29,9 @@ namespace MediProject_Client.GUI
             InitializeComponent();
             this.user = user;
             this.DataContext = this.user;
-            this.RegHMO.ItemsSource = service.GetAllKupas();
+            KupatHolimList kupas = service.GetAllKupas();
+            this.RegHMO.ItemsSource = kupas;
+            this.RegHMO.SelectedItem = kupas.FirstOrDefault();
 
         }
 
@@ -48,6 +50,18 @@ namespace MediProject_Client.GUI
             
         }
 
+        private void BackDoor_Click(object sender, RoutedEventArgs e)
+        {
+            this.fNameTB.Text = user.fName =  "דניאל";
+            this.lNameTB.Text = user.lName =  "אסולין";
+            this.DateOfBirth.Text =  DateTime.Now.ToString();
+            user.DateOfBirth = DateTime.Now;
+            this.RegUser.Text = user.UserName =  "assulindani";
+            this.RegPhone.Text = user.PhoneNumber = "0555555555";
+            this.RegMail.Text = user.Gmail =  "assulindani@gmail.com";
+            this.RegPass.Password = user.Password =  "1234567890";
+            this.RegAddress.Text = user.FullAddress  = "הפסגה 8";
 
+        }
     }
 }

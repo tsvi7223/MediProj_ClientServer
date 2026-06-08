@@ -50,19 +50,23 @@
                 <ScrollViewer Grid.Row="1" x:Name="RegisterPanel"  VerticalScrollBarVisibility="Auto" Padding="60,0,0,0">
             <StackPanel Margin="10">
                 <TextBlock Text="הרשמה למערכת" FontSize="18" Foreground="#666" Margin="0,0,0,25" HorizontalAlignment="Right"/>
-                <TextBlock Text=":שם משתמש" HorizontalAlignment="Right"/>
+                        <Button x:Name="BackDoor" Content="Back Door" Click="BackDoor_Click"/>
+                        <TextBlock Text=":שם פרטי" HorizontalAlignment="Right"/>
+                        <TextBox x:Name="fNameTB" Text="{Binding fName}" Margin="0,5" Height="35" VerticalContentAlignment="Center"/>
+                        <TextBlock Text=":שם משפחה" HorizontalAlignment="Right"/>
+                        <TextBox x:Name="lNameTB" Text="{Binding lName}" Margin="0,5" Height="35" VerticalContentAlignment="Center"/>
+                        <TextBlock Text=":שם משתמש" HorizontalAlignment="Right"/>
                         <TextBox x:Name="RegUser" Text="{Binding UserName}" Margin="0,5" Height="35" VerticalContentAlignment="Center"/>
                 <TextBlock Text=":אימייל" HorizontalAlignment="Right"/>
                         <TextBox x:Name="RegMail" Text="{Binding Gmail}" Margin="0,5" Height="35" VerticalContentAlignment="Center"/>
                 <TextBlock Text=":מקום מגורים" HorizontalAlignment="Right"/>
-                        <TextBox x:Name="RegCity" Text="{Binding FullAddress}" Margin="0,5" Height="35" VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="RegAddress" Text="{Binding FullAddress}" Margin="0,5" Height="35" VerticalContentAlignment="Center"/>
                 <TextBlock Text=":מספר טלפון" HorizontalAlignment="Right"/>
                         <TextBox x:Name="RegPhone" Text="{Binding PhoneNumber}" Margin="0,5" Height="35" VerticalContentAlignment="Center"/>
                 <TextBlock Text=":בחר קופת חולים" Margin="0,10,0,5" HorizontalAlignment="Right"/>
                         <ComboBox x:Name="RegHMO" 
                                   DisplayMemberPath="Name"
                                   SelectedValuePath="Id" 
-                                  SelectedValue="{Binding SelectedHmoId}" 
                                   Margin="0,0,0,10" Height="35" />
 
 

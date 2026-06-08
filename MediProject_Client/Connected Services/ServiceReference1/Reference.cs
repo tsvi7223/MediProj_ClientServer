@@ -31,19 +31,19 @@ namespace MediProject_Client.ServiceReference1 {
         private System.DateTime DateOfBirthField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FullAddressField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string GmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LNameField;
+        private string PhoneNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PhoneNumberField;
+        private string fNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string lNameField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime DateOfBirth {
@@ -54,19 +54,6 @@ namespace MediProject_Client.ServiceReference1 {
                 if ((this.DateOfBirthField.Equals(value) != true)) {
                     this.DateOfBirthField = value;
                     this.RaisePropertyChanged("DateOfBirth");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FName {
-            get {
-                return this.FNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FNameField, value) != true)) {
-                    this.FNameField = value;
-                    this.RaisePropertyChanged("FName");
                 }
             }
         }
@@ -98,19 +85,6 @@ namespace MediProject_Client.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LName {
-            get {
-                return this.LNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LNameField, value) != true)) {
-                    this.LNameField = value;
-                    this.RaisePropertyChanged("LName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string PhoneNumber {
             get {
                 return this.PhoneNumberField;
@@ -119,6 +93,32 @@ namespace MediProject_Client.ServiceReference1 {
                 if ((object.ReferenceEquals(this.PhoneNumberField, value) != true)) {
                     this.PhoneNumberField = value;
                     this.RaisePropertyChanged("PhoneNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string fName {
+            get {
+                return this.fNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.fNameField, value) != true)) {
+                    this.fNameField = value;
+                    this.RaisePropertyChanged("fName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string lName {
+            get {
+                return this.lNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.lNameField, value) != true)) {
+                    this.lNameField = value;
+                    this.RaisePropertyChanged("lName");
                 }
             }
         }
