@@ -31,9 +31,10 @@ namespace MediProject_Server.DB
             User user = entity as User;
             user.ID = int.Parse(reader["ID"].ToString());
             base.CreateModel(user);
-            //user.FName = reader["fName"].ToString();
-            //user.LName = reader["lName"].ToString();
-            //user.DateOfBirth = (DateTime)reader["DateOfBirth"];
+            user.UserName = reader["UserName"].ToString();
+            user.Password = reader["Password"].ToString();
+            user.Kupa = KupatHolimDB.GetInstance().SelectAll().Find(kupa => kupa.ID == user.Kupa.ID);
+
             //user.Gmail = reader["Gmail"].ToString();
 
 
@@ -55,7 +56,7 @@ namespace MediProject_Server.DB
         {
             base.Update(user);
             // command.CommandText = $"UPDATE people SET fName = '{user.fName}', lName = '{user.lName}', WHERE ID = {user.Id}   ";
-            command.CommandText = $"UPDATE users SET userName = '{user.UserName}', Password = '{user.Password}', KupaId = {user.Kupa.ID} WHERE(users.ID ={user.ID})";
+            command.CommandText = $"UPDATE users SET userName = '{user.UserName}', [Password] = '{user.Password}', KupaId = {user.Kupa.ID} WHERE(users.ID ={user.ID})";
             base.ExecuteNonQuery();
         }
         public void Insert(User user)
