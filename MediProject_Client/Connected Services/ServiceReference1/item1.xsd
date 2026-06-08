@@ -11,11 +11,11 @@
       <xs:extension base="tns:BaseEntity">
         <xs:sequence>
           <xs:element minOccurs="0" name="DateOfBirth" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="FullAddress" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Gmail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="fName" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="lName" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -55,4 +55,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="KupatHolimList" nillable="true" type="tns:KupatHolimList" />
+  <xs:complexType name="UserList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserList" nillable="true" type="tns:UserList" />
 </xs:schema>

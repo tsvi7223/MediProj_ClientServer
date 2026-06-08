@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediProject_Client"
         mc:Ignorable="d"
-        Title="Pharmacy Care - Login" Height="650" Width="450" 
+        Title="Pharmacy Care - Login" Height="750" Width="550" 
         WindowStartupLocation="CenterScreen" Background="#F5F7FA">
 
 

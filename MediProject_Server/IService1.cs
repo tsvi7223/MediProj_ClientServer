@@ -18,6 +18,8 @@ namespace MediProject_Server
         void InsertUser(User user);
         [OperationContract]
         KupatHolimList GetAllKupas();
+        [OperationContract]
+        UserList GetAllUsers();
 
 
         [OperationContract]

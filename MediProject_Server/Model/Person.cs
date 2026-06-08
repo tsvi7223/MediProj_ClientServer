@@ -8,10 +8,10 @@ namespace MediProject_Server.Model
     public class Person : BaseEntity
     {
         [DataMember]
-        public string fName { get; set; }
+        public string FirstName { get; set; }
 
         [DataMember]
-        public string lName { get; set; }
+        public string LastName { get; set; }
 
         [DataMember]
         public string PhoneNumber { get; set; }
@@ -25,11 +25,11 @@ namespace MediProject_Server.Model
         [DataMember]
         public string FullAddress { get; set; }
 
-        public Person(int id, string fname, string lName, string phoneNumber, DateTime dateOfBirth, string gmail, string fullAddress)
+        public Person(int id, string FirstName, string LastName, string phoneNumber, DateTime dateOfBirth, string gmail, string fullAddress)
         {
             this.ID = id;
-            this.fName = fname;
-            this.lName = lName;
+            this.FirstName = FirstName;
+            this.LastName = LastName;
             this.PhoneNumber = phoneNumber;
             this.DateOfBirth = dateOfBirth;
             this.Gmail = gmail;
@@ -39,9 +39,9 @@ namespace MediProject_Server.Model
         public Person() { }
 
         // אין צורך ב-[DataMember] כי זה שדה מחושב לקריאה בלבד
-        public string FullName
+        public string FulLastName
         {
-            get { return $"{fName} {lName}"; }
+            get { return $"{FirstName} {LastName}"; }
         }
     }
 }
@@ -59,10 +59,10 @@ namespace MediProject_Server.Model
 //    public class Person:BaseEntity
 //    {
 //        [DataMember]
-//        public string FName { get; set; }
+//        public string FirstName { get; set; }
 //        [DataMember]
 
-//        public string LName { get; set; }
+//        public string LastName { get; set; }
 //        [DataMember]
 
 //        public string PhoneNumber { get; set; }
@@ -75,12 +75,12 @@ namespace MediProject_Server.Model
 //        [DataMember]
 
 //        public string FullAddress { get; set; }
-//        public Person(int id, string fname, string lName
+//        public Person(int id, string FirstName, string LastName
 //            , string phoneNumber, DateTime dateOfBirth, string gmail, string fullAddress)
 //        {
 //            this.ID = id;
-//            this.FName = fname;
-//            this.LName = lName;
+//            this.FirstName = FirstName;
+//            this.LastName = LastName;
 //            this.PhoneNumber = phoneNumber;
 //            DateOfBirth = dateOfBirth;
 //            this.Gmail = gmail;
@@ -93,9 +93,9 @@ namespace MediProject_Server.Model
 
 
 
-//        public string FullName
+//        public string FulLastName
 //        {
-//            get { return $"{FName} {LName}"; }
+//            get { return $"{FirstName} {LastName}"; }
 
 //        }
 

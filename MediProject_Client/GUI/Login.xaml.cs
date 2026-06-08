@@ -22,6 +22,7 @@ namespace MediProject_Client.GUI
     /// </summary>
     public partial class Login : Page
     {
+        Service1Client service1 = new Service1Client();
        // Service1Client service = new Service1Client();
         public User user { get; set; } 
         public Login(User user)
@@ -33,9 +34,19 @@ namespace MediProject_Client.GUI
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
+            UserList users = service1.GetAllUsers();
+            User DBUser = users.Find(u=>u.ID.ToString() == this.LoginUser.Text);
+            if (DBUser == null)
+                MessageBox.Show("משתמש לא קיים אנא הרשם");
+            else if (DBUser.Password == this.LoginPass.Password)
+            {
+                this.user = DBUser;
+                NavigationService nav = NavigationService.GetNavigationService(this);
+                nav.Navigate(new PersonalArea(user));
+            }
+            else
+                MessageBox.Show("סיסמה אינה תקינה, אנא נסה שוב");
 
-            
-            MessageBox.Show("מנסה להתחבר למערכת בית המרקחת...");
         }
 
         private void ShowRegister_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)

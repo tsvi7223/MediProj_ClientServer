@@ -32,7 +32,7 @@ namespace MediProject_Client
 
             //PeopleDB personDB = PeopleDB.GetInstance();
             //PeopleList peopleList = new PeopleList();
-            //peopleList.ForEach((person) => { Console.WriteLine(person.FName.ToString()); });
+            //peopleList.ForEach((person) => { Console.WriteLine(person.FirstName.ToString()); });
            // PeopleList peopleList = service.GetAllPeople();
 
 

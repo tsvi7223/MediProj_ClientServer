@@ -31,19 +31,19 @@ namespace MediProject_Client.ServiceReference1 {
         private System.DateTime DateOfBirthField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FullAddressField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string GmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PhoneNumberField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string fNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string lNameField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime DateOfBirth {
@@ -54,6 +54,19 @@ namespace MediProject_Client.ServiceReference1 {
                 if ((this.DateOfBirthField.Equals(value) != true)) {
                     this.DateOfBirthField = value;
                     this.RaisePropertyChanged("DateOfBirth");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FirstName {
+            get {
+                return this.FirstNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
+                    this.FirstNameField = value;
+                    this.RaisePropertyChanged("FirstName");
                 }
             }
         }
@@ -85,6 +98,19 @@ namespace MediProject_Client.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LastName {
+            get {
+                return this.LastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
+                    this.LastNameField = value;
+                    this.RaisePropertyChanged("LastName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string PhoneNumber {
             get {
                 return this.PhoneNumberField;
@@ -93,32 +119,6 @@ namespace MediProject_Client.ServiceReference1 {
                 if ((object.ReferenceEquals(this.PhoneNumberField, value) != true)) {
                     this.PhoneNumberField = value;
                     this.RaisePropertyChanged("PhoneNumber");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string fName {
-            get {
-                return this.fNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.fNameField, value) != true)) {
-                    this.fNameField = value;
-                    this.RaisePropertyChanged("fName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string lName {
-            get {
-                return this.lNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.lNameField, value) != true)) {
-                    this.lNameField = value;
-                    this.RaisePropertyChanged("lName");
                 }
             }
         }
@@ -259,6 +259,13 @@ namespace MediProject_Client.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="UserList", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model", ItemName="User")]
+    [System.SerializableAttribute()]
+    public class UserList : System.Collections.Generic.List<MediProject_Client.ServiceReference1.User> {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server")]
     [System.SerializableAttribute()]
     public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -340,6 +347,12 @@ namespace MediProject_Client.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllKupas", ReplyAction="http://tempuri.org/IService1/GetAllKupasResponse")]
         System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.KupatHolimList> GetAllKupasAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllUsers", ReplyAction="http://tempuri.org/IService1/GetAllUsersResponse")]
+        MediProject_Client.ServiceReference1.UserList GetAllUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllUsers", ReplyAction="http://tempuri.org/IService1/GetAllUsersResponse")]
+        System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.UserList> GetAllUsersAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
         string GetData(int value);
         
@@ -402,6 +415,14 @@ namespace MediProject_Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.KupatHolimList> GetAllKupasAsync() {
             return base.Channel.GetAllKupasAsync();
+        }
+        
+        public MediProject_Client.ServiceReference1.UserList GetAllUsers() {
+            return base.Channel.GetAllUsers();
+        }
+        
+        public System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.UserList> GetAllUsersAsync() {
+            return base.Channel.GetAllUsersAsync();
         }
         
         public string GetData(int value) {

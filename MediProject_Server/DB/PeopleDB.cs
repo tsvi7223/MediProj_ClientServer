@@ -28,9 +28,9 @@ namespace MediProject_Server.DB
             Person person = entity as Person;
             if (person == null) person = new Person();
 
-            person.ID = int.Parse(reader["ID"].ToString());
-            person.fName = reader["fName"].ToString();
-            person.lName = reader["lName"].ToString();
+            person.ID = int.Parse(reader["people.ID"].ToString());
+            person.FirstName = reader["FirstName"].ToString();
+            person.LastName = reader["LastName"].ToString();
             person.DateOfBirth = (DateTime)reader["DateOfBirth"];
             person.Gmail = reader["Gmail"].ToString();
             person.FullAddress = reader["FullAddress"].ToString();
@@ -53,14 +53,14 @@ namespace MediProject_Server.DB
         public void Update(Person person)
         {
             // TODO: fix
-            command.CommandText = $"UPDATE people SET fName = '{person.fName}', lName = '{person.lName}', DateOfBirth = #{person.DateOfBirth}#, Gmail = '{person.Gmail}'," +
+            command.CommandText = $"UPDATE people SET FirstName = '{person.FirstName}', LastName = '{person.LastName}', DateOfBirth = #{person.DateOfBirth}#, Gmail = '{person.Gmail}'," +
                 $"FullAddress='{person.FullAddress}', PhoneNumber='{person.PhoneNumber}' WHERE ID = {person.ID}";
             base.ExecuteNonQuery();
         }
 
         public void Insert(Person person)
         {
-            command.CommandText = $"INSERT INTO people (fName, lName, DateOfBirth, Gmail, FullAddress, PhoneNumber) VALUES ('{person.fName}', '{person.lName}', #{person.DateOfBirth}#, '{person.Gmail}', '{person.FullAddress}','{person.PhoneNumber}')";
+            command.CommandText = $"INSERT INTO people (FirstName, LastName, DateOfBirth, Gmail, FullAddress, PhoneNumber) VALUES ('{person.FirstName}', '{person.LastName}', #{person.DateOfBirth}#, '{person.Gmail}', '{person.FullAddress}','{person.PhoneNumber}')";
             base.ExecuteNonQuery();
         }
     }

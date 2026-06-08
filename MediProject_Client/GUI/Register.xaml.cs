@@ -52,8 +52,8 @@ namespace MediProject_Client.GUI
 
         private void BackDoor_Click(object sender, RoutedEventArgs e)
         {
-            this.fNameTB.Text = user.fName =  "דניאל";
-            this.lNameTB.Text = user.lName =  "אסולין";
+            this.FirstNameTB.Text = user.FirstName =  "דניאל";
+            this.LastNameTB.Text = user.LastName =  "אסולין";
             this.DateOfBirth.Text =  DateTime.Now.ToString();
             user.DateOfBirth = DateTime.Now;
             this.RegUser.Text = user.UserName =  "assulindani";

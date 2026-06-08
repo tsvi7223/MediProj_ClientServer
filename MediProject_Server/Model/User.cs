@@ -16,8 +16,8 @@ namespace MediProject_Server.Model
         {
         }
 
-        public User(int id, string fname, string lName, DateTime dateOfBirth, string gmail,  string fullAddress,string PhoneNumber)
-            : base(id, fname, lName, PhoneNumber,dateOfBirth, gmail, fullAddress )
+        public User(int id, string FirstName, string LastName, DateTime dateOfBirth, string gmail,  string fullAddress,string PhoneNumber)
+            : base(id, FirstName, LastName, PhoneNumber,dateOfBirth, gmail, fullAddress )
         {
 
         }

@@ -27,6 +27,12 @@ namespace MediProject_Server
             KupatHolimList kupas = kupatHolimDB.SelectAll();
             return kupas;
         }
+        public UserList GetAllUsers()
+        {
+            UsersDB usersDB = UsersDB.GetInstance();
+            UserList users = usersDB.SelectAll();
+            return users;
+        }
         public MedicationsList GetMedicationsByUserId(int userId)
         {
           

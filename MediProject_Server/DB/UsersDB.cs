@@ -22,18 +22,19 @@ namespace MediProject_Server.DB
         }
         public UserList SelectAll()
         {
-            command.CommandText = "SELECT * FROM Users";
+            command.CommandText = "SELECT * FROM  (people INNER JOIN  Users ON people.ID = Users.ID)";
             return new UserList(base.Select());
         }
 
         protected override BaseEntity CreateModel(BaseEntity entity)
         {
             User user = entity as User;
-            user.ID = int.Parse(reader["ID"].ToString());
+            //user.ID = int.Parse(reader["Users.ID"].ToString());
             base.CreateModel(user);
             user.UserName = reader["UserName"].ToString();
             user.Password = reader["Password"].ToString();
-            user.Kupa = KupatHolimDB.GetInstance().SelectAll().Find(kupa => kupa.ID == user.Kupa.ID);
+            int kupaId = int.Parse(reader["KupaId"].ToString());
+            user.Kupa = KupatHolimDB.GetInstance().SelectAll().Find(kupa => kupa.ID == kupaId);
 
             //user.Gmail = reader["Gmail"].ToString();
 
@@ -55,7 +56,7 @@ namespace MediProject_Server.DB
         public void Update(User user)
         {
             base.Update(user);
-            // command.CommandText = $"UPDATE people SET fName = '{user.fName}', lName = '{user.lName}', WHERE ID = {user.Id}   ";
+            // command.CommandText = $"UPDATE people SET FirstName = '{user.FirstName}', LastName = '{user.LastName}', WHERE ID = {user.Id}   ";
             command.CommandText = $"UPDATE users SET userName = '{user.UserName}', [Password] = '{user.Password}', KupaId = {user.Kupa.ID} WHERE(users.ID ={user.ID})";
             base.ExecuteNonQuery();
         }
