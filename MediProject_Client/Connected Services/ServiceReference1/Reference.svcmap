@@ -22,12 +22,13 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/MediProject_Server/Service1/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="e024b0dc-c55b-4a42-acd1-ac4e92f61f6a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/MediProject_Server/Service1/?xsd=xsd1" />
+    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="71cf94ca-569b-40d0-9e1b-287903f05925" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/MediProject_Server/Service1/?xsd=xsd4" />
     <MetadataFile FileName="item.disco" MetadataType="Disco" ID="95208664-0a52-42b8-a3ed-efe53e795909" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/MediProject_Server/Service1/?disco" />
     <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="05a3c48e-b95f-4f0e-8d9e-b0b4aaa75df7" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/MediProject_Server/Service1/?wsdl" />
     <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="fed38adc-dac5-4a92-b916-f28080c371e0" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/MediProject_Server/Service1/?xsd=xsd2" />
     <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="9dfd86f2-ecac-4b46-b7a1-6045b56b4c72" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/MediProject_Server/Service1/?xsd=xsd3" />
     <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="6d6b6a42-9194-499f-9aad-b2e232cd9ae3" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/MediProject_Server/Service1/?xsd=xsd0" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="e024b0dc-c55b-4a42-acd1-ac4e92f61f6a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/MediProject_Server/Service1/?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

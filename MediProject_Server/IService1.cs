@@ -20,7 +20,9 @@ namespace MediProject_Server
         KupatHolimList GetAllKupas();
         [OperationContract]
         UserList GetAllUsers();
+        [OperationContract]
 
+        MedicationsList GetAllMedications();
 
         [OperationContract]
         string GetData(int value);

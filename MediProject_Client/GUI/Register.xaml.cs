@@ -1,5 +1,6 @@
 ﻿using MediProject_Client;
 using MediProject_Client.ServiceReference1;
+using MediProject_Server.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,7 @@ namespace MediProject_Client.GUI
             InitializeComponent();
             this.user = user;
             this.DataContext = this.user;
-            KupatHolimList kupas = service.GetAllKupas();
+            ServiceReference1.KupatHolimList kupas = service.GetAllKupas();
             this.RegHMO.ItemsSource = kupas;
             this.RegHMO.SelectedItem = kupas.FirstOrDefault();
 

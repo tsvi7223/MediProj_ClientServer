@@ -81,6 +81,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="GUI\MedicationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\MedicationsList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -108,6 +112,9 @@
     </Compile>
     <Compile Include="GUI\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MedicationPage.xaml.cs">
+      <DependentUpon>MedicationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\MedicationsList.xaml.cs">
       <DependentUpon>MedicationsList.xaml</DependentUpon>
@@ -153,10 +160,13 @@
     <None Include="Connected Services\ServiceReference1\item3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceReference1\MediProject_Client.ServiceReference1.CompositeType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <None Include="Connected Services\ServiceReference1\item4.xsd">
+      <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReference1\MediProject_Client.ServiceReference1.KupatHolimList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference1\MediProject_Client.ServiceReference1.MedicationsList.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference1\MediProject_Client.ServiceReference1.PeopleList.datasource">
@@ -195,6 +205,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MediProject_Server\MediProject_Server.csproj">
+      <Project>{C4F8CDDA-7D3E-4F62-A4BB-143E524AD3DB}</Project>
+      <Name>MediProject_Server</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

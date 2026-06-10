@@ -53,15 +53,15 @@ namespace MediProject_Server.DB
             public void Update(Medication medication)
             {
             // command.CommandText = $"UPDATE people SET FirstName = '{person.FirstName}', LastName = '{person.LastName}', WHERE ID = {person.Id}   ";
-            command.CommandText = $"UPDATE Medications SET OrginaLastName = '{medication.OriginaLastName}', InHealthBox = {medication.InHealthBox}, AvailableInIsrael = {medication.AvailableInIsrael}, MainSubctenceId = {medication.ActiveSubstance.ID} " +
+            command.CommandText = $"UPDATE Medications SET OrginalName = '{medication.OriginalName}', InHealthBox = {medication.InHealthBox}, AvailableInIsrael = {medication.AvailableInIsrael}, MainSubctenceId = {medication.ActiveSubstance.ID} " +
                 $"WHERE (Medications.ID = {medication.ID})";
                 base.ExecuteNonQuery();
             }
             public void Insert(Medication medication)
             {
             command.CommandText = $"INSERT INTO Medications " +
-                $"(OrginaLastName, InHealthBox, AvailableInIsrael, MainSubctenceId)" +
-                $" VALUES ('{medication.OriginaLastName}', {medication.InHealthBox},{medication.AvailableInIsrael}, {medication.ActiveSubstance.ID})";
+                $"(OrginalName, InHealthBox, AvailableInIsrael, MainSubctenceId)" +
+                $" VALUES ('{medication.OriginalName}', {medication.InHealthBox},{medication.AvailableInIsrael}, {medication.ActiveSubstance.ID})";
                 base.ExecuteNonQuery();
             }
 

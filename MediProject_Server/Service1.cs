@@ -21,6 +21,13 @@ namespace MediProject_Server
             return people;
         }
 
+        public MedicationsList GetAllMedications()
+        {
+            MedicationsDB medicationsDB = MedicationsDB.GetInstance();
+            MedicationsList medications = medicationsDB.SelectAll();
+            return medications;
+        }
+
         public KupatHolimList GetAllKupas()
         {
             KupatHolimDB kupatHolimDB = KupatHolimDB.GetInstance();

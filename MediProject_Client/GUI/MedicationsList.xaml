@@ -9,6 +9,35 @@
       Title="MedicationsList">
 
     <Grid>
-        
+        <Grid>
+            <ListView Name="listView">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Medication Name" Width="150">
+                            <GridViewColumn.DisplayMemberBinding>
+                                <Binding Path="OriginaLastName"/>
+                            </GridViewColumn.DisplayMemberBinding>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header="Price" DisplayMemberBinding="{Binding OrginalName}" Width="80"/>
+
+                        <GridViewColumn Header="Description" DisplayMemberBinding="{Binding AvailableInIsrael}" Width="200"/>
+
+                        <GridViewColumn Header="Category ID" DisplayMemberBinding="{Binding InHealthBox}" Width="100"/>
+
+                        <!-- עמודת כפתור -->
+                        <GridViewColumn Header="חלופות" Width="120">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="הצג חלופות"
+                                    Click="ShowAlternatives_Click"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
     </Grid>
 </Page>

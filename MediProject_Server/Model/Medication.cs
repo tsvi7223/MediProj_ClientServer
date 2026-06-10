@@ -11,7 +11,7 @@ namespace MediProject_Server.Model
     public class Medication : BaseEntity
     {
         [DataMember]
-        public string OriginaLastName { get; set; }
+        public string OriginalName { get; set; }
 
         [DataMember]
         public List<string> Alternativies { get; set; } 

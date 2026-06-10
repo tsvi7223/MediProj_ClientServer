@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MediProject_Client.ServiceReference1;
+using MediProject_Server.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,24 @@ namespace MediProject_Client.GUI
     /// </summary>
     public partial class MedicationsList : Page
     {
+        Service1Client service1 = new Service1Client();
+
         public MedicationsList()
         {
             InitializeComponent();
+            this.listView.ItemsSource = service1.GetAllMedications();
+        }
+
+       
+        private void ShowAlternatives_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+
+            // קבלת האובייקט של השורה שעליה לחצו
+            Medication medication = (Medication)button.DataContext;
+            this.NavigationService.Navigate(new MedicationPage(medication.ID));
+
+
         }
     }
 }
