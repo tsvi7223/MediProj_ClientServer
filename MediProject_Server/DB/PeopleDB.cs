@@ -58,10 +58,37 @@ namespace MediProject_Server.DB
             base.ExecuteNonQuery();
         }
 
-        public void Insert(Person person)
+        public int Insert(Person person)
         {
-            command.CommandText = $"INSERT INTO people (FirstName, LastName, DateOfBirth, Gmail, FullAddress, PhoneNumber) VALUES ('{person.FirstName}', '{person.LastName}', #{person.DateOfBirth}#, '{person.Gmail}', '{person.FullAddress}','{person.PhoneNumber}')";
-            base.ExecuteNonQuery();
+            int newId = 0;
+            try
+            {
+                if (connection.State != System.Data.ConnectionState.Open)
+                    connection.Open();
+
+                command.Connection = connection;
+                command.CommandText = $"INSERT INTO people (FirstName, LastName, DateOfBirth, Gmail, FullAddress, PhoneNumber) VALUES ('{person.FirstName}', '{person.LastName}', #{person.DateOfBirth}#, '{person.Gmail}', '{person.FullAddress}','{person.PhoneNumber}')";
+                command.ExecuteNonQuery(); // שימוש ישיר ולא דרך base כדי לא לסגור את החיבור
+                command.CommandText = "SELECT @@IDENTITY";
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    newId = Convert.ToInt32(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                // כאן כדאי להוסיף טיפול בשגיאות או זריקה של השגיאה למעלה
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                // 4. סגירת החיבור רק בסוף התהליך כולו
+                if (connection.State == System.Data.ConnectionState.Open)
+                    connection.Close();
+            }
+            return newId;
+
         }
     }
 }

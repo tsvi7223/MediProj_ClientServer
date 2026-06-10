@@ -81,6 +81,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="GUI\MedicationsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\PersonalArea.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -104,6 +108,9 @@
     </Compile>
     <Compile Include="GUI\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MedicationsList.xaml.cs">
+      <DependentUpon>MedicationsList.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\PersonalArea.xaml.cs">
       <DependentUpon>PersonalArea.xaml</DependentUpon>

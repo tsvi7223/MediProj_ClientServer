@@ -62,8 +62,8 @@ namespace MediProject_Server.DB
         }
         public void Insert(User user)
         {
-            base.Insert(user);
-            command.CommandText = $"INSERT INTO users (id, userName, [Password], KupaId) VALUES  ({user.ID}, '{user.UserName}', '{user.Password}', {user.Kupa.ID})";
+            int userId  = base.Insert(user);
+            command.CommandText = $"INSERT INTO users (id, userName, [Password], KupaId) VALUES  ({userId}, '{user.UserName}', '{user.Password}', {user.Kupa.ID})";
             base.ExecuteNonQuery();
         }
 
