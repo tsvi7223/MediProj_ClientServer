@@ -2,6 +2,7 @@
 using MediProject_Server.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +41,31 @@ namespace MediProject_Client.GUI
             this.NavigationService.Navigate(new MedicationPage(medication.ID));
 
 
+        }
+
+        private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ICollectionView view = System.Windows.Data.CollectionViewSource.GetDefaultView(listView.ItemsSource);
+
+            if (view != null)
+            {
+                if (string.IsNullOrWhiteSpace(txtSearch.Text))
+                {
+                    view.Filter = null; // מציג הכל כשהתיבה ריקה
+                }
+                else
+                {
+                    string filterText = txtSearch.Text.ToLower();
+                    view.Filter = item =>
+                    {
+                        // החלף את YourModelClass בשם ה-Class של האובייקטים שלך ברשימה
+                        Medication medication = item as Medication;
+                        if (medication == null) return false;
+
+                        return (!string.IsNullOrEmpty(medication.OriginalName) && medication.OriginalName.ToLower().Contains(filterText));
+                    };
+                }
+            }
         }
     }
 }

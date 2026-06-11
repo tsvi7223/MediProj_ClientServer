@@ -77,6 +77,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="GUI\AddMedicationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -86,6 +90,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\MedicationsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\MedicationsPopupWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -110,6 +118,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="GUI\AddMedicationPage.xaml.cs">
+      <DependentUpon>AddMedicationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -118,6 +129,9 @@
     </Compile>
     <Compile Include="GUI\MedicationsList.xaml.cs">
       <DependentUpon>MedicationsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MedicationsPopupWindow.xaml.cs">
+      <DependentUpon>MedicationsPopupWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\PersonalArea.xaml.cs">
       <DependentUpon>PersonalArea.xaml</DependentUpon>

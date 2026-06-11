@@ -36,7 +36,7 @@ namespace MediProject_Client.GUI
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             ServiceReference1.UserList users = service1.GetAllUsers();
-            User DBUser = users.Find(u=>u.ID.ToString() == this.LoginUser.Text);
+            User DBUser = users.Find(u=>u.UserName.ToString() == this.LoginUser.Text);
             if (DBUser == null)
                 MessageBox.Show("משתמש לא קיים אנא הרשם");
             else if (DBUser.Password == this.LoginPass.Password)
