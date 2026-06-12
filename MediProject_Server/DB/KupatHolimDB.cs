@@ -39,18 +39,18 @@ namespace MediProject_Server.DB
         }
         public void Delete(KupatHolim kupatHolim)
         {
-            command.CommandText = $"DELETE FROM kupatHolims WHERE Id = {kupatHolim.ID})";
+            command.CommandText = $"DELETE FROM kupatHolim WHERE Id = {kupatHolim.ID})";
             base.ExecuteNonQuery();
         }
 
         public void Update(KupatHolim kupatHolim)
         {
-            command.CommandText = $"UPDATE kupatHolims SET Name = '{kupatHolim.Name}',  WHERE ID = {kupatHolim.ID}";
+            command.CommandText = $"UPDATE kupatHolim SET KupaName = '{kupatHolim.Name}',  WHERE ID = {kupatHolim.ID}";
             base.ExecuteNonQuery();
         }
         public void Insert(KupatHolim kupatHolim)
         {
-            command.CommandText = $"INSERT INTO kupatholim (Name) " +
+            command.CommandText = $"INSERT INTO kupatholim (KupaName) " +
                 $"VALUES ('{kupatHolim.Name}')";
             base.ExecuteNonQuery();
         }

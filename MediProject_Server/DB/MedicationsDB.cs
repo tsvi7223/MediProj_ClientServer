@@ -47,7 +47,7 @@ namespace MediProject_Server.DB
             }
             public void Delete(Medication medication)
             {
-                command.CommandText = $"DELETE FROM medications WHERE Id = {medication.ID})";
+                command.CommandText = $"DELETE FROM Medications WHERE Id = {medication.ID})";
                 base.ExecuteNonQuery();
             }
 

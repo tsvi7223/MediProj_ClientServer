@@ -21,7 +21,7 @@ namespace MediProject_Server.DB
         }
         public PharmacyList SelectAll()
         {
-            command.CommandText = "SELECT * FROM Pharmacy";
+            command.CommandText = "SELECT * FROM pharmacies";
             return new PharmacyList(base.Select());
         }
 
@@ -39,13 +39,13 @@ namespace MediProject_Server.DB
         }
         public void Delete(Pharmacy pharmacy)
         {
-            command.CommandText = $"DELETE FROM pharmacys WHERE Id = {pharmacy.ID})";
+            command.CommandText = $"DELETE FROM pharmacies WHERE Id = {pharmacy.ID})";
             base.ExecuteNonQuery();
         }
 
         public void Update(Pharmacy pharmacy)
         {
-            command.CommandText = $"UPDATE pharmacys SET Name = '{pharmacy.Name}',  WHERE ID = {pharmacy.ID}";
+            command.CommandText = $"UPDATE pharmacies SET Name = '{pharmacy.Name}',  WHERE ID = {pharmacy.ID}";
             base.ExecuteNonQuery();
         }
         public void Insert(Pharmacy pharmacy)
