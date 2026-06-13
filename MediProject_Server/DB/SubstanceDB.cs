@@ -51,12 +51,12 @@ namespace MediProject_Server.DB
         public void Update(Substance substance)
         {
           
-            command.CommandText = $"UPDATE  Substence SET SubstenceName = '{substance.SubstanceName}', Description = '{substance.Description}'";
+            command.CommandText = $"UPDATE  Substance SET SubstanceName = '{substance.SubstanceName}', Description = '{substance.Description}'";
             base.ExecuteNonQuery();
         }
         public void Insert(Substance substance)
         {
-            command.CommandText = $"INSERT INTO Substence (SubstenceName, Description) VALUES ({substance.SubstanceName}, {substance.Description})";
+            command.CommandText = $"INSERT INTO Substance (SubstanceName, Description) VALUES ({substance.SubstanceName}, {substance.Description})";
             base.ExecuteNonQuery();
         }
 
