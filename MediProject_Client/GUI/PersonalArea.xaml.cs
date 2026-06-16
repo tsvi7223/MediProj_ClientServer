@@ -32,7 +32,8 @@ namespace MediProject_Client.GUI
             InitializeComponent();
             this.user = user;
             ServiceReference1.MedicationsList list = service.GetUserMedications(user);
-            this.PersonalMediListFrame.Navigate( new MedicationsListPage(list));
+            this.PersonalMediListFrame.Navigate(new MedicationsListPage(list));
+            this.DataContext =user;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
