@@ -45,6 +45,7 @@ namespace MediProject_Client.GUI
         private void BtnFinishRegister_Click(object sender, RoutedEventArgs e)
         {
             user.Kupa = RegHMO.SelectedItem as KupatHolim;
+            user.Password = RegPass.Password;
             service.InsertUser(user);
             
             

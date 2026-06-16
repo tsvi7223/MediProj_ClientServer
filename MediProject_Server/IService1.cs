@@ -26,6 +26,11 @@ namespace MediProject_Server
 
         [OperationContract]
         string GetData(int value);
+        [OperationContract]
+        MedicationsList GetUserMedications(User user);
+        [OperationContract]
+
+        void AddMedication(User user, Medication medication);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);

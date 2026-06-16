@@ -27,5 +27,7 @@ namespace MediProject_Server.Model
         public string Password { get; set; }
         [DataMember]
         public KupatHolim Kupa { get; set; }
+        [DataMember]
+        public MedicationsList Medications { get; set; }
     }
 }

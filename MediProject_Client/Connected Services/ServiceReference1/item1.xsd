@@ -33,6 +33,7 @@
       <xs:extension base="tns:Person">
         <xs:sequence>
           <xs:element minOccurs="0" name="Kupa" nillable="true" type="tns:KupatHolim" />
+          <xs:element minOccurs="0" name="Medications" nillable="true" type="tns:MedicationsList" />
           <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
         </xs:sequence>
@@ -50,18 +51,6 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="KupatHolim" nillable="true" type="tns:KupatHolim" />
-  <xs:complexType name="KupatHolimList">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="KupatHolim" nillable="true" type="tns:KupatHolim" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="KupatHolimList" nillable="true" type="tns:KupatHolimList" />
-  <xs:complexType name="UserList">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="UserList" nillable="true" type="tns:UserList" />
   <xs:complexType name="MedicationsList">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Medication" nillable="true" type="tns:Medication" />
@@ -117,4 +106,16 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfMedication" nillable="true" type="tns:ArrayOfMedication" />
+  <xs:complexType name="KupatHolimList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KupatHolim" nillable="true" type="tns:KupatHolim" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KupatHolimList" nillable="true" type="tns:KupatHolimList" />
+  <xs:complexType name="UserList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserList" nillable="true" type="tns:UserList" />
 </xs:schema>

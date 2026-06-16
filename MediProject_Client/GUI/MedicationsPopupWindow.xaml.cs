@@ -1,4 +1,5 @@
 ﻿using MediProject_Client.ServiceReference1;
+using MediProject_Server.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,8 +22,7 @@ namespace MediProject_Client.GUI
     public partial class MedicationsPopupWindow : Window
     {
         Service1Client service1 = new Service1Client();
-        // תכונה ציבורית שתאפשר לדף הקורא לקבל את שם התרופה שנבחרה
-        public string SelectedMedicationName { get; private set; }
+        public Medication SelectedMedication { get; private set; }
 
         public MedicationsPopupWindow()
         {
@@ -35,7 +35,7 @@ namespace MediProject_Client.GUI
         // אירוע לחיצה על כפתור "בחר תרופה" בשורה
         private void SelectMedicationRow_Click(object sender, RoutedEventArgs e)
         {
-            var button = sender as Button;
+            Button button = sender as Button;
 
             // שליפת האובייקט שמוצג בשורה הנוכחית
             // החלף את YourMedicationClass בסוג ה-Class האמיתי של התרופה שלך
@@ -44,7 +44,7 @@ namespace MediProject_Client.GUI
             if (selectedItem != null)
             {
                 // שמירת השם של התרופה שנבחרה (לפי השדה הקיים אצלך באובייקט)
-                SelectedMedicationName = selectedItem.OriginalName;
+                SelectedMedication = selectedItem as Medication;
 
                 // סימון שהבחירה הצליחה וסגירת החלון
                 this.DialogResult = true;
@@ -52,7 +52,6 @@ namespace MediProject_Client.GUI
             }
         }
 
-        // מנגנון הסינון הקיים שלך עבור תיבת החיפוש
         private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             var view = CollectionViewSource.GetDefaultView(listView.ItemsSource);

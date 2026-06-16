@@ -23,7 +23,13 @@ namespace MediProject_Server.DB
         public UserList SelectAll()
         {
             command.CommandText = "SELECT * FROM  (people INNER JOIN  Users ON people.ID = Users.ID)";
-            return new UserList(base.Select());
+            UserList list = new UserList(base.Select());
+
+            foreach (User user in list)
+            {
+                user.Medications = GetUserMedications(user);
+            }
+            return list;
         }
 
         protected override BaseEntity CreateModel(BaseEntity entity)
@@ -35,6 +41,7 @@ namespace MediProject_Server.DB
             user.Password = reader["Password"].ToString();
             int kupaId = int.Parse(reader["KupaId"].ToString());
             user.Kupa = KupatHolimDB.GetInstance().SelectAll().Find(kupa => kupa.ID == kupaId);
+            //user.Medications = GetUserMedications(user);
 
             //user.Gmail = reader["Gmail"].ToString();
 
@@ -49,7 +56,7 @@ namespace MediProject_Server.DB
         public void Delete(User user)
         {
             base.Delete(user);
-            command.CommandText = $"DELETE FROM users WHERE Id = {user.ID})";
+            command.CommandText = $"DELETE FROM users WHERE Id = {user.ID}";
             base.ExecuteNonQuery();
         }
 
@@ -62,9 +69,34 @@ namespace MediProject_Server.DB
         }
         public void Insert(User user)
         {
-            int userId  = base.Insert(user);
+            int userId = base.Insert(user);
             command.CommandText = $"INSERT INTO users (id, userName, [Password], KupaId) VALUES  ({userId}, '{user.UserName}', '{user.Password}', {user.Kupa.ID})";
             base.ExecuteNonQuery();
+
+            if (user.Medications != null && user.Medications.Count > 0)
+                foreach (Medication med in user.Medications)
+                {
+                    // שאילתת הכנסה לטבלה המקשרת
+                    command.CommandText = $"INSERT INTO UserMedications (UserID, MedicationID)  VALUES ({user.ID}, {med.ID})";
+                    base.ExecuteNonQuery();
+                }
+            
+        }
+
+        public MedicationsList GetUserMedications(User user)
+        {
+            command.CommandText = "SELECT Medications.* " +
+                          "FROM (Users " +
+                          "INNER JOIN UserMedications ON Users.ID = UserMedications.UserID) " +
+                          "INNER JOIN Medications ON UserMedications.MedicationID = Medications.ID " +
+                          $"WHERE Users.ID = {user.ID};";
+            //command.CommandText = $"SELECT Medications.* " +
+            //    $"FROM " +
+            //        $"((Users INNER JOIN UserMedications ON Users.ID = UserMedications.UserID) " +
+            //                 $"INNER JOIN  Medications " +
+            //    $"ON UserMedications.MedicationID = Medications.ID) " +
+            //    $"WHERE (Users.ID = {user.ID})";
+            return new MedicationsList(base.Select());
         }
 
 

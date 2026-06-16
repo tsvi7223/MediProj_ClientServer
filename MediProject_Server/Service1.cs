@@ -40,13 +40,9 @@ namespace MediProject_Server
             UserList users = usersDB.SelectAll();
             return users;
         }
-        public MedicationsList GetMedicationsByUserId(int userId)
+        public MedicationsList GetUserMedications(User user)
         {
-          
-            MedicationsDB medicationsDB = MedicationsDB.GetInstance();
-            MedicationsList allMedications = medicationsDB.SelectAll();
-            MedicationsList userMedications = new MedicationsList(allMedications.FindAll(medi => medi.ID == userId));
-            return allMedications;
+            return UsersDB.GetInstance().GetUserMedications(user);
         }
         public void InsertUser(User user)
         {
@@ -57,10 +53,16 @@ namespace MediProject_Server
                 "\nPhone Number is: " + user.PhoneNumber + "\nGmail is: " + user.Gmail +
                 "\nPassword is: " + user.Password);
         }
+
+        public void AddMedication(User user, Medication medication)
+        {
+            UserMedicationsDB.GetInstance().Insert(user, medication);
+        }
         public string GetData(int value)        
         {
             return string.Format("You entered: {0}", value);
         }
+
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {

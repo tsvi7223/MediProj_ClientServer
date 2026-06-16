@@ -58,6 +58,7 @@
                     </Button.Resources>
                 </Button>
             </StackPanel>
+            <Frame x:Name="PersonalMediListFrame" Grid.Row="1"/>
 
 
         </Grid>

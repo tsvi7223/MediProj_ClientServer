@@ -21,14 +21,14 @@ namespace MediProject_Client.GUI
     /// <summary>
     /// Interaction logic for MedicationsList.xaml
     /// </summary>
-    public partial class MedicationsList : Page
+    public partial class MedicationsListPage : Page
     {
         Service1Client service1 = new Service1Client();
 
-        public MedicationsList()
+        public MedicationsListPage(ServiceReference1.MedicationsList list)
         {
             InitializeComponent();
-            this.listView.ItemsSource = service1.GetAllMedications();
+            this.listView.ItemsSource = list;
         }
 
        

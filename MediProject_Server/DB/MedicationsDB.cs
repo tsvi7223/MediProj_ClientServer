@@ -31,7 +31,7 @@ namespace MediProject_Server.DB
                 Medication medication = entity as Medication;
                 medication.ID = int.Parse(reader["ID"].ToString());
                 medication.OriginalName = reader["OriginalName"].ToString();
-                int SubstanceID = int.Parse(reader["MainSubctanceId"].ToString());
+                int SubstanceID = int.Parse(reader["MainSubstanceId"].ToString());
                 medication.ActiveSubstance = SubstanceDB.GetInstance().SelectAll().Find(sub => sub.ID == SubstanceID);
             medication.InHealthBox = (bool)reader["InHealthBox"];
                 medication.AvailableInIsrael = (bool)reader["AvailableInIsrael"];
@@ -54,14 +54,14 @@ namespace MediProject_Server.DB
             public void Update(Medication medication)
             {
             // command.CommandText = $"UPDATE people SET FirstName = '{person.FirstName}', LastName = '{person.LastName}', WHERE ID = {person.Id}   ";
-            command.CommandText = $"UPDATE Medications SET OriginalName = '{medication.OriginalName}', InHealthBox = {medication.InHealthBox}, AvailableInIsrael = {medication.AvailableInIsrael}, MainSubctanceId = {medication.ActiveSubstance.ID} " +
+            command.CommandText = $"UPDATE Medications SET OriginalName = '{medication.OriginalName}', InHealthBox = {medication.InHealthBox}, AvailableInIsrael = {medication.AvailableInIsrael}, MainSubstanceId = {medication.ActiveSubstance.ID} " +
                 $"WHERE (Medications.ID = {medication.ID})";
                 base.ExecuteNonQuery();
             }
             public void Insert(Medication medication)
             {
             command.CommandText = $"INSERT INTO Medications " +
-                $"(OriginalName, InHealthBox, AvailableInIsrael, MainSubctanceId)" +
+                $"(OriginalName, InHealthBox, AvailableInIsrael, MainSubstanceId)" +
                 $" VALUES ('{medication.OriginalName}', {medication.InHealthBox},{medication.AvailableInIsrael}, {medication.ActiveSubstance.ID})";
                 base.ExecuteNonQuery();
             }

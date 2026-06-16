@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB\BaseDB.cs" />
+    <Compile Include="DB\UserMedicationsDB.cs" />
     <Compile Include="Model\KupatHolimList.cs" />
     <Compile Include="IService1.cs" />
     <Compile Include="DB\KupatHolimDB.cs" />

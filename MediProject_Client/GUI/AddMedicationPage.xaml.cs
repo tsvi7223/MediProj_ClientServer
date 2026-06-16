@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MediProject_Client.ServiceReference1;
+using MediProject_Server.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,32 +22,32 @@ namespace MediProject_Client.GUI
     /// </summary>
     public partial class AddMedicationPage : Page
     {
-        public AddMedicationPage()
+        Medication selectedMedication;
+        Service1Client service = new Service1Client();
+        public User user = new User();
+        public AddMedicationPage(User user)
         {
             InitializeComponent();
+            this.user = user;
         }
         private void SelectMedication_Click(object sender, RoutedEventArgs e)
         {
-            // כאן תפתח את חלון הדיאלוג הקופץ שלך שבו מופיעה הרשימה
-            // דוגמה קטנה לאיך זה אמור להיראות:
+
 
             MedicationsPopupWindow popup = new MedicationsPopupWindow();
             if (popup.ShowDialog() == true)
             {
-                // בהנחה שבחלון הקופץ שמרת תכונה של התרופה שנבחרה
-                txtMedicationName.Text = popup.SelectedMedicationName; 
+                selectedMedication = popup.SelectedMedication;
+                txtMedicationName.Text = selectedMedication.OriginalName;
             }
-            
 
-            // זמנית לצורך בדיקה:
-            txtMedicationName.Text = "אקמול 500 מ\"ג";
         }
 
         // 2. לחיצה על כפתור שמירה
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             // בדיקת תקינות בסיסית (ולנציות)
-            if (string.IsNullOrWhiteSpace(txtMedicationName.Text))
+            if ( selectedMedication == null)
             {
                 MessageBox.Show("אנא בחר תרופה מהרשימה.", "שגיאה", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
@@ -66,12 +68,13 @@ namespace MediProject_Client.GUI
                 MessageBox.Show("אנא מלא את כל התאריכים המבוקשים.", "שגיאה", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-
+            service.AddMedication(user, selectedMedication);
             // אם הכל תקין - כאן אתה שולח את הנתונים ל-DB או לשרת שלך
             MessageBox.Show("התרופה נשמרה בהצלחה במערכת!", "הצלחה", MessageBoxButton.OK, MessageBoxImage.Information);
 
             // חזרה לדף הקודם (למשל לרשימת התרופות)
             this.NavigationService?.GoBack();
+
         }
 
         // 3. לחיצה על ביטול

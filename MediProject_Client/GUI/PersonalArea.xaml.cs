@@ -22,6 +22,7 @@ namespace MediProject_Client.GUI
     /// </summary>
     public partial class PersonalArea : Page
     {
+         Service1Client service = new Service1Client();
         public User user;
 
 
@@ -29,15 +30,14 @@ namespace MediProject_Client.GUI
         public PersonalArea(User user)
         {
             InitializeComponent();
-
-
             this.user = user;
+            ServiceReference1.MedicationsList list = service.GetUserMedications(user);
+            this.PersonalMediListFrame.Navigate( new MedicationsListPage(list));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           // this.NavigationService.Navigate(new MedicationsList());
-            this.NavigationService.Navigate(new AddMedicationPage());
+            this.NavigationService.Navigate(new AddMedicationPage(user));
         }
     }
 }

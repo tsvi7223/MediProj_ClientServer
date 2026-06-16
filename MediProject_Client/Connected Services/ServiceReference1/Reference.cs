@@ -22,6 +22,13 @@ namespace MediProject_Client.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="MedicationsList", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model", ItemName="Medication")]
+    [System.SerializableAttribute()]
+    public class MedicationsList : System.Collections.Generic.List<MediProject_Server.Model.Medication> {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.CollectionDataContractAttribute(Name="KupatHolimList", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model", ItemName="KupatHolim")]
     [System.SerializableAttribute()]
     public class KupatHolimList : System.Collections.Generic.List<MediProject_Server.Model.KupatHolim> {
@@ -32,13 +39,6 @@ namespace MediProject_Client.ServiceReference1 {
     [System.Runtime.Serialization.CollectionDataContractAttribute(Name="UserList", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model", ItemName="User")]
     [System.SerializableAttribute()]
     public class UserList : System.Collections.Generic.List<MediProject_Server.Model.User> {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="MedicationsList", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model", ItemName="Medication")]
-    [System.SerializableAttribute()]
-    public class MedicationsList : System.Collections.Generic.List<MediProject_Server.Model.Medication> {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -80,6 +80,18 @@ namespace MediProject_Client.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
         System.Threading.Tasks.Task<string> GetDataAsync(int value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserMedications", ReplyAction="http://tempuri.org/IService1/GetUserMedicationsResponse")]
+        MediProject_Client.ServiceReference1.MedicationsList GetUserMedications(MediProject_Server.Model.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserMedications", ReplyAction="http://tempuri.org/IService1/GetUserMedicationsResponse")]
+        System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.MedicationsList> GetUserMedicationsAsync(MediProject_Server.Model.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddMedication", ReplyAction="http://tempuri.org/IService1/AddMedicationResponse")]
+        void AddMedication(MediProject_Server.Model.User user, MediProject_Server.Model.Medication medication);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddMedication", ReplyAction="http://tempuri.org/IService1/AddMedicationResponse")]
+        System.Threading.Tasks.Task AddMedicationAsync(MediProject_Server.Model.User user, MediProject_Server.Model.Medication medication);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
         MediProject_Server.CompositeType GetDataUsingDataContract(MediProject_Server.CompositeType composite);
@@ -161,6 +173,22 @@ namespace MediProject_Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task<string> GetDataAsync(int value) {
             return base.Channel.GetDataAsync(value);
+        }
+        
+        public MediProject_Client.ServiceReference1.MedicationsList GetUserMedications(MediProject_Server.Model.User user) {
+            return base.Channel.GetUserMedications(user);
+        }
+        
+        public System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.MedicationsList> GetUserMedicationsAsync(MediProject_Server.Model.User user) {
+            return base.Channel.GetUserMedicationsAsync(user);
+        }
+        
+        public void AddMedication(MediProject_Server.Model.User user, MediProject_Server.Model.Medication medication) {
+            base.Channel.AddMedication(user, medication);
+        }
+        
+        public System.Threading.Tasks.Task AddMedicationAsync(MediProject_Server.Model.User user, MediProject_Server.Model.Medication medication) {
+            return base.Channel.AddMedicationAsync(user, medication);
         }
         
         public MediProject_Server.CompositeType GetDataUsingDataContract(MediProject_Server.CompositeType composite) {
