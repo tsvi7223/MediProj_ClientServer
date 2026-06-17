@@ -3,7 +3,6 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:MediProject_Client.GUI"
       mc:Ignorable="d"
       Title="Pharmacy Care - AdminArea" Height="750" Width="550">
 
@@ -12,10 +11,12 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
-                        <Grid>
-                            <ScrollViewer x:Name="PART_ContentHost" Margin="5,0,0,0" VerticalAlignment="Center"/>
-                            <TextBlock x:Name="WatermarkText" Text="{TemplateBinding Tag}" Foreground="Gray" IsHitTestVisible="False" Margin="5,0,0,0" VerticalAlignment="Center" Visibility="Collapsed"/>
-                        </Grid>
+                        <Border x:Name="Bd" BorderBrush="#D1D1D1" BorderThickness="1" CornerRadius="4" Background="White" Height="30">
+                            <Grid>
+                                <ScrollViewer x:Name="PART_ContentHost" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                                <TextBlock x:Name="WatermarkText" Text="{TemplateBinding Tag}" Foreground="Gray" IsHitTestVisible="False" Margin="7,0,0,0" VerticalAlignment="Center" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="Text" Value="">
                                 <Setter TargetName="WatermarkText" Property="Visibility" Value="Visible"/>
@@ -49,9 +50,9 @@
                     </Border.Background>
                 </Border>
 
-                <TextBlock Text="Pharmacy Care" FontSize="28" FontWeight="Bold" FontFamily="Segoe UI" Foreground="#333" HorizontalAlignment="Center" Margin="0,10,0,0"/>
-                <TextBlock Text="איזור ניהול:" FontSize="18" FontFamily="Segoe UI" Foreground="#666" HorizontalAlignment="Center" Margin="0,5,0,0" FlowDirection="RightToLeft"/>
-                <TextBlock Text="{Binding UserName, StringFormat='שלום לך, {0}'}" FontSize="15" FontWeight="SemiBold" FontFamily="Segoe UI" Foreground="Black" HorizontalAlignment="Center" Margin="0,5,0,5" FlowDirection="RightToLeft"/>
+                <TextBlock Text="Pharmacy Care" FontSize="28" FontWeight="Bold" Foreground="#333" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                <TextBlock Text="איזור ניהול:" FontSize="18" Foreground="#666" HorizontalAlignment="Center" Margin="0,5,0,0" FlowDirection="RightToLeft"/>
+                <TextBlock Text="{Binding UserName, StringFormat='שלום לך, {0}'}" FontSize="15" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" Margin="0,5,0,5" FlowDirection="RightToLeft"/>
             </StackPanel>
 
             <Grid Grid.Row="1" Margin="0,10,0,0" FlowDirection="RightToLeft">
@@ -70,8 +71,8 @@
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="1.2*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox x:Name="txtMedName" Grid.Column="0" Height="30" VerticalContentAlignment="Center" Margin="0,0,5,0" Style="{StaticResource WatermarkStyle}" Tag="הכנס שם תרופה"/>
-                        <TextBox x:Name="txtSubstanceId" Grid.Column="1" Height="30" VerticalContentAlignment="Center" Margin="0,0,5,0" Style="{StaticResource WatermarkStyle}" Tag="קוד חומר פעיל"/>
+                        <TextBox x:Name="txtMedName" Grid.Column="0" Style="{StaticResource WatermarkStyle}" Tag="הכנס שם תרופה"/>
+                        <TextBox x:Name="txtSubstanceId" Grid.Column="1" Style="{StaticResource WatermarkStyle}" Tag="קוד חומר פעיל"/>
                     </Grid>
 
                     <Grid Margin="0,3,0,10">
@@ -93,7 +94,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox x:Name="txtDeleteMedName" Grid.Column="0" Height="30" VerticalContentAlignment="Center" Margin="0,0,5,0" Style="{StaticResource WatermarkStyle}" Tag="שם התרופה למחיקה"/>
+                        <TextBox x:Name="txtDeleteMedName" Grid.Column="0" Style="{StaticResource WatermarkStyle}" Tag="שם התרופה למחיקה"/>
                         <Button x:Name="btnDeleteMed" Grid.Column="1" Content="מחק" Background="IndianRed" Foreground="White" FontWeight="Bold" Click="BtnDeleteMed_Click"/>
                     </Grid>
                 </StackPanel>
