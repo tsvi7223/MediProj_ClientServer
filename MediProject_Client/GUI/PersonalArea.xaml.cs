@@ -36,7 +36,7 @@ namespace MediProject_Client.GUI
             this.DataContext =user;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddMedication_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new AddMedicationPage(user));
         }

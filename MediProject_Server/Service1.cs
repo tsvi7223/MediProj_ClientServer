@@ -42,7 +42,7 @@ namespace MediProject_Server
         }
         public MedicationsList GetUserMedications(User user)
         {
-            return UsersDB.GetInstance().GetUserMedications(user);
+            return MedicationsDB.GetInstance().GetByUser(user);
         }
         public void InsertUser(User user)
         {

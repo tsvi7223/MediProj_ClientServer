@@ -33,7 +33,7 @@ namespace MediProject_Server.DB
             // לולאה העוברת על כל משתמש שנשלף וממלאת עבורו את רשימת התרופות האישיות שלו מהדאטה-בייס
             foreach (User user in list)
             {
-                user.Medications = GetUserMedications(user);
+                user.Medications = MedicationsDB.GetInstance().GetByUser(user);
             }
             return list;
         }
@@ -108,23 +108,7 @@ namespace MediProject_Server.DB
 
         }
 
-        // פונקציה ציבורית השולפת ומחזירה את כל התרופות המשויכות למשתמש מסוים באמצעות קשר רבות-לרבות
-        public MedicationsList GetUserMedications(User user)
-        {
-            // הגדרת שאילתת SQL המבצעת INNER JOIN כפול בין טבלת משתמשים, טבלת הקישור וטבלת התרופות לפי ה-ID של המשתמש
-            command.CommandText = "SELECT Medications.* " +
-                          "FROM (Users " +
-                          "INNER JOIN UserMedications ON Users.ID = UserMedications.UserID) " +
-                          "INNER JOIN Medications ON UserMedications.MedicationID = Medications.ID " +
-                          $"WHERE Users.ID = {user.ID};";
-            //command.CommandText = $"SELECT Medications.* " +
-            //    $"FROM " +
-            //        $"((Users INNER JOIN UserMedications ON Users.ID = UserMedications.UserID) " +
-            //                 $"INNER JOIN  Medications " +
-            //    $"ON UserMedications.MedicationID = Medications.ID) " +
-            //    $"WHERE (Users.ID = {user.ID})";
-            return new MedicationsList(base.Select());
-        }
+     
 
 
 

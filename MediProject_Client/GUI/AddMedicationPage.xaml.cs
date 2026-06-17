@@ -73,7 +73,7 @@ namespace MediProject_Client.GUI
             MessageBox.Show("התרופה נשמרה בהצלחה במערכת!", "הצלחה", MessageBoxButton.OK, MessageBoxImage.Information);
 
             // חזרה לדף הקודם (למשל לרשימת התרופות)
-            this.NavigationService?.GoBack();
+            this.NavigationService.Navigate(new PersonalArea(user));
 
         }
 
@@ -81,10 +81,8 @@ namespace MediProject_Client.GUI
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             // חזרה לדף הקודם ללא שמירה
-            if (this.NavigationService != null && this.NavigationService.CanGoBack)
-            {
-                this.NavigationService.GoBack();
-            }
+            this.NavigationService.Navigate(new PersonalArea(user));
+
         }
     }
 
