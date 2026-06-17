@@ -25,15 +25,40 @@ namespace MediProject_Client.GUI
     /// </summary>
     public partial class MedicationsListPage : Page
     {
-        Service1Client service1 = new Service1Client();
+        
+        private ServiceReference1.Service1Client service = new ServiceReference1.Service1Client();
+        private ServiceReference1.User user;
 
-        public MedicationsListPage(ServiceReference1.MedicationsList list)
+        public MedicationsListPage(ServiceReference1.User loggedInUser)
         {
             InitializeComponent();
-            this.listView.ItemsSource = list;
+            this.user = loggedInUser;
+            LoadMedicationsList();
         }
 
-       
+        private void LoadMedicationsList()
+        {
+            listView.ItemsSource = service.GetMedicationsByUser(user.ID);
+        }
+
+        private void BtnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            ServiceReference1.Medication selectedMed = (ServiceReference1.Medication)btn.DataContext;
+
+            MessageBoxResult answer = MessageBox.Show(
+                "מחיקת התרופה תביא למחיקתה מעמודת התרופות שלי. האם להמשיך?",
+                "אישור מחיקה",
+                MessageBoxButton.YesNo);
+
+            if (answer == MessageBoxResult.Yes)
+            {
+                service.RemoveFromUserList(user.ID, selectedMed.ID);
+                LoadMedicationsList();
+            }
+        }
+
+
         private void ShowAlternatives_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
@@ -44,6 +69,7 @@ namespace MediProject_Client.GUI
 
 
         }
+        
 
         private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {

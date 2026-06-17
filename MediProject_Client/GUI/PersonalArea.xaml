@@ -74,21 +74,36 @@
                 <Frame x:Name="PersonalMediListFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
             </Grid>
 
-            <Button Grid.Row="2" Click="AddMedication_Click" Content="✚ הוספת תרופה"
-                    Width="120"
-                    Height="42"
-                    Background="#28A745"
-                    Foreground="White"
-                    FontWeight="Bold"
-                    BorderThickness="0" 
-                    Margin="0,15,0,10"
-                    HorizontalAlignment="Center">
-                <Button.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="8"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,10">
+                <Button Click="Logout_Click" Content=" התנתקות"
+                        Width="120"
+                        Height="42"
+                        Background="#DC3545"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        BorderThickness="0"
+                        Margin="0,0,10,0">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <Button Click="AddMedication_Click" Content="✚ הוספת תרופה"
+                        Width="120"
+                        Height="42"
+                        Background="#28A745"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        BorderThickness="0">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
         </Grid>
     </Border>
 </Page>

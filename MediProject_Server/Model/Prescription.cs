@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace MediProject_Server.Model
 {
-    [DataContract] 
+    [DataContract] // מגדיר את המחלקה כאובייקט שניתן להעביר בין השרת ללקוח בתקשורת WCF
     public class Prescription : BaseEntity
     {
-        [DataMember] 
-        public DateTime IssueDate { get; set; }
+        [DataMember] // מציין שהשדה נכלל במידע שעובר בצינור התקשורת (Serialization)
+        public DateTime IssueDate { get; set; } // תאריך הנפקת המרשם
 
-        [DataMember] 
-        public DateTime ValidFrom { get; set; }
+        [DataMember]
+        public DateTime ValidFrom { get; set; } // תאריך תחילת תוקף המרשם
 
-        [DataMember] 
-        public DateTime ValidUntil { get; set; }
+        [DataMember]
+        public DateTime ValidUntil { get; set; } // תאריך סיום תוקף המרשם
     }
 }

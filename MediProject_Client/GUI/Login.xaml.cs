@@ -25,8 +25,12 @@ namespace MediProject_Client.GUI
     public partial class Login : Page
     {
         public Service1Client service1 = new Service1Client();
-       // Service1Client service = new Service1Client();
-        public MyUser user { get; set; } 
+        // Service1Client service = new Service1Client();
+        public MyUser user { get; set; }
+        public Login()
+        {
+            InitializeComponent();
+        }
         public Login(MyUser user)
         {
             InitializeComponent();

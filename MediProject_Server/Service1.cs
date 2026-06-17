@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace MediProject_Server
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
+   
     public class Service1 : IService1
     {
 
@@ -28,11 +28,12 @@ namespace MediProject_Server
         }
         public void AddMedi(Medication medication)
         {
-            
+
             MedicationsDB medicationsDB = MedicationsDB.GetInstance();
-           
+
             medicationsDB.Insert(medication);
         }
+
 
         public MedicationsList GetAllMedications()
         {
@@ -40,7 +41,18 @@ namespace MediProject_Server
             MedicationsList medications = medicationsDB.SelectAll();
             return medications;
         }
+        public List<MediProject_Server.Model.Medication> GetMedicationsByUser(int userId)
+        { 
+            MediProject_Server.Model.User tempUser = new MediProject_Server.Model.User();
+            tempUser.ID = userId;
 
+            return MedicationsDB.GetInstance().GetByUser(tempUser).ToList();
+        }
+
+        public void RemoveFromUserList(int userId, int medicationId)
+        {
+            MedicationsDB.GetInstance().DeleteFromUserMedications(userId, medicationId);
+        }
         public KupatHolimList GetAllKupas()
         {
             KupatHolimDB kupatHolimDB = KupatHolimDB.GetInstance();

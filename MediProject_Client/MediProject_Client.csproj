@@ -190,6 +190,9 @@
     <None Include="Connected Services\ServiceReference1\MediProject_Client.ServiceReference1.KupatHolimList.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference1\MediProject_Client.ServiceReference1.Medication.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference1\MediProject_Client.ServiceReference1.MedicationsList.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

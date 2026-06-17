@@ -33,13 +33,20 @@ namespace MediProject_Client.GUI
             InitializeComponent();
             this.user = user;
             ServiceReference1.MedicationsList list = service.GetUserMedications(user);
-            this.PersonalMediListFrame.Navigate(new MedicationsListPage(list));
+            this.PersonalMediListFrame.Navigate(new MedicationsListPage(user));
             this.DataContext =user;
         }
 
         private void AddMedication_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new AddMedicationPage(user));
+        }
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            
+            this.user = null;
+            this.NavigationService.Navigate(new Login());
+            while (this.NavigationService.RemoveBackEntry() != null) ;
         }
     }
 }

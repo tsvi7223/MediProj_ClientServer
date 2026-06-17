@@ -86,6 +86,33 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetMedicationsByUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMedicationsByUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/MediProject_Server.Model" minOccurs="0" name="GetMedicationsByUserResult" nillable="true" type="q8:ArrayOfMedication" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveFromUserList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+        <xs:element minOccurs="0" name="medicationId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveFromUserListResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetData">
     <xs:complexType>
       <xs:sequence>
@@ -103,22 +130,22 @@
   <xs:element name="GetUserMedications">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/MediProject_Server.Model" minOccurs="0" name="user" nillable="true" type="q8:User" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/MediProject_Server.Model" minOccurs="0" name="user" nillable="true" type="q9:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetUserMedicationsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/MediProject_Server.Model" minOccurs="0" name="GetUserMedicationsResult" nillable="true" type="q9:MedicationsList" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MediProject_Server.Model" minOccurs="0" name="GetUserMedicationsResult" nillable="true" type="q10:MedicationsList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddMedication">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MediProject_Server.Model" minOccurs="0" name="user" nillable="true" type="q10:User" />
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MediProject_Server.Model" minOccurs="0" name="medication" nillable="true" type="q11:Medication" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MediProject_Server.Model" minOccurs="0" name="user" nillable="true" type="q11:User" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MediProject_Server.Model" minOccurs="0" name="medication" nillable="true" type="q12:Medication" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -130,14 +157,14 @@
   <xs:element name="GetDataUsingDataContract">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MediProject_Server" minOccurs="0" name="composite" nillable="true" type="q12:CompositeType" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/MediProject_Server" minOccurs="0" name="composite" nillable="true" type="q13:CompositeType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetDataUsingDataContractResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/MediProject_Server" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q13:CompositeType" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/MediProject_Server" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q14:CompositeType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

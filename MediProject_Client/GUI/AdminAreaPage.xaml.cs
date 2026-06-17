@@ -82,7 +82,7 @@ namespace MediProject_Client.GUI
         {
             try
             {
-              
+
                 if (!int.TryParse(txtDeleteMedName.Text, out int medId))
                 {
                     MessageBox.Show("אנא הכנס קוד תרופה (מספר) תקין למחיקה");
@@ -107,5 +107,17 @@ namespace MediProject_Client.GUI
                 MessageBox.Show("שגיאה במחיקת התרופה: " + ex.Message);
             }
         }
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            
+            this.user = null;
+
+           
+            this.NavigationService.Navigate(new Login());
+
+           
+            while (this.NavigationService.RemoveBackEntry() != null) ;
+        }
     }
-}
+
+    }

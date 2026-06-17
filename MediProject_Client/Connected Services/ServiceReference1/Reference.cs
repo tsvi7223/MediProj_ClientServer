@@ -594,6 +594,18 @@ namespace MediProject_Client.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddMedi", ReplyAction="http://tempuri.org/IService1/AddMediResponse")]
         System.Threading.Tasks.Task AddMediAsync(MediProject_Client.ServiceReference1.Medication medication);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMedicationsByUser", ReplyAction="http://tempuri.org/IService1/GetMedicationsByUserResponse")]
+        MediProject_Client.ServiceReference1.Medication[] GetMedicationsByUser(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMedicationsByUser", ReplyAction="http://tempuri.org/IService1/GetMedicationsByUserResponse")]
+        System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.Medication[]> GetMedicationsByUserAsync(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RemoveFromUserList", ReplyAction="http://tempuri.org/IService1/RemoveFromUserListResponse")]
+        void RemoveFromUserList(int userId, int medicationId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RemoveFromUserList", ReplyAction="http://tempuri.org/IService1/RemoveFromUserListResponse")]
+        System.Threading.Tasks.Task RemoveFromUserListAsync(int userId, int medicationId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
         string GetData(int value);
         
@@ -700,6 +712,22 @@ namespace MediProject_Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task AddMediAsync(MediProject_Client.ServiceReference1.Medication medication) {
             return base.Channel.AddMediAsync(medication);
+        }
+        
+        public MediProject_Client.ServiceReference1.Medication[] GetMedicationsByUser(int userId) {
+            return base.Channel.GetMedicationsByUser(userId);
+        }
+        
+        public System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.Medication[]> GetMedicationsByUserAsync(int userId) {
+            return base.Channel.GetMedicationsByUserAsync(userId);
+        }
+        
+        public void RemoveFromUserList(int userId, int medicationId) {
+            base.Channel.RemoveFromUserList(userId, medicationId);
+        }
+        
+        public System.Threading.Tasks.Task RemoveFromUserListAsync(int userId, int medicationId) {
+            return base.Channel.RemoveFromUserListAsync(userId, medicationId);
         }
         
         public string GetData(int value) {

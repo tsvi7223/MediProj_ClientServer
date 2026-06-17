@@ -61,6 +61,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.Row="0" Margin="0,0,0,15">
@@ -88,14 +89,14 @@
                 </StackPanel>
 
                 <StackPanel Grid.Row="1" Margin="0,0,0,15">
-                    <TextBlock Text="מחיקת תרופה מהמערכת" FontWeight="Bold" Foreground="#EB5757" Margin="0,0,0,5"/>
+                    <TextBlock Text="מחיקת תרופה מהמערכת" FontWeight="Bold" Foreground="IndianRed" Margin="0,0,0,5"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
                         <TextBox x:Name="txtDeleteMedName" Grid.Column="0" Height="30" VerticalContentAlignment="Center" Margin="0,0,5,0" Tag="שם התרופה למחיקה"/>
-                        <Button x:Name="btnDeleteMed" Grid.Column="1" Content="מחק" Background="#EB5757" Foreground="White" FontWeight="Bold" Click="BtnDeleteMed_Click"/>
+                        <Button x:Name="btnDeleteMed" Grid.Column="1" Content="מחק" Background="IndianRed" Foreground="White" FontWeight="Bold" Click="BtnDeleteMed_Click"/>
                     </Grid>
                 </StackPanel>
 
@@ -109,9 +110,9 @@
                         <DataGridTextColumn Header="מנהל" Binding="{Binding IsAdmin}" Width="60"/>
                     </DataGrid.Columns>
                 </DataGrid>
-            </Grid>
 
-            <Grid Grid.Row="2" Height="10"/>
+                <Button x:Name="btnLogout" Grid.Row="4" Content="התנתקות" Height="35" Background="IndianRed" Foreground="White" FontWeight="Bold" Margin="0,15,0,0" Click="Logout_Click"/>
+            </Grid>
         </Grid>
     </Border>
 </Page>

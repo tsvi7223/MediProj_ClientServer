@@ -27,6 +27,11 @@ namespace MediProject_Server
         void DeleteMedication(Medication medication);
         [OperationContract]
         void AddMedi(Medication medication);
+        [OperationContract]
+        List<Medication> GetMedicationsByUser(int userId); 
+
+        [OperationContract]
+        void RemoveFromUserList(int userId, int medicationId);
 
         [OperationContract]
         string GetData(int value);

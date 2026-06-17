@@ -64,7 +64,7 @@ namespace MediProject_Server.DB
                 $"(OriginalName, InHealthBox, AvailableInIsrael, MainSubstanceId)" +
                 $" VALUES ('{medication.OriginalName}', {medication.InHealthBox},{medication.AvailableInIsrael}, {medication.ActiveSubstance.ID})";
                 base.ExecuteNonQuery();
-            }
+        }
 
         // פונקציה ציבורית השולפת ומחזירה את כל התרופות המשויכות למשתמש מסוים באמצעות קשר רבות-לרבות
         public MedicationsList GetByUser(User user)
@@ -77,6 +77,12 @@ namespace MediProject_Server.DB
                           $"WHERE Users.ID = {user.ID};";
 
             return new MedicationsList(base.Select());
+        }
+        public void DeleteFromUserMedications(int userId, int medicationId)
+        {
+            // הפקודה הזאת מוחקת רק את השורה שמקשרת בין המשתמש הספציפי לתרופה הספציפית
+            command.CommandText = "DELETE FROM UserMedications WHERE UserID = " + userId + " AND MedicationID = " + medicationId;
+            base.ExecuteNonQuery();
         }
 
 

@@ -8,123 +8,45 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MedicationsList">
 
-    <Grid Background="#F5F7FA">
-        <!-- חלוקת המסך לשורה עבור החיפוש ושורה עבור הטבלה -->
+    <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
         <Grid.Margin>20</Grid.Margin>
 
-        <!-- תיבת החיפוש (שורה 0) -->
         <Grid Grid.Row="0" Margin="0,0,0,15">
-            <TextBox Name="txtSearch" 
-                 Height="35" 
-                 Padding="10,5" 
-                 VerticalContentAlignment="Center"
-                 FontSize="14"
-                 Background="White"
-                 BorderBrush="#CBD5E0"
-                 BorderThickness="1"
-                 TextChanged="TxtSearch_TextChanged">
-                <TextBox.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="6"/>
-                    </Style>
-                </TextBox.Resources>
-            </TextBox>
-
-            <!-- טקסט מים (Placeholder) שמנחה את המשתמש -->
-            <TextBlock IsHitTestVisible="False" 
-                   Text="חפש תרופה..." 
-                   VerticalAlignment="Center" 
-                   HorizontalAlignment="Left" 
-                   Margin="12,0,0,0" 
-                   Foreground="#A0AEC0" 
-                   FontSize="14">
-                <TextBlock.Style>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="Visibility" Value="Collapsed"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=Text, ElementName=txtSearch}" Value="">
-                                <Setter Property="Visibility" Value="Visible"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBlock.Style>
-            </TextBlock>
+            <TextBox Name="txtSearch" Height="35" Padding="10,5" VerticalContentAlignment="Center" FontSize="14" TextChanged="TxtSearch_TextChanged"/>
         </Grid>
 
-        <!-- הטבלה (שורה 1) -->
-        <ListView Grid.Row="1"
-              Name="listView" 
-              BorderThickness="0" 
-              Background="#FFFFFF" 
-              Foreground="#333333">
-
-            <ListView.Resources>
-                <!-- עיצוב כותרות הטבלה (ממורכזות) -->
-                <Style TargetType="GridViewColumnHeader">
-                    <Setter Property="Background" Value="#F4F5F7"/>
-                    <Setter Property="Foreground" Value="#4A5568"/>
-                    <Setter Property="FontWeight" Value="SemiBold"/>
-                    <Setter Property="Padding" Value="8,6"/>
-                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
-                    <Setter Property="BorderBrush" Value="#E2E8F0"/>
-                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                </Style>
-
-                <!-- נקודת המפתח: מרכוז הטקסט בתוך כל תאי הטבלה -->
-                <Style TargetType="TextBlock">
-                    <Setter Property="HorizontalAlignment" Value="Center"/>
-                    <Setter Property="VerticalAlignment" Value="Center"/>
-                </Style>
-
-                <!-- עיצוב שורות הרשימה -->
-                <Style TargetType="ListViewItem">
-                    <Setter Property="Padding" Value="6,6"/>
-                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
-                    <Setter Property="BorderBrush" Value="#EDF2F7"/>
-                    <!-- מרכוז אלמנטים מורכבים כמו כפתורים בתוך השורה -->
-                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#F7FAFC"/>
-                        </Trigger>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Background" Value="#E2E8F0"/>
-                            <Setter Property="Foreground" Value="#1A202C"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-
-                <!-- עיצוב מינימלי לכפתור -->
-                <Style TargetType="Button">
-                    <Setter Property="Padding" Value="10,2"/>
-                    <Setter Property="Background" Value="#E2E8F0"/>
-                    <Setter Property="Foreground" Value="#2D3748"/>
-                    <Setter Property="BorderThickness" Value="1"/>
-                    <Setter Property="BorderBrush" Value="#CBD5E0"/>
-                    <Setter Property="Cursor" Value="Hand"/>
-                </Style>
-            </ListView.Resources>
-
+        <ListView Grid.Row="1" Name="listView" BorderThickness="0">
             <ListView.View>
                 <GridView>
-                    
                     <GridViewColumn Header="Medicine name:" DisplayMemberBinding="{Binding OriginalName}" Width="110"/>
                     <GridViewColumn Header="Available in Israel:" DisplayMemberBinding="{Binding AvailableInIsrael}" Width="140"/>
                     <GridViewColumn Header="In health box:" DisplayMemberBinding="{Binding InHealthBox}" Width="100"/>
 
-                    <!-- עמודת כפתור -->
-                    <GridViewColumn Header="חלופות" Width="120">
+                    <GridViewColumn Header="חלופות" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="הצג חלופות" Click="ShowAlternatives_Click"/>
+                                <Button Content="הצג" Click="ShowAlternatives_Click" Padding="10,2"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+
+                    <GridViewColumn Header="פעולות" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="מחק" 
+                                        Click="BtnRemove_Click" 
+                                        Background="Red" 
+                                        Foreground="White" 
+                                        FontWeight="Bold" 
+                                        Padding="10,2"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
                 </GridView>
             </ListView.View>
         </ListView>

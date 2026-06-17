@@ -51,6 +51,18 @@
   <wsdl:message name="IService1_AddMedi_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddMediResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetMedicationsByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMedicationsByUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetMedicationsByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMedicationsByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveFromUserList_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveFromUserList" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveFromUserList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveFromUserListResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_GetData_InputMessage">
     <wsdl:part name="parameters" element="tns:GetData" />
   </wsdl:message>
@@ -103,6 +115,14 @@
     <wsdl:operation name="AddMedi">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddMedi" message="tns:IService1_AddMedi_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddMediResponse" message="tns:IService1_AddMedi_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMedicationsByUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetMedicationsByUser" message="tns:IService1_GetMedicationsByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetMedicationsByUserResponse" message="tns:IService1_GetMedicationsByUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveFromUserList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RemoveFromUserList" message="tns:IService1_RemoveFromUserList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RemoveFromUserListResponse" message="tns:IService1_RemoveFromUserList_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -179,6 +199,24 @@
     </wsdl:operation>
     <wsdl:operation name="AddMedi">
       <soap:operation soapAction="http://tempuri.org/IService1/AddMedi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMedicationsByUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetMedicationsByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveFromUserList">
+      <soap:operation soapAction="http://tempuri.org/IService1/RemoveFromUserList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
