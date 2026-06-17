@@ -23,6 +23,10 @@ namespace MediProject_Server
         [OperationContract]
 
         MedicationsList GetAllMedications();
+        [OperationContract]
+        void DeleteMedication(Medication medication);
+        [OperationContract]
+        void AddMedi(Medication medication);
 
         [OperationContract]
         string GetData(int value);

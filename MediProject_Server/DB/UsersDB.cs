@@ -49,6 +49,7 @@ namespace MediProject_Server.DB
             user.UserName = reader["UserName"].ToString();
             // שליפת ערך עמודת ה-Password מה-Reader והשמתו במאפיין הסיסמה של האובייקט
             user.Password = reader["Password"].ToString();
+            user.IsAdmin = reader["IsAdmin"] != DBNull.Value && Convert.ToBoolean(reader["IsAdmin"]);
             // שליפת קוד קופת החולים (KupaId) מה-Reader והמרתו למספר שלם
             int kupaId = int.Parse(reader["KupaId"].ToString());
             // פנייה למחלקת קופות החולים, שליפת כולן ומציאת האובייקט שה-ID שלו תואם לקוד שנשלף

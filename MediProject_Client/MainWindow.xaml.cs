@@ -1,7 +1,7 @@
 ﻿
 using MediProject_Client.GUI;
 using MediProject_Client.ServiceReference1;
-using MediProject_Server.Model;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -21,6 +21,19 @@ namespace MediProject_Server
             return people;
         }
 
+        public void DeleteMedication(Medication medication)
+        {
+            MedicationsDB medicationsDB = MedicationsDB.GetInstance();
+            medicationsDB.Delete(medication);
+        }
+        public void AddMedi(Medication medication)
+        {
+            
+            MedicationsDB medicationsDB = MedicationsDB.GetInstance();
+           
+            medicationsDB.Insert(medication);
+        }
+
         public MedicationsList GetAllMedications()
         {
             MedicationsDB medicationsDB = MedicationsDB.GetInstance();

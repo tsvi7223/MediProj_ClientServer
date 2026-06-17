@@ -29,5 +29,7 @@ namespace MediProject_Server.Model
         public KupatHolim Kupa { get; set; }
         [DataMember]
         public MedicationsList Medications { get; set; }
+        [DataMember]
+        public bool IsAdmin {  get; set; }
     }
 }

@@ -17,28 +17,535 @@ namespace MediProject_Client.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.CollectionDataContractAttribute(Name="PeopleList", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model", ItemName="Person")]
     [System.SerializableAttribute()]
-    public class PeopleList : System.Collections.Generic.List<MediProject_Server.Model.Person> {
+    public class PeopleList : System.Collections.Generic.List<MediProject_Client.ServiceReference1.Person> {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Person", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.User))]
+    public partial class Person : MediProject_Client.ServiceReference1.BaseEntity {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateOfBirthField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FullAddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PhoneNumberField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DateOfBirth {
+            get {
+                return this.DateOfBirthField;
+            }
+            set {
+                if ((this.DateOfBirthField.Equals(value) != true)) {
+                    this.DateOfBirthField = value;
+                    this.RaisePropertyChanged("DateOfBirth");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FirstName {
+            get {
+                return this.FirstNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
+                    this.FirstNameField = value;
+                    this.RaisePropertyChanged("FirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FullAddress {
+            get {
+                return this.FullAddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FullAddressField, value) != true)) {
+                    this.FullAddressField = value;
+                    this.RaisePropertyChanged("FullAddress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Gmail {
+            get {
+                return this.GmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GmailField, value) != true)) {
+                    this.GmailField = value;
+                    this.RaisePropertyChanged("Gmail");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LastName {
+            get {
+                return this.LastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
+                    this.LastNameField = value;
+                    this.RaisePropertyChanged("LastName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PhoneNumber {
+            get {
+                return this.PhoneNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PhoneNumberField, value) != true)) {
+                    this.PhoneNumberField = value;
+                    this.RaisePropertyChanged("PhoneNumber");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BaseEntity", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.KupatHolim))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.Medication))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.Substance))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.GenericAlternative))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.Person))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.User))]
+    public partial class BaseEntity : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="KupatHolim", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model")]
+    [System.SerializableAttribute()]
+    public partial class KupatHolim : MediProject_Client.ServiceReference1.BaseEntity {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Medication", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model")]
+    [System.SerializableAttribute()]
+    public partial class Medication : MediProject_Client.ServiceReference1.BaseEntity {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MediProject_Client.ServiceReference1.Substance ActiveSubstanceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] AlternativiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool AvailableInIsraelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MediProject_Client.ServiceReference1.GenericAlternative[] GenericsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool InHealthBoxField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OriginalNameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MediProject_Client.ServiceReference1.Substance ActiveSubstance {
+            get {
+                return this.ActiveSubstanceField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ActiveSubstanceField, value) != true)) {
+                    this.ActiveSubstanceField = value;
+                    this.RaisePropertyChanged("ActiveSubstance");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] Alternativies {
+            get {
+                return this.AlternativiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AlternativiesField, value) != true)) {
+                    this.AlternativiesField = value;
+                    this.RaisePropertyChanged("Alternativies");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool AvailableInIsrael {
+            get {
+                return this.AvailableInIsraelField;
+            }
+            set {
+                if ((this.AvailableInIsraelField.Equals(value) != true)) {
+                    this.AvailableInIsraelField = value;
+                    this.RaisePropertyChanged("AvailableInIsrael");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MediProject_Client.ServiceReference1.GenericAlternative[] Generics {
+            get {
+                return this.GenericsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GenericsField, value) != true)) {
+                    this.GenericsField = value;
+                    this.RaisePropertyChanged("Generics");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool InHealthBox {
+            get {
+                return this.InHealthBoxField;
+            }
+            set {
+                if ((this.InHealthBoxField.Equals(value) != true)) {
+                    this.InHealthBoxField = value;
+                    this.RaisePropertyChanged("InHealthBox");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OriginalName {
+            get {
+                return this.OriginalNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OriginalNameField, value) != true)) {
+                    this.OriginalNameField = value;
+                    this.RaisePropertyChanged("OriginalName");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Substance", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model")]
+    [System.SerializableAttribute()]
+    public partial class Substance : MediProject_Client.ServiceReference1.BaseEntity {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SubstanceNameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SubstanceName {
+            get {
+                return this.SubstanceNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubstanceNameField, value) != true)) {
+                    this.SubstanceNameField = value;
+                    this.RaisePropertyChanged("SubstanceName");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GenericAlternative", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model")]
+    [System.SerializableAttribute()]
+    public partial class GenericAlternative : MediProject_Client.ServiceReference1.BaseEntity {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MediProject_Client.ServiceReference1.Medication[] medicationListField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MediProject_Client.ServiceReference1.Medication medicationsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MediProject_Client.ServiceReference1.Medication[] medicationList {
+            get {
+                return this.medicationListField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.medicationListField, value) != true)) {
+                    this.medicationListField = value;
+                    this.RaisePropertyChanged("medicationList");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MediProject_Client.ServiceReference1.Medication medications {
+            get {
+                return this.medicationsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.medicationsField, value) != true)) {
+                    this.medicationsField = value;
+                    this.RaisePropertyChanged("medications");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model")]
+    [System.SerializableAttribute()]
+    public partial class User : MediProject_Client.ServiceReference1.Person {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsAdminField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MediProject_Client.ServiceReference1.KupatHolim KupaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MediProject_Client.ServiceReference1.MedicationsList MedicationsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsAdmin {
+            get {
+                return this.IsAdminField;
+            }
+            set {
+                if ((this.IsAdminField.Equals(value) != true)) {
+                    this.IsAdminField = value;
+                    this.RaisePropertyChanged("IsAdmin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MediProject_Client.ServiceReference1.KupatHolim Kupa {
+            get {
+                return this.KupaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.KupaField, value) != true)) {
+                    this.KupaField = value;
+                    this.RaisePropertyChanged("Kupa");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MediProject_Client.ServiceReference1.MedicationsList Medications {
+            get {
+                return this.MedicationsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MedicationsField, value) != true)) {
+                    this.MedicationsField = value;
+                    this.RaisePropertyChanged("Medications");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.CollectionDataContractAttribute(Name="MedicationsList", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model", ItemName="Medication")]
     [System.SerializableAttribute()]
-    public class MedicationsList : System.Collections.Generic.List<MediProject_Server.Model.Medication> {
+    public class MedicationsList : System.Collections.Generic.List<MediProject_Client.ServiceReference1.Medication> {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.CollectionDataContractAttribute(Name="KupatHolimList", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model", ItemName="KupatHolim")]
     [System.SerializableAttribute()]
-    public class KupatHolimList : System.Collections.Generic.List<MediProject_Server.Model.KupatHolim> {
+    public class KupatHolimList : System.Collections.Generic.List<MediProject_Client.ServiceReference1.KupatHolim> {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.CollectionDataContractAttribute(Name="UserList", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model", ItemName="User")]
     [System.SerializableAttribute()]
-    public class UserList : System.Collections.Generic.List<MediProject_Server.Model.User> {
+    public class UserList : System.Collections.Generic.List<MediProject_Client.ServiceReference1.User> {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server")]
+    [System.SerializableAttribute()]
+    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool BoolValueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StringValueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool BoolValue {
+            get {
+                return this.BoolValueField;
+            }
+            set {
+                if ((this.BoolValueField.Equals(value) != true)) {
+                    this.BoolValueField = value;
+                    this.RaisePropertyChanged("BoolValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StringValue {
+            get {
+                return this.StringValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
+                    this.StringValueField = value;
+                    this.RaisePropertyChanged("StringValue");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -52,10 +559,10 @@ namespace MediProject_Client.ServiceReference1 {
         System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.PeopleList> GetAllPeopleAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertUser", ReplyAction="http://tempuri.org/IService1/InsertUserResponse")]
-        void InsertUser(MediProject_Server.Model.User user);
+        void InsertUser(MediProject_Client.ServiceReference1.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertUser", ReplyAction="http://tempuri.org/IService1/InsertUserResponse")]
-        System.Threading.Tasks.Task InsertUserAsync(MediProject_Server.Model.User user);
+        System.Threading.Tasks.Task InsertUserAsync(MediProject_Client.ServiceReference1.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllKupas", ReplyAction="http://tempuri.org/IService1/GetAllKupasResponse")]
         MediProject_Client.ServiceReference1.KupatHolimList GetAllKupas();
@@ -75,6 +582,18 @@ namespace MediProject_Client.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllMedications", ReplyAction="http://tempuri.org/IService1/GetAllMedicationsResponse")]
         System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.MedicationsList> GetAllMedicationsAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteMedication", ReplyAction="http://tempuri.org/IService1/DeleteMedicationResponse")]
+        void DeleteMedication(MediProject_Client.ServiceReference1.Medication medication);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteMedication", ReplyAction="http://tempuri.org/IService1/DeleteMedicationResponse")]
+        System.Threading.Tasks.Task DeleteMedicationAsync(MediProject_Client.ServiceReference1.Medication medication);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddMedi", ReplyAction="http://tempuri.org/IService1/AddMediResponse")]
+        void AddMedi(MediProject_Client.ServiceReference1.Medication medication);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddMedi", ReplyAction="http://tempuri.org/IService1/AddMediResponse")]
+        System.Threading.Tasks.Task AddMediAsync(MediProject_Client.ServiceReference1.Medication medication);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
         string GetData(int value);
         
@@ -82,22 +601,22 @@ namespace MediProject_Client.ServiceReference1 {
         System.Threading.Tasks.Task<string> GetDataAsync(int value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserMedications", ReplyAction="http://tempuri.org/IService1/GetUserMedicationsResponse")]
-        MediProject_Client.ServiceReference1.MedicationsList GetUserMedications(MediProject_Server.Model.User user);
+        MediProject_Client.ServiceReference1.MedicationsList GetUserMedications(MediProject_Client.ServiceReference1.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserMedications", ReplyAction="http://tempuri.org/IService1/GetUserMedicationsResponse")]
-        System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.MedicationsList> GetUserMedicationsAsync(MediProject_Server.Model.User user);
+        System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.MedicationsList> GetUserMedicationsAsync(MediProject_Client.ServiceReference1.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddMedication", ReplyAction="http://tempuri.org/IService1/AddMedicationResponse")]
-        void AddMedication(MediProject_Server.Model.User user, MediProject_Server.Model.Medication medication);
+        void AddMedication(MediProject_Client.ServiceReference1.User user, MediProject_Client.ServiceReference1.Medication medication);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddMedication", ReplyAction="http://tempuri.org/IService1/AddMedicationResponse")]
-        System.Threading.Tasks.Task AddMedicationAsync(MediProject_Server.Model.User user, MediProject_Server.Model.Medication medication);
+        System.Threading.Tasks.Task AddMedicationAsync(MediProject_Client.ServiceReference1.User user, MediProject_Client.ServiceReference1.Medication medication);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        MediProject_Server.CompositeType GetDataUsingDataContract(MediProject_Server.CompositeType composite);
+        MediProject_Client.ServiceReference1.CompositeType GetDataUsingDataContract(MediProject_Client.ServiceReference1.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<MediProject_Server.CompositeType> GetDataUsingDataContractAsync(MediProject_Server.CompositeType composite);
+        System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.CompositeType> GetDataUsingDataContractAsync(MediProject_Client.ServiceReference1.CompositeType composite);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -135,11 +654,11 @@ namespace MediProject_Client.ServiceReference1 {
             return base.Channel.GetAllPeopleAsync();
         }
         
-        public void InsertUser(MediProject_Server.Model.User user) {
+        public void InsertUser(MediProject_Client.ServiceReference1.User user) {
             base.Channel.InsertUser(user);
         }
         
-        public System.Threading.Tasks.Task InsertUserAsync(MediProject_Server.Model.User user) {
+        public System.Threading.Tasks.Task InsertUserAsync(MediProject_Client.ServiceReference1.User user) {
             return base.Channel.InsertUserAsync(user);
         }
         
@@ -167,6 +686,22 @@ namespace MediProject_Client.ServiceReference1 {
             return base.Channel.GetAllMedicationsAsync();
         }
         
+        public void DeleteMedication(MediProject_Client.ServiceReference1.Medication medication) {
+            base.Channel.DeleteMedication(medication);
+        }
+        
+        public System.Threading.Tasks.Task DeleteMedicationAsync(MediProject_Client.ServiceReference1.Medication medication) {
+            return base.Channel.DeleteMedicationAsync(medication);
+        }
+        
+        public void AddMedi(MediProject_Client.ServiceReference1.Medication medication) {
+            base.Channel.AddMedi(medication);
+        }
+        
+        public System.Threading.Tasks.Task AddMediAsync(MediProject_Client.ServiceReference1.Medication medication) {
+            return base.Channel.AddMediAsync(medication);
+        }
+        
         public string GetData(int value) {
             return base.Channel.GetData(value);
         }
@@ -175,27 +710,27 @@ namespace MediProject_Client.ServiceReference1 {
             return base.Channel.GetDataAsync(value);
         }
         
-        public MediProject_Client.ServiceReference1.MedicationsList GetUserMedications(MediProject_Server.Model.User user) {
+        public MediProject_Client.ServiceReference1.MedicationsList GetUserMedications(MediProject_Client.ServiceReference1.User user) {
             return base.Channel.GetUserMedications(user);
         }
         
-        public System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.MedicationsList> GetUserMedicationsAsync(MediProject_Server.Model.User user) {
+        public System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.MedicationsList> GetUserMedicationsAsync(MediProject_Client.ServiceReference1.User user) {
             return base.Channel.GetUserMedicationsAsync(user);
         }
         
-        public void AddMedication(MediProject_Server.Model.User user, MediProject_Server.Model.Medication medication) {
+        public void AddMedication(MediProject_Client.ServiceReference1.User user, MediProject_Client.ServiceReference1.Medication medication) {
             base.Channel.AddMedication(user, medication);
         }
         
-        public System.Threading.Tasks.Task AddMedicationAsync(MediProject_Server.Model.User user, MediProject_Server.Model.Medication medication) {
+        public System.Threading.Tasks.Task AddMedicationAsync(MediProject_Client.ServiceReference1.User user, MediProject_Client.ServiceReference1.Medication medication) {
             return base.Channel.AddMedicationAsync(user, medication);
         }
         
-        public MediProject_Server.CompositeType GetDataUsingDataContract(MediProject_Server.CompositeType composite) {
+        public MediProject_Client.ServiceReference1.CompositeType GetDataUsingDataContract(MediProject_Client.ServiceReference1.CompositeType composite) {
             return base.Channel.GetDataUsingDataContract(composite);
         }
         
-        public System.Threading.Tasks.Task<MediProject_Server.CompositeType> GetDataUsingDataContractAsync(MediProject_Server.CompositeType composite) {
+        public System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.CompositeType> GetDataUsingDataContractAsync(MediProject_Client.ServiceReference1.CompositeType composite) {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
     }

@@ -32,6 +32,7 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:Person">
         <xs:sequence>
+          <xs:element minOccurs="0" name="IsAdmin" type="xs:boolean" />
           <xs:element minOccurs="0" name="Kupa" nillable="true" type="tns:KupatHolim" />
           <xs:element minOccurs="0" name="Medications" nillable="true" type="tns:MedicationsList" />
           <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />

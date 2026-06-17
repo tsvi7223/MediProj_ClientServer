@@ -1,5 +1,6 @@
 ﻿using MediProject_Client.ServiceReference1;
 using MediProject_Server.Model;
+using MyUser = MediProject_Client.ServiceReference1.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,11 +24,11 @@ namespace MediProject_Client.GUI
     public partial class PersonalArea : Page
     {
          Service1Client service = new Service1Client();
-        public User user;
+        public MyUser user;
 
 
 
-        public PersonalArea(User user)
+        public PersonalArea(MyUser user)
         {
             InitializeComponent();
             this.user = user;
