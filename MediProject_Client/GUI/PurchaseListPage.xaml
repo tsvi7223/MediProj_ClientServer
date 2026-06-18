@@ -6,26 +6,36 @@
       xmlns:local="clr-namespace:MediProject_Client.GUI"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      FlowDirection="RightToLeft"
       Title="MedicationsList">
 
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.Margin>20</Grid.Margin>
 
-        <Grid Grid.Row="0" Margin="0,0,0,15">
-            <TextBox Name="txtSearch" Height="35" Padding="10,5" VerticalContentAlignment="Center" FontSize="14" TextChanged="TxtSearch_TextChanged"/>
-        </Grid>
-        <TextBlock Text="הקניות שלי" FontSize="20"/>
-        <ListView Grid.Row="1" Name="listView" BorderThickness="0">
+        <TextBlock Grid.Row="0" Text="הקניות שלי" FontSize="20" FontWeight="Normal" Margin="0,0,0,10" Foreground="#333"/>
+
+        <TextBox Grid.Row="1" Name="txtSearch" Height="35" Margin="0,0,0,15" 
+                 Padding="10,5" VerticalContentAlignment="Center" FontSize="14" 
+                 TextChanged="TxtSearch_TextChanged" BorderBrush="#CCC"/>
+
+        <ListView Grid.Row="2" Name="listView" BorderThickness="0" Background="Transparent">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Medicine Name:" DisplayMemberBinding="{Binding medication.OriginalName}" Width="100"/>
-                    <GridViewColumn Header="Purchase Date:" DisplayMemberBinding="{Binding PurchaseDate}" Width="110"/>
-                    <GridViewColumn Header="Pills Per Day:" DisplayMemberBinding="{Binding PillsPerDay}" Width="140"/>
-                    <GridViewColumn Header="Pill Amount:" DisplayMemberBinding="{Binding PillAmount}" Width="100"/>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="GridViewColumnHeader">
+                            <Setter Property="FontWeight" Value="Normal"/>
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+
+                    <GridViewColumn Header="שם תרופה" DisplayMemberBinding="{Binding medication.OriginalName}" Width="120"/>
+                    <GridViewColumn Header="תאריך קניה" DisplayMemberBinding="{Binding PurchaseDate, StringFormat='{}{0:dd/MM/yyyy}'}" Width="110"/>
+                    <GridViewColumn Header="כדורים ליום" DisplayMemberBinding="{Binding PillsPerDay}" Width="100"/>
+                    <GridViewColumn Header="סה״כ כדורים" DisplayMemberBinding="{Binding PillAmount}" Width="100"/>
                 </GridView>
             </ListView.View>
         </ListView>

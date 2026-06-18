@@ -47,7 +47,7 @@ namespace MediProject_Client.GUI
             {
                 this.user = DBUser;
 
-                // פיצול הניווט לפי הרשאות המשתמש
+              
                 if (this.user.IsAdmin)
                 {
                     
@@ -55,7 +55,7 @@ namespace MediProject_Client.GUI
                 }
                 else
                 {
-                    // אם הוא משתמש רגיל, נשלח אותו לאזור האישי שלו
+                    
                     this.NavigationService.Navigate(new PersonalArea(user));
                 }
             }

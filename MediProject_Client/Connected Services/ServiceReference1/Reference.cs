@@ -584,6 +584,67 @@ namespace MediProject_Client.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MedicationExpiration", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model")]
+    [System.SerializableAttribute()]
+    public partial class MedicationExpiration : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime ExpirationDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MedicationNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime ExpirationDate {
+            get {
+                return this.ExpirationDateField;
+            }
+            set {
+                if ((this.ExpirationDateField.Equals(value) != true)) {
+                    this.ExpirationDateField = value;
+                    this.RaisePropertyChanged("ExpirationDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MedicationName {
+            get {
+                return this.MedicationNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MedicationNameField, value) != true)) {
+                    this.MedicationNameField = value;
+                    this.RaisePropertyChanged("MedicationName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server")]
     [System.SerializableAttribute()]
     public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -682,6 +743,12 @@ namespace MediProject_Client.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllUsers", ReplyAction="http://tempuri.org/IService1/GetAllUsersResponse")]
         System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.UserList> GetAllUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMedicationExpirationList", ReplyAction="http://tempuri.org/IService1/GetMedicationExpirationListResponse")]
+        MediProject_Client.ServiceReference1.MedicationExpiration[] GetMedicationExpirationList(MediProject_Client.ServiceReference1.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMedicationExpirationList", ReplyAction="http://tempuri.org/IService1/GetMedicationExpirationListResponse")]
+        System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.MedicationExpiration[]> GetMedicationExpirationListAsync(MediProject_Client.ServiceReference1.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllMedications", ReplyAction="http://tempuri.org/IService1/GetAllMedicationsResponse")]
         MediProject_Client.ServiceReference1.MedicationsList GetAllMedications();
@@ -811,6 +878,14 @@ namespace MediProject_Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.UserList> GetAllUsersAsync() {
             return base.Channel.GetAllUsersAsync();
+        }
+        
+        public MediProject_Client.ServiceReference1.MedicationExpiration[] GetMedicationExpirationList(MediProject_Client.ServiceReference1.User user) {
+            return base.Channel.GetMedicationExpirationList(user);
+        }
+        
+        public System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.MedicationExpiration[]> GetMedicationExpirationListAsync(MediProject_Client.ServiceReference1.User user) {
+            return base.Channel.GetMedicationExpirationListAsync(user);
         }
         
         public MediProject_Client.ServiceReference1.MedicationsList GetAllMedications() {

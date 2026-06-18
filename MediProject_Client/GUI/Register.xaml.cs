@@ -40,8 +40,7 @@ namespace MediProject_Client.GUI
 
         private void BackToLogin_Click(object sender, MouseButtonEventArgs e)
         {
-            if(NavigationService.CanGoBack)
-            { NavigationService.GoBack(); }
+            this.NavigationService.Navigate(new Login(this.user));
         }
         private void BtnFinishRegister_Click(object sender, RoutedEventArgs e)
         {

@@ -85,6 +85,12 @@
     <Compile Include="GUI\AddPurchasePage.xaml.cs">
       <DependentUpon>AddPurchasePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\MedicationExpirationPage.xaml.cs">
+      <DependentUpon>MedicationExpirationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PurchaseHistoryPage.xaml.cs">
+      <DependentUpon>PurchaseHistoryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\PurchaseListPage.xaml.cs">
       <DependentUpon>PurchaseListPage.xaml</DependentUpon>
     </Compile>
@@ -101,7 +107,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="GUI\MedicationExpirationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\MedicationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\PurchaseHistoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

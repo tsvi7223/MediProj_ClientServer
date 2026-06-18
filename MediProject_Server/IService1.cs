@@ -25,6 +25,8 @@ namespace MediProject_Server
         [OperationContract]
         UserList GetAllUsers();
         [OperationContract]
+        List<MediProject_Server.Model.MedicationExpiration> GetMedicationExpirationList(User user);
+        [OperationContract]
 
         MedicationsList GetAllMedications();
         [OperationContract]

@@ -45,6 +45,12 @@
   <wsdl:message name="IService1_GetAllUsers_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetMedicationExpirationList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMedicationExpirationList" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetMedicationExpirationList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMedicationExpirationListResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_GetAllMedications_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllMedications" />
   </wsdl:message>
@@ -123,6 +129,10 @@
     <wsdl:operation name="GetAllUsers">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllUsers" message="tns:IService1_GetAllUsers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllUsersResponse" message="tns:IService1_GetAllUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMedicationExpirationList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetMedicationExpirationList" message="tns:IService1_GetMedicationExpirationList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetMedicationExpirationListResponse" message="tns:IService1_GetMedicationExpirationList_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllMedications">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllMedications" message="tns:IService1_GetAllMedications_InputMessage" />
@@ -210,6 +220,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllUsers">
       <soap:operation soapAction="http://tempuri.org/IService1/GetAllUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMedicationExpirationList">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetMedicationExpirationList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -76,6 +76,7 @@
     <Compile Include="Model\GenericAlternative.cs" />
     <Compile Include="Model\KupatHolim.cs" />
     <Compile Include="Model\Medication.cs" />
+    <Compile Include="Model\MedicationExpiration.cs" />
     <Compile Include="Model\MedicationsList.cs" />
     <Compile Include="Model\PeopleList.cs" />
     <Compile Include="Model\Person.cs" />

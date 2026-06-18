@@ -41,7 +41,7 @@ namespace MediProject_Client.GUI
         {
             try
             {
-                // הגדרה מפורשת מאיזה ריפרנס מגיע ה-UserList כדי לפתור את השגיאה השלישית
+               
                 MediProject_Client.ServiceReference1.UserList allUsers = service.GetAllUsers();
 
                 dgUsers.ItemsSource = allUsers;
@@ -89,14 +89,13 @@ namespace MediProject_Client.GUI
                     return;
                 }
 
-                // יצירת אובייקט זמני עם ה-ID שרוצים למחוק
+            
                 MediProject_Client.ServiceReference1.Medication medToDelete = new MediProject_Client.ServiceReference1.Medication()
                 {
                     ID = medId
                 };
 
-                //  קריאה לפונקציית המחיקה בשרת
-                // (תוודא אם קראת לה Delete או DeleteMedication ב-Service)
+               
                 service.DeleteMedication(medToDelete);
 
                 MessageBox.Show("הפקודה נשלחה: התרופה נמחקה מהמאגר!");

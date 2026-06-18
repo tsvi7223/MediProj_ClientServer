@@ -139,4 +139,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserList" nillable="true" type="tns:UserList" />
+  <xs:complexType name="ArrayOfMedicationExpiration">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MedicationExpiration" nillable="true" type="tns:MedicationExpiration" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMedicationExpiration" nillable="true" type="tns:ArrayOfMedicationExpiration" />
+  <xs:complexType name="MedicationExpiration">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ExpirationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MedicationName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MedicationExpiration" nillable="true" type="tns:MedicationExpiration" />
 </xs:schema>

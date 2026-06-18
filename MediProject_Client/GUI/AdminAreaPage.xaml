@@ -94,7 +94,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox x:Name="txtDeleteMedName" Grid.Column="0" Style="{StaticResource WatermarkStyle}" Tag="שם התרופה למחיקה"/>
+                        <TextBox x:Name="txtDeleteMedName" Grid.Column="0" Style="{StaticResource WatermarkStyle}" Tag="הכנס קוד התרופה למחיקה"/>
                         <Button x:Name="btnDeleteMed" Grid.Column="1" Content="מחק" Background="IndianRed" Foreground="White" FontWeight="Bold" Click="BtnDeleteMed_Click"/>
                     </Grid>
                 </StackPanel>

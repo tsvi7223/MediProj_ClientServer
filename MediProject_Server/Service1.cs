@@ -7,15 +7,16 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.Windows;
-
 namespace MediProject_Server
 {
-   
+
     public class Service1 : IService1
     {
         public PurchaseList GetPurchasesByUser(User user)
         {
-            return new PurchaseList(PurchasesDB.GetInstance().SelectAll().FindAll(p => p.user.ID == user.ID));
+            var allPurchases = PurchasesDB.GetInstance().SelectAll();
+            var filtered = allPurchases.FindAll(p => p.user.ID == user.ID && p.medication != null);
+            return new PurchaseList(filtered);
         }
 
         public PeopleList GetAllPeople()
@@ -50,7 +51,7 @@ namespace MediProject_Server
             return medications;
         }
         public List<MediProject_Server.Model.Medication> GetMedicationsByUser(int userId)
-        { 
+        {
             MediProject_Server.Model.User tempUser = new MediProject_Server.Model.User();
             tempUser.ID = userId;
 
@@ -77,6 +78,32 @@ namespace MediProject_Server
         {
             return MedicationsDB.GetInstance().GetByUser(user);
         }
+        public List<MedicationExpiration> GetMedicationExpirationList(User user)
+        {
+            PurchaseList purchases = GetPurchasesByUser(user);
+            if (purchases == null) return new List<MedicationExpiration>();
+
+            List<MedicationExpiration> list = new List<MedicationExpiration>();
+
+            var lastPurchases = purchases
+                .Where(p => p.medication != null)
+                .GroupBy(p => p.medication.OriginalName)
+                .Select(g => g.OrderByDescending(p => p.PurchaseDate).FirstOrDefault());
+
+            foreach (Purchase p in lastPurchases)
+            {
+                if (p.medication != null && p.PillsPerDay > 0)
+                {
+                    int daysLeft = p.PillAmount / p.PillsPerDay;
+                    list.Add(new MedicationExpiration
+                    {
+                        MedicationName = p.medication.OriginalName,
+                        ExpirationDate = p.PurchaseDate.AddDays(daysLeft)
+                    });
+                }
+            }
+            return list;
+        }
         public void InsertUser(User user)
         {
             UsersDB usersDB = UsersDB.GetInstance();
@@ -91,7 +118,7 @@ namespace MediProject_Server
         {
             UserMedicationsDB.GetInstance().Insert(user, medication);
         }
-        public string GetData(int value)        
+        public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);
         }
