@@ -1,8 +1,6 @@
 ﻿using MediProject_Client;
 using MediProject_Client.ServiceReference1;
-using MediProject_Server.Model;
-using MyUser = MediProject_Client.ServiceReference1.User;
-using MyKupatHolim = MediProject_Client.ServiceReference1.KupatHolim;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MediProject_Server.Utilities;
 
 namespace MediProject_Client.GUI
 {
@@ -26,8 +25,8 @@ namespace MediProject_Client.GUI
     public partial class Register : Page
     {
         public Service1Client service { get; set; }  = new Service1Client();
-        public MyUser user { get; set; }
-        public Register(MyUser user)
+        public User user { get; set; }
+        public Register(User user)
         {
             InitializeComponent();
             this.user = user;
@@ -46,12 +45,14 @@ namespace MediProject_Client.GUI
         }
         private void BtnFinishRegister_Click(object sender, RoutedEventArgs e)
         {
-            user.Kupa = RegHMO.SelectedItem as MyKupatHolim;
-            user.Password = RegPass.Password;
+            user.Kupa = RegHMO.SelectedItem as KupatHolim;
+            user.Password = Encription.ComputeSha256Hash(RegPass.Password);
             service.InsertUser(user);
-            
-            
-            
+            this.NavigationService.Navigate(new Login(this.user));
+
+
+
+
         }
 
         private void BackDoor_Click(object sender, RoutedEventArgs e)

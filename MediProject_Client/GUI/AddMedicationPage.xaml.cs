@@ -1,5 +1,4 @@
 ﻿using MediProject_Client.ServiceReference1;
-using MediProject_Server.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MyUser = MediProject_Client.ServiceReference1.User;
-using MyMedication = MediProject_Client.ServiceReference1.Medication;
+//using User = MediProject_Client.ServiceReference1.User;
+//using Medication = MediProject_Client.ServiceReference1.Medication;
 
 namespace MediProject_Client.GUI
 {
@@ -24,10 +23,10 @@ namespace MediProject_Client.GUI
     /// </summary>
     public partial class AddMedicationPage : Page
     {
-        MyMedication selectedMedication;
+        Medication selectedMedication;
         Service1Client service = new Service1Client();
-        public MyUser user = new MyUser();
-        public AddMedicationPage(MyUser user)
+        public User user = new User();
+        public AddMedicationPage(User user)
         {
             InitializeComponent();
             this.user = user;

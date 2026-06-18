@@ -1,6 +1,5 @@
 ﻿using MediProject_Client.ServiceReference1;
-using MediProject_Server.Model;
-using MyUser = MediProject_Client.ServiceReference1.User;
+//using User = MediProject_Client.ServiceReference1.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,11 +23,11 @@ namespace MediProject_Client.GUI
     public partial class PersonalArea : Page
     {
          Service1Client service = new Service1Client();
-        public MyUser user;
+        public User user;
 
 
 
-        public PersonalArea(MyUser user)
+        public PersonalArea(User user)
         {
             InitializeComponent();
             this.user = user;
@@ -44,8 +43,8 @@ namespace MediProject_Client.GUI
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
             
-            this.user = null;
-            this.NavigationService.Navigate(new Login());
+            this.user = new User();
+            this.NavigationService.Navigate(new Login(this.user));
             while (this.NavigationService.RemoveBackEntry() != null) ;
         }
     }

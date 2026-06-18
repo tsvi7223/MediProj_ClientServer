@@ -1,7 +1,7 @@
 ﻿using MediProject_Client;
 using MediProject_Client.ServiceReference1;
-using MediProject_Server.Model;
-using MyUser = MediProject_Client.ServiceReference1.User;
+using MediProject_Server.Utilities;
+//using User = MediProject_Client.ServiceReference1.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,12 +26,8 @@ namespace MediProject_Client.GUI
     {
         public Service1Client service1 = new Service1Client();
         // Service1Client service = new Service1Client();
-        public MyUser user { get; set; }
-        public Login()
-        {
-            InitializeComponent();
-        }
-        public Login(MyUser user)
+        public User user { get; set; }
+        public Login(User user)
         {
             InitializeComponent();
             this.user = user;
@@ -41,13 +37,13 @@ namespace MediProject_Client.GUI
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             ServiceReference1.UserList users = service1.GetAllUsers();
-            MyUser DBUser = users.Find(u => u.UserName.ToString() == this.LoginUser.Text);
+            User DBUser = users.Find(u => u.UserName.ToString() == this.LoginUser.Text);
 
             if (DBUser == null)
             {
                 MessageBox.Show("משתמש לא קיים אנא הרשם");
             }
-            else if (DBUser.Password == this.LoginPass.Password)
+            else if (DBUser.Password == Encription.ComputeSha256Hash(this.LoginPass.Password))
             {
                 this.user = DBUser;
 

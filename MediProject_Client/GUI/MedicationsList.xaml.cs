@@ -1,5 +1,4 @@
 ﻿using MediProject_Client.ServiceReference1;
-using MediProject_Server.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,8 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MyUser = MediProject_Client.ServiceReference1.User;
-using MyMedication = MediProject_Client.ServiceReference1.Medication;
+//using User = MediProject_Client.ServiceReference1.User;
+//using Medication = MediProject_Client.ServiceReference1.Medication;
 
 namespace MediProject_Client.GUI
 {
@@ -64,7 +63,7 @@ namespace MediProject_Client.GUI
             Button button = (Button)sender;
 
             // קבלת האובייקט של השורה שעליה לחצו
-            MyMedication medication = (MyMedication)button.DataContext;
+            Medication medication = (Medication)button.DataContext;
             this.NavigationService.Navigate(new MedicationPage(medication.ID));
 
 
@@ -87,7 +86,7 @@ namespace MediProject_Client.GUI
                     view.Filter = item =>
                     {
                         // החלף את YourModelClass בשם ה-Class של האובייקטים שלך ברשימה
-                        MyMedication medication = item as MyMedication;
+                        Medication medication = item as Medication;
                         if (medication == null) return false;
 
                         return (!string.IsNullOrEmpty(medication.OriginalName) && medication.OriginalName.ToLower().Contains(filterText));

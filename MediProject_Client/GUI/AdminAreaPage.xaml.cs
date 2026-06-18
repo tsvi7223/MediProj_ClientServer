@@ -3,7 +3,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Xml.Linq;
-using MyUser = MediProject_Client.ServiceReference1.User;
+using User = MediProject_Client.ServiceReference1.User;
 
 namespace MediProject_Client.GUI
 {
@@ -11,7 +11,7 @@ namespace MediProject_Client.GUI
     {
         
         Service1Client service = new Service1Client();
-        public MediProject_Server.Model.User user;
+        public User user;
 
      
         public AdminAreaPage(object user)
@@ -25,7 +25,7 @@ namespace MediProject_Client.GUI
                 var clientUser = (MediProject_Client.ServiceReference1.User)user;
 
                 // בניית האובייקט של השרת
-                this.user = new MediProject_Server.Model.User();
+                this.user = new User();
                 this.user.UserName = clientUser.UserName;
                 this.user.Password = clientUser.Password;
                 this.user.IsAdmin = clientUser.IsAdmin;
@@ -110,10 +110,10 @@ namespace MediProject_Client.GUI
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
             
-            this.user = null;
+            this.user = new User();
 
            
-            this.NavigationService.Navigate(new Login());
+            this.NavigationService.Navigate(new Login(this.user));
 
            
             while (this.NavigationService.RemoveBackEntry() != null) ;
