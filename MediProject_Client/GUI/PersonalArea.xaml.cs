@@ -24,21 +24,48 @@ namespace MediProject_Client.GUI
     {
          Service1Client service = new Service1Client();
         public User user;
-
-
+        private Medication selectedMedication;
 
         public PersonalArea(User user)
         {
             InitializeComponent();
             this.user = user;
-            ServiceReference1.MedicationsList list = service.GetUserMedications(user);
+            //ServiceReference1.MedicationsList list = service.GetUserMedications(user);
             this.PersonalMediListFrame.Navigate(new MedicationsListPage(user));
+            this.PersonalPurchaseListFrame.Navigate(new PurchaseListPage(user));
             this.DataContext =user;
         }
 
         private void AddMedication_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new AddMedicationPage(user));
+            //this.NavigationService.Navigate(new MedicationsPopupWindow());
+            MedicationsPopupWindow popup = new MedicationsPopupWindow();
+            if (popup.ShowDialog() == true)
+            {
+                selectedMedication = popup.SelectedMedication;
+            }
+            if (selectedMedication == null)
+            {
+                MessageBox.Show("אנא בחר תרופה מהרשימה.", "שגיאה", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            service.AddMedication(user, selectedMedication);
+            // אם הכל תקין - כאן אתה שולח את הנתונים ל-DB או לשרת שלך
+            MessageBox.Show("התרופה נשמרה בהצלחה במערכת!", "הצלחה", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            // חזרה לדף הקודם (למשל לרשימת התרופות)
+            this.NavigationService.Navigate(new PersonalArea(user));
+
+
+        }
+
+        private void AddPurchase_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new AddPurchasePage(user));
+            
+
+
         }
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
@@ -46,6 +73,11 @@ namespace MediProject_Client.GUI
             this.user = new User();
             this.NavigationService.Navigate(new Login(this.user));
             while (this.NavigationService.RemoveBackEntry() != null) ;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

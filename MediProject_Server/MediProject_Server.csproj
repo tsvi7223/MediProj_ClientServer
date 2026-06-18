@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB\BaseDB.cs" />
+    <Compile Include="DB\PurchasesDB.cs" />
     <Compile Include="DB\UserMedicationsDB.cs" />
     <Compile Include="Model\KupatHolimList.cs" />
     <Compile Include="IService1.cs" />
@@ -79,8 +80,9 @@
     <Compile Include="Model\PeopleList.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Model\Pharmacy.cs" />
+    <Compile Include="Model\PurchaseList.cs" />
     <Compile Include="Model\PharmacyList.cs" />
-    <Compile Include="Model\Prescription.cs" />
+    <Compile Include="Model\Purchase.cs" />
     <Compile Include="Model\Price.cs" />
     <Compile Include="Model\Substance.cs" />
     <Compile Include="Model\SubstanceList.cs" />

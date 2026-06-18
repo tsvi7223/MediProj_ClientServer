@@ -21,15 +21,17 @@ namespace MediProject_Client.GUI
     /// <summary>
     /// Interaction logic for AddMedicationPage.xaml
     /// </summary>
-    public partial class AddMedicationPage : Page
+    public partial class AddPurchasePage : Page
     {
         Medication selectedMedication;
+        public Purchase purchase = new Purchase();
         Service1Client service = new Service1Client();
         public User user = new User();
-        public AddMedicationPage(User user)
+        public AddPurchasePage(User user)
         {
             InitializeComponent();
             this.user = user;
+            this.DataContext = purchase;
         }
         private void SelectMedication_Click(object sender, RoutedEventArgs e)
         {
@@ -54,24 +56,34 @@ namespace MediProject_Client.GUI
                 return;
             }
 
-            if (!int.TryParse(txtPillsCount.Text, out int pillsCount))
+            if (!int.TryParse(txtPillsAmount.Text, out int pillsAmount))
             {
                 MessageBox.Show("אנא הזן מספר כדורים תקין.", "שגיאה", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-
-            DateTime? prescriptionDate = dpPrescriptionDate.SelectedDate;
-            DateTime? startDate = dpStartDate.SelectedDate;
-            DateTime? expiryDate = dpExpiryDate.SelectedDate;
-
-            if (prescriptionDate == null || startDate == null || expiryDate == null)
+            if (!int.TryParse(txtPillsPerDay.Text, out int pillsPerDay))
             {
-                MessageBox.Show("אנא מלא את כל התאריכים המבוקשים.", "שגיאה", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("אנא הזן מספר כדורים ליום תקין.", "שגיאה", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            service.AddMedication(user, selectedMedication);
+
+            DateTime? purchaseDate = dpPurchaseDate.SelectedDate;
+       
+
+            if (purchaseDate == null )
+            {
+                MessageBox.Show("אנא מלא את תאריך.", "שגיאה", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            purchase.medication = selectedMedication;
+            purchase.PillsPerDay = int.Parse(txtPillsPerDay.Text);
+            purchase.PillAmount =int.Parse( txtPillsAmount.Text);
+            purchase.user = this.user;
+            purchase.PurchaseDate = DateTime.Parse(this.dpPurchaseDate.ToString());
+
+           service.AddPurchase(purchase);
             // אם הכל תקין - כאן אתה שולח את הנתונים ל-DB או לשרת שלך
-            MessageBox.Show("התרופה נשמרה בהצלחה במערכת!", "הצלחה", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("הקניה נשמרה בהצלחה במערכת!", "הצלחה", MessageBoxButton.OK, MessageBoxImage.Information);
 
             // חזרה לדף הקודם (למשל לרשימת התרופות)
             this.NavigationService.Navigate(new PersonalArea(user));

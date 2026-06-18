@@ -1,4 +1,4 @@
-﻿<Page x:Class="MediProject_Client.GUI.AddMedicationPage"
+﻿<Page x:Class="MediProject_Client.GUI.AddPurchasePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -48,7 +48,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" 
-                   Text="הוספת תרופה חדשה למערכת" 
+                   Text="קניית תרופה" 
                    FontSize="22" 
                    FontWeight="Bold" 
                    Foreground="#2D3748" 
@@ -86,19 +86,16 @@
                 </Button>
             </Grid>
 
-            <Label Content="מספר כדורים בחפיסה / מרשם:"/>
-            <TextBox Name="txtPillsCount" 
+            <Label Content="מספר כדורים בחפיסה:"/>
+            <TextBox Name="txtPillsAmount" 
                      Margin="0,0,0,15" 
                      InputScope="Number"/>
-            <Label Content="תאריך הוצאת מרשם:"/>
-            <DatePicker Name="dpPrescriptionDate" Margin="0,0,0,15"/>
-
-            <Label Content="תאריך תחילת תוקף מרשם:"/>
-            <DatePicker Name="dpStartDate" Margin="0,0,0,15"/>
-
-            <Label Content="תאריך תפוגת מרשם:"/>
-            <DatePicker Name="dpExpiryDate" Margin="0,0,0,15"/>
-
+            <Label Content="מספר כדורים ביום::"/>
+            <TextBox Name="txtPillsPerDay" 
+                     Margin="0,0,0,15" 
+                     InputScope="Number"/>
+            <Label Content="תאריך קנייה:"/>
+            <DatePicker Name="dpPurchaseDate" Margin="0,0,0,15"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,15,0,0">

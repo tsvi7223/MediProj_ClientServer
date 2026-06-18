@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MediProject_Server.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/MediProject_Server/Service1/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:complexType name="PeopleList">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Person" nillable="true" type="tns:Person" />
-    </xs:sequence>
+  <xs:complexType name="User">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Person">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsAdmin" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Kupa" nillable="true" type="tns:KupatHolim" />
+          <xs:element minOccurs="0" name="Medications" nillable="true" type="tns:MedicationsList" />
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
-  <xs:element name="PeopleList" nillable="true" type="tns:PeopleList" />
+  <xs:element name="User" nillable="true" type="tns:User" />
   <xs:complexType name="Person">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">
@@ -28,20 +36,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BaseEntity" nillable="true" type="tns:BaseEntity" />
-  <xs:complexType name="User">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:Person">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="IsAdmin" type="xs:boolean" />
-          <xs:element minOccurs="0" name="Kupa" nillable="true" type="tns:KupatHolim" />
-          <xs:element minOccurs="0" name="Medications" nillable="true" type="tns:MedicationsList" />
-          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="User" nillable="true" type="tns:User" />
   <xs:complexType name="KupatHolim">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">
@@ -107,6 +101,32 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfMedication" nillable="true" type="tns:ArrayOfMedication" />
+  <xs:complexType name="PurchaseList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Purchase" nillable="true" type="tns:Purchase" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PurchaseList" nillable="true" type="tns:PurchaseList" />
+  <xs:complexType name="Purchase">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PillAmount" type="xs:int" />
+          <xs:element minOccurs="0" name="PillsPerDay" type="xs:int" />
+          <xs:element minOccurs="0" name="PurchaseDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="medication" nillable="true" type="tns:Medication" />
+          <xs:element minOccurs="0" name="user" nillable="true" type="tns:User" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Purchase" nillable="true" type="tns:Purchase" />
+  <xs:complexType name="PeopleList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Person" nillable="true" type="tns:Person" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PeopleList" nillable="true" type="tns:PeopleList" />
   <xs:complexType name="KupatHolimList">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="KupatHolim" nillable="true" type="tns:KupatHolim" />

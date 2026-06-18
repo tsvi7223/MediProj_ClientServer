@@ -77,10 +77,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Connected Services\ServiceReference1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AddPurchasePage.xaml.cs">
+      <DependentUpon>AddPurchasePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PurchaseListPage.xaml.cs">
+      <DependentUpon>PurchaseListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\Encription.cs" />
-    <Page Include="GUI\AddMedicationPage.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="GUI\AddPurchasePage.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="GUI\AdminAreaPage.xaml">
       <SubType>Designer</SubType>
@@ -94,7 +105,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GUI\MedicationsList.xaml">
+    <Page Include="GUI\PurchaseListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI\MedicationsListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -118,14 +133,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Connected Services\ServiceReference1\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\AddMedicationPage.xaml.cs">
-      <DependentUpon>AddMedicationPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="GUI\AdminAreaPage.xaml.cs">
       <DependentUpon>AdminAreaPage.xaml</DependentUpon>
     </Compile>
@@ -135,8 +142,8 @@
     <Compile Include="GUI\MedicationPage.xaml.cs">
       <DependentUpon>MedicationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI\MedicationsList.xaml.cs">
-      <DependentUpon>MedicationsList.xaml</DependentUpon>
+    <Compile Include="GUI\MedicationsListPage.xaml.cs">
+      <DependentUpon>MedicationsListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\MedicationsPopupWindow.xaml.cs">
       <DependentUpon>MedicationsPopupWindow.xaml</DependentUpon>
@@ -200,10 +207,14 @@
     <None Include="Connected Services\ServiceReference1\MediProject_Client.ServiceReference1.PeopleList.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference1\MediProject_Client.ServiceReference1.PurchaseList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference1\MediProject_Client.ServiceReference1.UserList.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference1\Service1.wsdl" />
+    <None Include="Properties\DataSources\MediProject_Server.Model.Medication.datasource" />
     <None Include="Properties\DataSources\ProjectOfMedicin_Server.CompositeType.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

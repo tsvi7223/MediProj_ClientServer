@@ -13,12 +13,20 @@ namespace MediProject_Server
    
     public class Service1 : IService1
     {
+        public PurchaseList GetPurchasesByUser(User user)
+        {
+            return new PurchaseList(PurchasesDB.GetInstance().SelectAll().FindAll(p => p.user.ID == user.ID));
+        }
 
         public PeopleList GetAllPeople()
         {
             PeopleDB peopleDB = PeopleDB.GetInstance();
             PeopleList people = peopleDB.SelectAll();
             return people;
+        }
+        public void AddPurchase(Purchase p)
+        {
+            PurchasesDB.GetInstance().Insert(p);
         }
 
         public void DeleteMedication(Medication medication)

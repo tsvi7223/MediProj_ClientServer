@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 
-namespace MediProject_Server.DB
+namespace MediProject_Server.Model
 {
     [CollectionDataContract]
     public class PharmacyList : List<Pharmacy>

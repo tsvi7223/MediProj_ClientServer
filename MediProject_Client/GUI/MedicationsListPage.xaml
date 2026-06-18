@@ -11,15 +11,17 @@
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.Margin>20</Grid.Margin>
+        <TextBlock Text="הקניות שלי" FontSize="20" Grid.Row="0"/>
 
-        <Grid Grid.Row="0" Margin="0,0,0,15">
+        <Grid Grid.Row="1" Margin="0,0,0,15">
             <TextBox Name="txtSearch" Height="35" Padding="10,5" VerticalContentAlignment="Center" FontSize="14" TextChanged="TxtSearch_TextChanged"/>
         </Grid>
 
-        <ListView Grid.Row="1" Name="listView" BorderThickness="0">
+        <ListView Grid.Row="2" Name="listView" BorderThickness="0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Medicine name:" DisplayMemberBinding="{Binding OriginalName}" Width="110"/>

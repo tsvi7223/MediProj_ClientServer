@@ -60,18 +60,13 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="התרופות שלי:" 
-                           FontSize="24" 
-                           FontWeight="Bold" 
-                           FontFamily="Segoe UI" 
-                           Foreground="#333" 
-                           HorizontalAlignment="Right" 
-                           FlowDirection="RightToLeft"
-                           Margin="0,0,10,5"/>
+               
 
                 <Frame x:Name="PersonalMediListFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+                <Frame x:Name="PersonalPurchaseListFrame" Grid.Row="2" NavigationUIVisibility="Hidden"/>
             </Grid>
 
             <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,10">
@@ -94,6 +89,19 @@
                         Width="120"
                         Height="42"
                         Background="#28A745"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        BorderThickness="0">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button Click="AddPurchase_Click" Content="✚ עדכון קניה"
+                        Width="120"
+                        Height="42"
+                        Background="Orange"
                         Foreground="White"
                         FontWeight="Bold"
                         BorderThickness="0">

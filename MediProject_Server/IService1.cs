@@ -13,6 +13,10 @@ namespace MediProject_Server
     public interface IService1
     {
         [OperationContract]
+        PurchaseList GetPurchasesByUser(User user);
+        [OperationContract]
+        void AddPurchase(Purchase p);
+        [OperationContract]
         PeopleList GetAllPeople();
         [OperationContract]
         void InsertUser(User user);

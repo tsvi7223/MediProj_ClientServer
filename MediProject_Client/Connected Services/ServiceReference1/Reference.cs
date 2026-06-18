@@ -15,123 +15,13 @@ namespace MediProject_Client.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="PeopleList", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model", ItemName="Person")]
-    [System.SerializableAttribute()]
-    public class PeopleList : System.Collections.Generic.List<MediProject_Client.ServiceReference1.Person> {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Person", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.User))]
-    public partial class Person : MediProject_Client.ServiceReference1.BaseEntity {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime DateOfBirthField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FullAddressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string GmailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PhoneNumberField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime DateOfBirth {
-            get {
-                return this.DateOfBirthField;
-            }
-            set {
-                if ((this.DateOfBirthField.Equals(value) != true)) {
-                    this.DateOfBirthField = value;
-                    this.RaisePropertyChanged("DateOfBirth");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstName {
-            get {
-                return this.FirstNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
-                    this.FirstNameField = value;
-                    this.RaisePropertyChanged("FirstName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FullAddress {
-            get {
-                return this.FullAddressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FullAddressField, value) != true)) {
-                    this.FullAddressField = value;
-                    this.RaisePropertyChanged("FullAddress");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Gmail {
-            get {
-                return this.GmailField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.GmailField, value) != true)) {
-                    this.GmailField = value;
-                    this.RaisePropertyChanged("Gmail");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LastName {
-            get {
-                return this.LastNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
-                    this.LastNameField = value;
-                    this.RaisePropertyChanged("LastName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PhoneNumber {
-            get {
-                return this.PhoneNumberField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PhoneNumberField, value) != true)) {
-                    this.PhoneNumberField = value;
-                    this.RaisePropertyChanged("PhoneNumber");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseEntity", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.KupatHolim))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.Medication))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.Substance))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.GenericAlternative))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.Purchase))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.Person))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.User))]
     public partial class BaseEntity : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -381,6 +271,197 @@ namespace MediProject_Client.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Purchase", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model")]
+    [System.SerializableAttribute()]
+    public partial class Purchase : MediProject_Client.ServiceReference1.BaseEntity {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PillAmountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PillsPerDayField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime PurchaseDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MediProject_Client.ServiceReference1.Medication medicationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MediProject_Client.ServiceReference1.User userField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PillAmount {
+            get {
+                return this.PillAmountField;
+            }
+            set {
+                if ((this.PillAmountField.Equals(value) != true)) {
+                    this.PillAmountField = value;
+                    this.RaisePropertyChanged("PillAmount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PillsPerDay {
+            get {
+                return this.PillsPerDayField;
+            }
+            set {
+                if ((this.PillsPerDayField.Equals(value) != true)) {
+                    this.PillsPerDayField = value;
+                    this.RaisePropertyChanged("PillsPerDay");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime PurchaseDate {
+            get {
+                return this.PurchaseDateField;
+            }
+            set {
+                if ((this.PurchaseDateField.Equals(value) != true)) {
+                    this.PurchaseDateField = value;
+                    this.RaisePropertyChanged("PurchaseDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MediProject_Client.ServiceReference1.Medication medication {
+            get {
+                return this.medicationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.medicationField, value) != true)) {
+                    this.medicationField = value;
+                    this.RaisePropertyChanged("medication");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MediProject_Client.ServiceReference1.User user {
+            get {
+                return this.userField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.userField, value) != true)) {
+                    this.userField = value;
+                    this.RaisePropertyChanged("user");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Person", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.User))]
+    public partial class Person : MediProject_Client.ServiceReference1.BaseEntity {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateOfBirthField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FullAddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PhoneNumberField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DateOfBirth {
+            get {
+                return this.DateOfBirthField;
+            }
+            set {
+                if ((this.DateOfBirthField.Equals(value) != true)) {
+                    this.DateOfBirthField = value;
+                    this.RaisePropertyChanged("DateOfBirth");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FirstName {
+            get {
+                return this.FirstNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
+                    this.FirstNameField = value;
+                    this.RaisePropertyChanged("FirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FullAddress {
+            get {
+                return this.FullAddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FullAddressField, value) != true)) {
+                    this.FullAddressField = value;
+                    this.RaisePropertyChanged("FullAddress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Gmail {
+            get {
+                return this.GmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GmailField, value) != true)) {
+                    this.GmailField = value;
+                    this.RaisePropertyChanged("Gmail");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LastName {
+            get {
+                return this.LastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
+                    this.LastNameField = value;
+                    this.RaisePropertyChanged("LastName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PhoneNumber {
+            get {
+                return this.PhoneNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PhoneNumberField, value) != true)) {
+                    this.PhoneNumberField = value;
+                    this.RaisePropertyChanged("PhoneNumber");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model")]
     [System.SerializableAttribute()]
     public partial class User : MediProject_Client.ServiceReference1.Person {
@@ -475,6 +556,20 @@ namespace MediProject_Client.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="PurchaseList", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model", ItemName="Purchase")]
+    [System.SerializableAttribute()]
+    public class PurchaseList : System.Collections.Generic.List<MediProject_Client.ServiceReference1.Purchase> {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="PeopleList", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model", ItemName="Person")]
+    [System.SerializableAttribute()]
+    public class PeopleList : System.Collections.Generic.List<MediProject_Client.ServiceReference1.Person> {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.CollectionDataContractAttribute(Name="KupatHolimList", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model", ItemName="KupatHolim")]
     [System.SerializableAttribute()]
     public class KupatHolimList : System.Collections.Generic.List<MediProject_Client.ServiceReference1.KupatHolim> {
@@ -551,6 +646,18 @@ namespace MediProject_Client.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPurchasesByUser", ReplyAction="http://tempuri.org/IService1/GetPurchasesByUserResponse")]
+        MediProject_Client.ServiceReference1.PurchaseList GetPurchasesByUser(MediProject_Client.ServiceReference1.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPurchasesByUser", ReplyAction="http://tempuri.org/IService1/GetPurchasesByUserResponse")]
+        System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.PurchaseList> GetPurchasesByUserAsync(MediProject_Client.ServiceReference1.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddPurchase", ReplyAction="http://tempuri.org/IService1/AddPurchaseResponse")]
+        void AddPurchase(MediProject_Client.ServiceReference1.Purchase p);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddPurchase", ReplyAction="http://tempuri.org/IService1/AddPurchaseResponse")]
+        System.Threading.Tasks.Task AddPurchaseAsync(MediProject_Client.ServiceReference1.Purchase p);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllPeople", ReplyAction="http://tempuri.org/IService1/GetAllPeopleResponse")]
         MediProject_Client.ServiceReference1.PeopleList GetAllPeople();
@@ -656,6 +763,22 @@ namespace MediProject_Client.ServiceReference1 {
         
         public Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public MediProject_Client.ServiceReference1.PurchaseList GetPurchasesByUser(MediProject_Client.ServiceReference1.User user) {
+            return base.Channel.GetPurchasesByUser(user);
+        }
+        
+        public System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.PurchaseList> GetPurchasesByUserAsync(MediProject_Client.ServiceReference1.User user) {
+            return base.Channel.GetPurchasesByUserAsync(user);
+        }
+        
+        public void AddPurchase(MediProject_Client.ServiceReference1.Purchase p) {
+            base.Channel.AddPurchase(p);
+        }
+        
+        public System.Threading.Tasks.Task AddPurchaseAsync(MediProject_Client.ServiceReference1.Purchase p) {
+            return base.Channel.AddPurchaseAsync(p);
         }
         
         public MediProject_Client.ServiceReference1.PeopleList GetAllPeople() {
