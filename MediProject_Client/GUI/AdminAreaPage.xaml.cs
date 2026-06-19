@@ -1,4 +1,4 @@
-﻿using MediProject_Client.ServiceReference1; // מוודא גישה ישירה לשרות
+﻿using MediProject_Client.ServiceReference1; 
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -57,26 +57,30 @@ namespace MediProject_Client.GUI
         {
             try
             {
-                // שימוש בשם המפורש של המחלקה מתוך ה-ServiceReference
-                ServiceReference1.Medication medication = new ServiceReference1.Medication();
+            
+                if (!int.TryParse(txtSubstanceId.Text, out int substanceId))
+                {
+                    MessageBox.Show("שגיאה: קוד חומר פעיל חייב להיות מספר שלם.", "שגיאת קלט", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return; 
+                }
 
+           
+                ServiceReference1.Medication medication = new ServiceReference1.Medication();
                 medication.OriginalName = txtMedName.Text;
                 medication.InHealthBox = chkInHealthBox.IsChecked == true;
                 medication.AvailableInIsrael = chkAvailableInIsr.IsChecked == true;
 
-                medication.ActiveSubstance = new ServiceReference1.Substance();
-                medication.ActiveSubstance.ID = int.Parse(txtSubstanceId.Text);
+                medication.MainSubstanceId = substanceId;
 
-             
                 service.AddMedi(medication);
 
                 MessageBox.Show("התרופה נוספה בהצלחה!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("שגיאה בהוספה: " + ex.Message);
+               
+                MessageBox.Show("קרתה תקלה בעת הוספת התרופה: " + ex.Message, "שגיאה", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        
         }
         private void BtnDeleteMed_Click(object sender, RoutedEventArgs e)
         {

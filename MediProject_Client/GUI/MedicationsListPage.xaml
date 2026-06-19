@@ -30,7 +30,7 @@
                     <GridViewColumn Header="Available in Israel:" DisplayMemberBinding="{Binding AvailableInIsrael}" Width="140"/>
                     <GridViewColumn Header="In health box:" DisplayMemberBinding="{Binding InHealthBox}" Width="100"/>
 
-                    <GridViewColumn Header="חלופות" Width="100">
+                    <GridViewColumn Header="פרטים על התרופה" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Content="הצג" Click="ShowAlternatives_Click" Padding="10,2"/>

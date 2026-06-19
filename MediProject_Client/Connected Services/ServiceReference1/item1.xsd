@@ -56,28 +56,17 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">
         <xs:sequence>
-          <xs:element minOccurs="0" name="ActiveSubstance" nillable="true" type="tns:Substance" />
           <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Alternativies" nillable="true" type="q1:ArrayOfstring" />
           <xs:element minOccurs="0" name="AvailableInIsrael" type="xs:boolean" />
           <xs:element minOccurs="0" name="Generics" nillable="true" type="tns:ArrayOfGenericAlternative" />
           <xs:element minOccurs="0" name="InHealthBox" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MainSubstanceId" type="xs:int" />
           <xs:element minOccurs="0" name="OriginalName" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Medication" nillable="true" type="tns:Medication" />
-  <xs:complexType name="Substance">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:BaseEntity">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="SubstanceName" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="Substance" nillable="true" type="tns:Substance" />
   <xs:complexType name="ArrayOfGenericAlternative">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="GenericAlternative" nillable="true" type="tns:GenericAlternative" />
@@ -127,6 +116,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PeopleList" nillable="true" type="tns:PeopleList" />
+  <xs:complexType name="Substance">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SubstanceName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Substance" nillable="true" type="tns:Substance" />
   <xs:complexType name="KupatHolimList">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="KupatHolim" nillable="true" type="tns:KupatHolim" />

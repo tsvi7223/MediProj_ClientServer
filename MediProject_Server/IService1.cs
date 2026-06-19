@@ -18,6 +18,8 @@ namespace MediProject_Server
         void AddPurchase(Purchase p);
         [OperationContract]
         PeopleList GetAllPeople();
+        [OperationContract] 
+        Substance GetSubstanceDetails(int mediId);
         [OperationContract]
         void InsertUser(User user);
         [OperationContract]

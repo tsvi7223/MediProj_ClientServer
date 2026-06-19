@@ -26,12 +26,10 @@ namespace MediProject_Server.Model
         // מאפיין ציבורי המכיל רשימה של חלופות גנריות מסוג GenericAlternative
         public List<GenericAlternative> Generics { get; set; }
 
-       
         [DataMember]
-        // מאפיין ציבורי המחזיק אובייקט מסוג Substance המייצג את החומר הפעיל בתרופה
-        public Substance ActiveSubstance { get; set; }
+        public int MainSubstanceId { get; set; } // זה השדה החסר!
 
-      
+
         [DataMember]
         // מאפיין ציבורי בוליאני המציין האם התרופה כלולה בסל הבריאות (True/False)
         public bool InHealthBox { get; set; }

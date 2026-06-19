@@ -25,6 +25,11 @@ namespace MediProject_Server
             PeopleList people = peopleDB.SelectAll();
             return people;
         }
+        public Substance GetSubstanceDetails(int mediId)
+        {
+            
+            return SubstanceDB.GetInstance().SelectById(mediId);
+        }
         public void AddPurchase(Purchase p)
         {
             PurchasesDB.GetInstance().Insert(p);

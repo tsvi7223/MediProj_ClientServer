@@ -24,7 +24,7 @@ namespace MediProject_Client.GUI
     /// </summary>
     public partial class MedicationsListPage : Page
     {
-        
+
         private ServiceReference1.Service1Client service = new ServiceReference1.Service1Client();
         private ServiceReference1.User user;
 
@@ -61,14 +61,26 @@ namespace MediProject_Client.GUI
         private void ShowAlternatives_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-
-            // קבלת האובייקט של השורה שעליה לחצו
             Medication medication = (Medication)button.DataContext;
-            this.NavigationService.Navigate(new MedicationPage(medication.ID));
 
 
+            Window mainWindow = Window.GetWindow(this);
+
+
+            Frame mainFrame = mainWindow?.FindName("MainFrame") as Frame;
+
+            if (mainFrame != null)
+            {
+                mainFrame.Navigate(new MedicationPage(medication.MainSubstanceId));
+            }
+            else
+            {
+
+                NavigationService nav = NavigationService.GetNavigationService(this);
+                nav?.Navigate(new MedicationPage(medication.ID));
+            }
         }
-        
+
 
         private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -85,7 +97,7 @@ namespace MediProject_Client.GUI
                     string filterText = txtSearch.Text.ToLower();
                     view.Filter = item =>
                     {
-                        // החלף את YourModelClass בשם ה-Class של האובייקטים שלך ברשימה
+
                         Medication medication = item as Medication;
                         if (medication == null) return false;
 

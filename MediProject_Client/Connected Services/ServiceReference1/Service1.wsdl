@@ -27,6 +27,12 @@
   <wsdl:message name="IService1_GetAllPeople_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllPeopleResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetSubstanceDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubstanceDetails" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetSubstanceDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubstanceDetailsResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_InsertUser_InputMessage">
     <wsdl:part name="parameters" element="tns:InsertUser" />
   </wsdl:message>
@@ -118,6 +124,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllPeople" message="tns:IService1_GetAllPeople_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllPeopleResponse" message="tns:IService1_GetAllPeople_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetSubstanceDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetSubstanceDetails" message="tns:IService1_GetSubstanceDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetSubstanceDetailsResponse" message="tns:IService1_GetSubstanceDetails_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="InsertUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/InsertUser" message="tns:IService1_InsertUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/InsertUserResponse" message="tns:IService1_InsertUser_OutputMessage" />
@@ -193,6 +203,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllPeople">
       <soap:operation soapAction="http://tempuri.org/IService1/GetAllPeople" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubstanceDetails">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetSubstanceDetails" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

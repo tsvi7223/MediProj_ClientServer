@@ -17,9 +17,9 @@ namespace MediProject_Client.GUI
             InitializeComponent();
             this.user = user;
 
-   
+
             this.PersonalMediListFrame.Navigate(new MedicationsListPage(user));
-           
+
             this.PersonalExpirationListFrame.Navigate(new MedicationExpirationPage(user));
 
             this.DataContext = user;

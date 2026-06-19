@@ -19,9 +19,9 @@ namespace MediProject_Client.ServiceReference1 {
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.KupatHolim))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.Medication))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.Substance))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.GenericAlternative))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.Purchase))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.Substance))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.Person))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MediProject_Client.ServiceReference1.User))]
     public partial class BaseEntity : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -95,9 +95,6 @@ namespace MediProject_Client.ServiceReference1 {
     public partial class Medication : MediProject_Client.ServiceReference1.BaseEntity {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MediProject_Client.ServiceReference1.Substance ActiveSubstanceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string[] AlternativiesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -110,20 +107,10 @@ namespace MediProject_Client.ServiceReference1 {
         private bool InHealthBoxField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string OriginalNameField;
+        private int MainSubstanceIdField;
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public MediProject_Client.ServiceReference1.Substance ActiveSubstance {
-            get {
-                return this.ActiveSubstanceField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ActiveSubstanceField, value) != true)) {
-                    this.ActiveSubstanceField = value;
-                    this.RaisePropertyChanged("ActiveSubstance");
-                }
-            }
-        }
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OriginalNameField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string[] Alternativies {
@@ -178,6 +165,19 @@ namespace MediProject_Client.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MainSubstanceId {
+            get {
+                return this.MainSubstanceIdField;
+            }
+            set {
+                if ((this.MainSubstanceIdField.Equals(value) != true)) {
+                    this.MainSubstanceIdField = value;
+                    this.RaisePropertyChanged("MainSubstanceId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string OriginalName {
             get {
                 return this.OriginalNameField;
@@ -186,45 +186,6 @@ namespace MediProject_Client.ServiceReference1 {
                 if ((object.ReferenceEquals(this.OriginalNameField, value) != true)) {
                     this.OriginalNameField = value;
                     this.RaisePropertyChanged("OriginalName");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Substance", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model")]
-    [System.SerializableAttribute()]
-    public partial class Substance : MediProject_Client.ServiceReference1.BaseEntity {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SubstanceNameField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SubstanceName {
-            get {
-                return this.SubstanceNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SubstanceNameField, value) != true)) {
-                    this.SubstanceNameField = value;
-                    this.RaisePropertyChanged("SubstanceName");
                 }
             }
         }
@@ -351,6 +312,45 @@ namespace MediProject_Client.ServiceReference1 {
                 if ((object.ReferenceEquals(this.userField, value) != true)) {
                     this.userField = value;
                     this.RaisePropertyChanged("user");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Substance", Namespace="http://schemas.datacontract.org/2004/07/MediProject_Server.Model")]
+    [System.SerializableAttribute()]
+    public partial class Substance : MediProject_Client.ServiceReference1.BaseEntity {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SubstanceNameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SubstanceName {
+            get {
+                return this.SubstanceNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubstanceNameField, value) != true)) {
+                    this.SubstanceNameField = value;
+                    this.RaisePropertyChanged("SubstanceName");
                 }
             }
         }
@@ -726,6 +726,12 @@ namespace MediProject_Client.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllPeople", ReplyAction="http://tempuri.org/IService1/GetAllPeopleResponse")]
         System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.PeopleList> GetAllPeopleAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSubstanceDetails", ReplyAction="http://tempuri.org/IService1/GetSubstanceDetailsResponse")]
+        MediProject_Client.ServiceReference1.Substance GetSubstanceDetails(int mediId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSubstanceDetails", ReplyAction="http://tempuri.org/IService1/GetSubstanceDetailsResponse")]
+        System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.Substance> GetSubstanceDetailsAsync(int mediId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertUser", ReplyAction="http://tempuri.org/IService1/InsertUserResponse")]
         void InsertUser(MediProject_Client.ServiceReference1.User user);
         
@@ -854,6 +860,14 @@ namespace MediProject_Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.PeopleList> GetAllPeopleAsync() {
             return base.Channel.GetAllPeopleAsync();
+        }
+        
+        public MediProject_Client.ServiceReference1.Substance GetSubstanceDetails(int mediId) {
+            return base.Channel.GetSubstanceDetails(mediId);
+        }
+        
+        public System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.Substance> GetSubstanceDetailsAsync(int mediId) {
+            return base.Channel.GetSubstanceDetailsAsync(mediId);
         }
         
         public void InsertUser(MediProject_Client.ServiceReference1.User user) {
