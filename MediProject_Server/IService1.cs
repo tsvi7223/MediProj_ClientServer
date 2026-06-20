@@ -20,8 +20,7 @@ namespace MediProject_Server
         PeopleList GetAllPeople();
         [OperationContract] 
         Substance GetSubstanceDetails(int mediId);
-        [OperationContract]
-        void InsertUser(User user);
+       
         [OperationContract]
         KupatHolimList GetAllKupas();
         [OperationContract]
@@ -31,6 +30,9 @@ namespace MediProject_Server
         [OperationContract]
 
         MedicationsList GetAllMedications();
+        [OperationContract]
+        bool InsertUser(User user);
+
         [OperationContract]
         void DeleteMedication(Medication medication);
         [OperationContract]

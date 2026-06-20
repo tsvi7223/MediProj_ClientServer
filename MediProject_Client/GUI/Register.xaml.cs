@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions; // נוסף לצורך בדיקת מייל
+using System.Text.RegularExpressions; 
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -40,7 +40,7 @@ namespace MediProject_Client.GUI
         }
         private void BtnFinishRegister_Click(object sender, RoutedEventArgs e)
         {
-            // בדיקת תקינות לפני שליחה
+
             if (string.IsNullOrWhiteSpace(FirstNameTB.Text) || string.IsNullOrWhiteSpace(LastNameTB.Text) ||
                 string.IsNullOrWhiteSpace(RegUser.Text) || string.IsNullOrWhiteSpace(RegAddress.Text))
             {
@@ -48,28 +48,37 @@ namespace MediProject_Client.GUI
                 return;
             }
 
-            if (!RegMail.Text.Contains("@") || !RegMail.Text.Contains("."))
-            {
-                MessageBox.Show(".כתובת מייל לא תקינה");
-                return;
-            }
-
-            if (RegPhone.Text.Length < 10 || !RegPhone.Text.All(char.IsDigit))
-            {
-                MessageBox.Show("(מספר טלפון לא תקין (חייב להכיל רק ספרות באורך מינימלי של 10 ספרות");
-                return;
-            }
-
-            if (RegPass.Password.Length < 6)
-            {
-                MessageBox.Show(".סיסמה חייבת להכיל לפחות 6 תווים");
-                return;
-            }
-
+            
+            user.FirstName = FirstNameTB.Text;
+            user.LastName = LastNameTB.Text;
+            user.UserName = RegUser.Text;
+            user.FullAddress = RegAddress.Text;
+            user.PhoneNumber = RegPhone.Text;
+            user.Gmail = RegMail.Text;
             user.Kupa = RegHMO.SelectedItem as KupatHolim;
             user.Password = Encription.ComputeSha256Hash(RegPass.Password);
-            service.InsertUser(user);
-            this.NavigationService.Navigate(new Login(this.user));
+
+            string message = "אנא אשר את הפרטים שלך:\n\n" +
+                                 "שם מלא: " + user.FirstName + " " + user.LastName + "\n" +
+                                 "שם משתמש: " + user.UserName + "\n" +
+                                 "מייל: " + user.Gmail + "\n" +
+                                 "טלפון: " + user.PhoneNumber + "\n" +
+                                 "כתובת: " + user.FullAddress + "\n" +
+                                 "קופת חולים: " + ("קופת חולים: " + user.Kupa.Name + "\n") + "\n" +
+                                 "תאריך לידה: " + user.DateOfBirth.ToShortDateString();
+
+            MessageBoxResult result = MessageBox.Show(message, "אישור פרטי הרשמה", MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
+            {
+            
+                service.InsertUser(user);
+
+      
+                MessageBox.Show("ההרשמה בוצעה בהצלחה!");
+
+      
+                this.NavigationService.Navigate(new Login(this.user));
+            }
         }
 
         private void BackDoor_Click(object sender, RoutedEventArgs e)

@@ -29,7 +29,7 @@
                            FontSize="28" 
                            FontWeight="Bold" 
                            FontFamily="Segoe UI" 
-                           Foreground="#333" 
+                           Foreground="Black" 
                            HorizontalAlignment="Center" 
                            Margin="0,15,0,0"/>
 

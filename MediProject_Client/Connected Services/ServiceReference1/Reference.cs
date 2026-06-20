@@ -732,12 +732,6 @@ namespace MediProject_Client.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSubstanceDetails", ReplyAction="http://tempuri.org/IService1/GetSubstanceDetailsResponse")]
         System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.Substance> GetSubstanceDetailsAsync(int mediId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertUser", ReplyAction="http://tempuri.org/IService1/InsertUserResponse")]
-        void InsertUser(MediProject_Client.ServiceReference1.User user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertUser", ReplyAction="http://tempuri.org/IService1/InsertUserResponse")]
-        System.Threading.Tasks.Task InsertUserAsync(MediProject_Client.ServiceReference1.User user);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllKupas", ReplyAction="http://tempuri.org/IService1/GetAllKupasResponse")]
         MediProject_Client.ServiceReference1.KupatHolimList GetAllKupas();
         
@@ -761,6 +755,12 @@ namespace MediProject_Client.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllMedications", ReplyAction="http://tempuri.org/IService1/GetAllMedicationsResponse")]
         System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.MedicationsList> GetAllMedicationsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertUser", ReplyAction="http://tempuri.org/IService1/InsertUserResponse")]
+        bool InsertUser(MediProject_Client.ServiceReference1.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertUser", ReplyAction="http://tempuri.org/IService1/InsertUserResponse")]
+        System.Threading.Tasks.Task<bool> InsertUserAsync(MediProject_Client.ServiceReference1.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteMedication", ReplyAction="http://tempuri.org/IService1/DeleteMedicationResponse")]
         void DeleteMedication(MediProject_Client.ServiceReference1.Medication medication);
@@ -870,14 +870,6 @@ namespace MediProject_Client.ServiceReference1 {
             return base.Channel.GetSubstanceDetailsAsync(mediId);
         }
         
-        public void InsertUser(MediProject_Client.ServiceReference1.User user) {
-            base.Channel.InsertUser(user);
-        }
-        
-        public System.Threading.Tasks.Task InsertUserAsync(MediProject_Client.ServiceReference1.User user) {
-            return base.Channel.InsertUserAsync(user);
-        }
-        
         public MediProject_Client.ServiceReference1.KupatHolimList GetAllKupas() {
             return base.Channel.GetAllKupas();
         }
@@ -908,6 +900,14 @@ namespace MediProject_Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task<MediProject_Client.ServiceReference1.MedicationsList> GetAllMedicationsAsync() {
             return base.Channel.GetAllMedicationsAsync();
+        }
+        
+        public bool InsertUser(MediProject_Client.ServiceReference1.User user) {
+            return base.Channel.InsertUser(user);
+        }
+        
+        public System.Threading.Tasks.Task<bool> InsertUserAsync(MediProject_Client.ServiceReference1.User user) {
+            return base.Channel.InsertUserAsync(user);
         }
         
         public void DeleteMedication(MediProject_Client.ServiceReference1.Medication medication) {

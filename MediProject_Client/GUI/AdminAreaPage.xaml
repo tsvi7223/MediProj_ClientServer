@@ -41,7 +41,7 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="0,10,0,0">
-                <Border Width="100" Height="45" CornerRadius="22.5" BorderBrush="#D1D1D1" BorderThickness="1">
+                <Border Width="100" Height="45" CornerRadius="22.5" BorderBrush="LightGray" BorderThickness="1">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
                             <GradientStop Color="DodgerBlue" Offset="0.5"/>
@@ -50,7 +50,7 @@
                     </Border.Background>
                 </Border>
 
-                <TextBlock Text="Pharmacy Care" FontSize="28" FontWeight="Bold" Foreground="#333" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                <TextBlock Text="Pharmacy Care" FontSize="28" FontWeight="Bold" Foreground="DimGray" HorizontalAlignment="Center" Margin="0,10,0,0"/>
                 <TextBlock Text="איזור ניהול:" FontSize="18" Foreground="#666" HorizontalAlignment="Center" Margin="0,5,0,0" FlowDirection="RightToLeft"/>
                 <TextBlock Text="{Binding UserName, StringFormat='שלום לך, {0}'}" FontSize="15" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" Margin="0,5,0,5" FlowDirection="RightToLeft"/>
             </StackPanel>
@@ -101,7 +101,7 @@
 
                 <Button x:Name="btnLoadUsers" Grid.Row="2" Content="שלוף רשימת משתמשים" Height="35" Background="MediumSeaGreen" Foreground="White" FontWeight="Bold" Margin="0,0,0,10" Click="BtnLoadUsers_Click"/>
 
-                <DataGrid x:Name="dgUsers" Grid.Row="3" AutoGenerateColumns="False" IsReadOnly="True" Background="#F9F9F9" BorderBrush="#E0E0E0" RowBackground="#FFFFFF" AlternatingRowBackground="#F0F0F0">
+                <DataGrid x:Name="dgUsers" Grid.Row="3" AutoGenerateColumns="False" IsReadOnly="True" Background="WhiteSmoke" BorderBrush="#E0E0E0" RowBackground="White" AlternatingRowBackground="WhiteSmoke">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="קוד" Binding="{Binding ID}" Width="50"/>
                         <DataGridTextColumn Header="שם משתמש" Binding="{Binding UserName}" Width="*"/>

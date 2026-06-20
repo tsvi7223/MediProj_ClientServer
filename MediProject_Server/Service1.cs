@@ -73,6 +73,18 @@ namespace MediProject_Server
             KupatHolimList kupas = kupatHolimDB.SelectAll();
             return kupas;
         }
+        public bool InsertUser(User user)
+        {
+            try
+            {
+                UsersDB.GetInstance().Insert(user);
+                return true; 
+            }
+            catch
+            {
+                return false; 
+            }
+        }
         public UserList GetAllUsers()
         {
             UsersDB usersDB = UsersDB.GetInstance();
@@ -109,15 +121,7 @@ namespace MediProject_Server
             }
             return list;
         }
-        public void InsertUser(User user)
-        {
-            UsersDB usersDB = UsersDB.GetInstance();
-            usersDB.Insert(user);
-            Console.WriteLine("==========================user inserted!=========================");
-            MessageBox.Show("Got User:\nUserName is: " + user.UserName + "\n" + "Address is: " + user.FullAddress +
-                "\nPhone Number is: " + user.PhoneNumber + "\nGmail is: " + user.Gmail +
-                "\nPassword is: " + user.Password);
-        }
+        
 
         public void AddMedication(User user, Medication medication)
         {
