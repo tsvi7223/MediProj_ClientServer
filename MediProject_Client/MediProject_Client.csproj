@@ -215,6 +215,9 @@
     <None Include="Connected Services\ServiceReference1\MediProject_Client.ServiceReference1.Medication.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference1\MediProject_Client.ServiceReference1.MedicationExpiration3.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference1\MediProject_Client.ServiceReference1.MedicationsList.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -222,6 +225,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference1\MediProject_Client.ServiceReference1.PurchaseList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference1\MediProject_Client.ServiceReference1.Substance2.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference1\MediProject_Client.ServiceReference1.UserList.datasource">
