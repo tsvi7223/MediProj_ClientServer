@@ -13,18 +13,17 @@ namespace MediProject_Client.GUI
         Service1Client service = new Service1Client();
         public User user;
 
-     
+
         public AdminAreaPage(object user)
         {
             InitializeComponent();
 
-         
-            if (user != null)
-            {
-               
-                var clientUser = (MediProject_Client.ServiceReference1.User)user;
+            
+            MediProject_Client.ServiceReference1.User clientUser = user as MediProject_Client.ServiceReference1.User;
 
-                // בניית האובייקט של השרת
+            if (clientUser != null)
+            {
+                
                 this.user = new User();
                 this.user.UserName = clientUser.UserName;
                 this.user.Password = clientUser.Password;

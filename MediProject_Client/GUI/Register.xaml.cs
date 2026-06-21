@@ -59,7 +59,7 @@ namespace MediProject_Client.GUI
             user.FullAddress = RegAddress.Text;
             user.PhoneNumber = RegPhone.Text;
             user.Gmail = RegMail.Text;
-            user.DateOfBirth = DateOfBirth.SelectedDate ?? DateTime.Now; 
+            user.DateOfBirth = DateOfBirth.SelectedDate ?? DateTime.Now;
             user.Kupa = RegHMO.SelectedItem as KupatHolim;
             user.Password = Encription.ComputeSha256Hash(RegPass.Password);
 
@@ -73,11 +73,22 @@ namespace MediProject_Client.GUI
                                  "תאריך לידה: " + user.DateOfBirth.ToShortDateString();
 
             MessageBoxResult result = MessageBox.Show(message, "אישור פרטי הרשמה", MessageBoxButton.OKCancel);
+
             if (result == MessageBoxResult.OK)
             {
-                service.InsertUser(user);
-                MessageBox.Show("ההרשמה בוצעה בהצלחה!");
-                this.NavigationService.Navigate(new Login(this.user));
+                // כאן אנחנו קוראים לפונקציה המעודכנת בשרת
+                bool success = service.InsertUser(user);
+
+                if (success==true)
+                {
+                    MessageBox.Show("ההרשמה בוצעה בהצלחה!");
+                    this.NavigationService.Navigate(new Login(this.user));
+                }
+                else
+                {
+                    // הודעה למשתמש אם שם המשתמש תפוס
+                    MessageBox.Show("שגיאה: שם המשתמש כבר קיים במערכת, אנא בחר שם אחר.");
+                }
             }
         }
 

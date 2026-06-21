@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,21 +33,20 @@ namespace MediProject_Client.GUI
 
         }
 
-        // אירוע לחיצה על כפתור "בחר תרופה" בשורה
+       
         private void SelectMedicationRow_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
 
-            // שליפת האובייקט שמוצג בשורה הנוכחית
-            // החלף את YourMedicationClass בסוג ה-Class האמיתי של התרופה שלך
-            var selectedItem = button?.DataContext as dynamic;
+          
+            Medication selectedMedication = button?.DataContext as Medication;
 
-            if (selectedItem != null)
+            if (selectedMedication != null)
             {
-                // שמירת השם של התרופה שנבחרה (לפי השדה הקיים אצלך באובייקט)
-                SelectedMedication = selectedItem as Medication;
+               
+                SelectedMedication = selectedMedication;
 
-                // סימון שהבחירה הצליחה וסגירת החלון
+               
                 this.DialogResult = true;
                 this.Close();
             }
@@ -54,9 +54,12 @@ namespace MediProject_Client.GUI
 
         private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var view = CollectionViewSource.GetDefaultView(listView.ItemsSource);
+            // השגת ה-View של רשימת התצוגה
+            ICollectionView view = CollectionViewSource.GetDefaultView(listView.ItemsSource);
+
             if (view != null)
             {
+                // אם תיבת החיפוש ריקה, מציגים את כל הרשימה
                 if (string.IsNullOrWhiteSpace(txtSearch.Text))
                 {
                     view.Filter = null;
@@ -64,11 +67,15 @@ namespace MediProject_Client.GUI
                 else
                 {
                     string filterText = txtSearch.Text.ToLower();
+
+                    // סינון לפי שם התרופה
                     view.Filter = item =>
                     {
-                        var medication = item as dynamic; // החלף ב-Class האמיתי במידת הצורך
+                        Medication medication = item as Medication;
                         if (medication == null) return false;
-                        return (!string.IsNullOrEmpty(medication.OriginalName) && medication.OriginalName.ToLower().Contains(filterText));
+
+                        return (!string.IsNullOrEmpty(medication.OriginalName) &&
+                                medication.OriginalName.ToLower().Contains(filterText));
                     };
                 }
             }

@@ -3,63 +3,77 @@ using MediProject_Server.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Text;
-using System.Windows;
+
 namespace MediProject_Server
 {
-
     public class Service1 : IService1
     {
         public PurchaseList GetPurchasesByUser(User user)
         {
-            var allPurchases = PurchasesDB.GetInstance().SelectAll();
-            var filtered = allPurchases.FindAll(p => p.user.ID == user.ID && p.medication != null);
+            List<Purchase> allPurchases = PurchasesDB.GetInstance().SelectAll();
+            List<Purchase> filtered = new List<Purchase>();
+            foreach (Purchase p in allPurchases)
+            {
+                if (p.user != null && p.user.ID == user.ID && p.medication != null)
+                {
+                    filtered.Add(p);
+                }
+            }
             return new PurchaseList(filtered);
         }
 
         public PeopleList GetAllPeople()
         {
-            PeopleDB peopleDB = PeopleDB.GetInstance();
-            PeopleList people = peopleDB.SelectAll();
-            return people;
+            return PeopleDB.GetInstance().SelectAll();
         }
+
         public Substance GetSubstanceDetails(int mediId)
         {
-            
             return SubstanceDB.GetInstance().SelectById(mediId);
         }
+
         public void AddPurchase(Purchase p)
         {
             PurchasesDB.GetInstance().Insert(p);
+
+            bool exists = false;
+            List<MediProject_Server.Model.Medication> userMeds = MedicationsDB.GetInstance().GetByUser(p.user).ToList();
+
+            foreach (MediProject_Server.Model.Medication m in userMeds)
+            {
+                if (m.ID == p.medication.ID)
+                {
+                    exists = true;
+                    break;
+                }
+            }
+
+            if (!exists)
+            {
+                UserMedicationsDB.GetInstance().Insert(p.user, p.medication);
+            }
         }
 
         public void DeleteMedication(Medication medication)
         {
-            MedicationsDB medicationsDB = MedicationsDB.GetInstance();
-            medicationsDB.Delete(medication);
+            MedicationsDB.GetInstance().Delete(medication);
         }
+
         public void AddMedi(Medication medication)
         {
-
-            MedicationsDB medicationsDB = MedicationsDB.GetInstance();
-
-            medicationsDB.Insert(medication);
+            MedicationsDB.GetInstance().Insert(medication);
         }
-
 
         public MedicationsList GetAllMedications()
         {
-            MedicationsDB medicationsDB = MedicationsDB.GetInstance();
-            MedicationsList medications = medicationsDB.SelectAll();
-            return medications;
+            return MedicationsDB.GetInstance().SelectAll();
         }
+
         public List<MediProject_Server.Model.Medication> GetMedicationsByUser(int userId)
         {
-            MediProject_Server.Model.User tempUser = new MediProject_Server.Model.User();
+            User tempUser = new User();
             tempUser.ID = userId;
-
             return MedicationsDB.GetInstance().GetByUser(tempUser).ToList();
         }
 
@@ -67,34 +81,45 @@ namespace MediProject_Server
         {
             MedicationsDB.GetInstance().DeleteFromUserMedications(userId, medicationId);
         }
+
         public KupatHolimList GetAllKupas()
         {
-            KupatHolimDB kupatHolimDB = KupatHolimDB.GetInstance();
-            KupatHolimList kupas = kupatHolimDB.SelectAll();
-            return kupas;
+            return KupatHolimDB.GetInstance().SelectAll();
         }
+
         public bool InsertUser(User user)
         {
+            // בדיקת כפילות שם משתמש
+            UserList allUsers = UsersDB.GetInstance().SelectAll();
+            foreach (User u in allUsers)
+            {
+                if (u.UserName == user.UserName)
+                {
+                    return false; 
+                }
+            }
+
             try
             {
                 UsersDB.GetInstance().Insert(user);
-                return true; 
+                return true;
             }
             catch
             {
-                return false; 
+                return false;
             }
         }
+
         public UserList GetAllUsers()
         {
-            UsersDB usersDB = UsersDB.GetInstance();
-            UserList users = usersDB.SelectAll();
-            return users;
+            return UsersDB.GetInstance().SelectAll();
         }
+
         public MedicationsList GetUserMedications(User user)
         {
             return MedicationsDB.GetInstance().GetByUser(user);
         }
+
         public List<MedicationExpiration> GetMedicationExpirationList(User user)
         {
             PurchaseList purchases = GetPurchasesByUser(user);
@@ -102,12 +127,8 @@ namespace MediProject_Server
 
             List<MedicationExpiration> list = new List<MedicationExpiration>();
 
-            var lastPurchases = purchases
-                .Where(p => p.medication != null)
-                .GroupBy(p => p.medication.OriginalName)
-                .Select(g => g.OrderByDescending(p => p.PurchaseDate).FirstOrDefault());
-
-            foreach (Purchase p in lastPurchases)
+         
+            foreach (Purchase p in purchases)
             {
                 if (p.medication != null && p.PillsPerDay > 0)
                 {
@@ -121,17 +142,16 @@ namespace MediProject_Server
             }
             return list;
         }
-        
 
         public void AddMedication(User user, Medication medication)
         {
             UserMedicationsDB.GetInstance().Insert(user, medication);
         }
+
         public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);
         }
-
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {
