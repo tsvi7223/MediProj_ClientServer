@@ -49,8 +49,7 @@
                 </StackPanel>
                 <ScrollViewer Grid.Row="1" x:Name="RegisterPanel"  VerticalScrollBarVisibility="Auto" Padding="0,0,0,0">
             <StackPanel Margin="10" >
-                <TextBlock Text="הרשמה למערכת" FontSize="18" Foreground="#666" Margin="0,0,0,25" HorizontalAlignment="Right"/>
-                        <Button x:Name="BackDoor" Content="Back Door" Click="BackDoor_Click"/>
+                        <TextBlock Text=":הרשמה למערכת" FontSize="18" Foreground="#666" Margin="0,0,0,25" HorizontalAlignment="Right"/>
                         <TextBlock Text=":שם פרטי" HorizontalAlignment="Right"/>
                         <TextBox x:Name="FirstNameTB" Text="{Binding FirstName}" Margin="0,5" Height="35" VerticalContentAlignment="Center"/>
                         <TextBlock Text=":שם משפחה" HorizontalAlignment="Right"/>

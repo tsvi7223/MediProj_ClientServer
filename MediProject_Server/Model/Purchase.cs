@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace MediProject_Server.Model
 {
-    [DataContract] // מגדיר את המחלקה כאובייקט שניתן להעביר בין השרת ללקוח בתקשורת WCF
-    [KnownType(typeof(BaseEntity))] // הוסף את השורה הזו
+    [DataContract] 
+    [KnownType(typeof(BaseEntity))] 
     public class Purchase : BaseEntity
     {
         [DataMember]

@@ -63,7 +63,7 @@ namespace MediProject_Client.GUI
             user.Kupa = RegHMO.SelectedItem as KupatHolim;
             user.Password = Encription.ComputeSha256Hash(RegPass.Password);
 
-            string message = "אנא אשר את הפרטים שלך:\n\n" +
+            string message = ":אנא אשר את הפרטים שלך\n\n" +
                                  "שם מלא: " + user.FirstName + " " + user.LastName + "\n" +
                                  "שם משתמש: " + user.UserName + "\n" +
                                  "מייל: " + user.Gmail + "\n" +
@@ -81,28 +81,15 @@ namespace MediProject_Client.GUI
 
                 if (success==true)
                 {
-                    MessageBox.Show("ההרשמה בוצעה בהצלחה!");
+                    MessageBox.Show("!ההרשמה בוצעה בהצלחה");
                     this.NavigationService.Navigate(new Login(this.user));
                 }
                 else
                 {
                     // הודעה למשתמש אם שם המשתמש תפוס
-                    MessageBox.Show("שגיאה: שם המשתמש כבר קיים במערכת, אנא בחר שם אחר.");
+                    MessageBox.Show(".שגיאה: שם המשתמש כבר קיים במערכת, אנא בחר שם אחר");
                 }
             }
-        }
-
-        private void BackDoor_Click(object sender, RoutedEventArgs e)
-        {
-            this.FirstNameTB.Text = user.FirstName = "דניאל";
-            this.LastNameTB.Text = user.LastName = "אסולין";
-            this.DateOfBirth.SelectedDate = DateTime.Now;
-            user.DateOfBirth = DateTime.Now;
-            this.RegUser.Text = user.UserName = "assulindani";
-            this.RegPhone.Text = user.PhoneNumber = "0555555555";
-            this.RegMail.Text = user.Gmail = "assulindani@gmail.com";
-            this.RegPass.Password = user.Password = "1234567890";
-            this.RegAddress.Text = user.FullAddress = "הפסגה 8";
         }
     }
 }

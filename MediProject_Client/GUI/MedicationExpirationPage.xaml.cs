@@ -1,6 +1,6 @@
 ﻿using MediProject_Client.ServiceReference1;
 using System;
-using System.Collections.Generic; // נדרש עבור ה-List
+using System.Collections.Generic;
 using System.Windows.Controls;
 
 namespace MediProject_Client.GUI
