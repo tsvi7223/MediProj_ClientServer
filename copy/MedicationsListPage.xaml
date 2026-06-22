@@ -1,0 +1,58 @@
+﻿<Page x:Class="MediProject_Client.GUI.MedicationsListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MediProject_Client.GUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      FlowDirection="RightToLeft"
+      Title="MedicationsList">
+
+    <Grid Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.Margin>20</Grid.Margin>
+
+        <TextBlock Text="התרופות שלי:" FontSize="20" Grid.Row="0" Margin="0,0,0,10"/>
+
+        <Grid Grid.Row="1" Margin="0,0,0,15">
+            <TextBox Name="txtSearch" Height="35" Padding="10,5" VerticalContentAlignment="Center" FontSize="14" TextChanged="TxtSearch_TextChanged"/>
+        </Grid>
+
+        <ListView Grid.Row="2" Name="listView" BorderThickness="0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Medicine name:" DisplayMemberBinding="{Binding OriginalName}" Width="110"/>
+                    <GridViewColumn Header="Available in Israel:" DisplayMemberBinding="{Binding AvailableInIsrael}" Width="140"/>
+                    <GridViewColumn Header="In health box:" DisplayMemberBinding="{Binding InHealthBox}" Width="100"/>
+
+                    <GridViewColumn Header="פרטים על התרופה" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="הצג" Click="ShowAlternatives_Click" Padding="10,2"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="פעולות" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="מחק" 
+                                        Click="BtnRemove_Click" 
+                                        Background="Red" 
+                                        Foreground="White" 
+                                        FontWeight="Bold" 
+                                        Padding="10,2"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>
