@@ -24,7 +24,6 @@ namespace MediProject_Server.DB
 
         public Substance SelectById(int substanceId)
         {
-            // השרת מחפש בטבלה Substance לפי ה-ID שלה, זה תקין לחלוטין
             command.CommandText = $"SELECT * FROM Substance WHERE ID = {substanceId}";
             List<BaseEntity> list = base.Select();
             if (list != null && list.Count > 0)
@@ -37,8 +36,6 @@ namespace MediProject_Server.DB
         protected override BaseEntity CreateModel(BaseEntity entity)
         {
             Substance substance = entity as Substance;
-
-            // שימוש ב-ToString בטוח כדי למנוע קריסות אם שדה ריק ב-Access
             substance.ID = int.Parse(reader["ID"]?.ToString() ?? "0");
             substance.Description = reader["Description"]?.ToString() ?? "";
             substance.SubstanceName = reader["SubstanceName"]?.ToString() ?? "";
@@ -50,8 +47,6 @@ namespace MediProject_Server.DB
         {
             return new Substance() as BaseEntity;
         }
-
-        // שאר הפונקציות נשארות כפי שהן
         public void Delete(Substance substance)
         {
             command.CommandText = $"DELETE FROM Substance WHERE ID = {substance.ID}";

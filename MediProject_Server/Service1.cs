@@ -60,9 +60,25 @@ namespace MediProject_Server
             MedicationsDB.GetInstance().Delete(medication);
         }
 
-        public void AddMedi(Medication medication)
+        public bool AddMedi(Medication medication)
         {
+            // 1. מושכים את הרשימה מה-DB
+            SubstanceList allSubstances = SubstanceDB.GetInstance().SelectAll();
+            bool substanceExists = false;
+            foreach (Substance s in allSubstances)
+            {
+                if (s.ID == medication.MainSubstanceId)
+                {
+                    substanceExists = true;
+                    break; 
+                }
+            }
+            if (!substanceExists)
+            {
+                return false; 
+            }
             MedicationsDB.GetInstance().Insert(medication);
+            return true;
         }
 
         public MedicationsList GetAllMedications()
@@ -89,7 +105,7 @@ namespace MediProject_Server
 
         public bool InsertUser(User user)
         {
-            // בדיקת כפילות שם משתמש
+            
             UserList allUsers = UsersDB.GetInstance().SelectAll();
             foreach (User u in allUsers)
             {

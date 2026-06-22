@@ -35,7 +35,7 @@ namespace MediProject_Server
         [OperationContract]
         void DeleteMedication(Medication medication);
         [OperationContract]
-        void AddMedi(Medication medication);
+        bool AddMedi(Medication medication);
         [OperationContract]
         List<Medication> GetMedicationsByUser(int userId); 
 

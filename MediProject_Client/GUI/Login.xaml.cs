@@ -1,7 +1,6 @@
 ﻿using MediProject_Client;
 using MediProject_Client.ServiceReference1;
 using MediProject_Server.Utilities;
-//using User = MediProject_Client.ServiceReference1.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +24,6 @@ namespace MediProject_Client.GUI
     public partial class Login : Page
     {
         public Service1Client service1 = new Service1Client();
-        // Service1Client service = new Service1Client();
         public User user { get; set; }
         public Login(User user)
         {

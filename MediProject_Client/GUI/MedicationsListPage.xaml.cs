@@ -90,7 +90,7 @@ namespace MediProject_Client.GUI
             {
                 if (string.IsNullOrWhiteSpace(txtSearch.Text))
                 {
-                    view.Filter = null; // מציג הכל כשהתיבה ריקה
+                    view.Filter = null; 
                 }
                 else
                 {

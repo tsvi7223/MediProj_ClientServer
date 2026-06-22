@@ -30,7 +30,6 @@ namespace MediProject_Client.GUI
             this.user = user;
             this.DataContext = this.user;
 
-            // סידור לוח השנה - אתחול לתאריך הנוכחי
             this.DateOfBirth.SelectedDate = DateTime.Now;
             this.user.DateOfBirth = DateTime.Now;
 
@@ -47,12 +46,34 @@ namespace MediProject_Client.GUI
         private void BtnFinishRegister_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(FirstNameTB.Text) || string.IsNullOrWhiteSpace(LastNameTB.Text) ||
-                string.IsNullOrWhiteSpace(RegUser.Text) || string.IsNullOrWhiteSpace(RegAddress.Text))
+                string.IsNullOrWhiteSpace(RegUser.Text) || string.IsNullOrWhiteSpace(RegAddress.Text) ||
+                string.IsNullOrWhiteSpace(RegPhone.Text) || string.IsNullOrWhiteSpace(RegMail.Text))
             {
-                MessageBox.Show(".נא למלא את כל השדות");
+                MessageBox.Show("נא למלא את כל השדות");
                 return;
             }
 
+            if (RegPhone.Text.Length != 10 || !RegPhone.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("מספר טלפון חייב להכיל 10 ספרות בדיוק");
+                return;
+            }
+            if (RegUser.Text.Length < 6)
+            {
+                MessageBox.Show("שם משתמש חייב להכיל לפחות 6 תווים");
+                return;
+            }
+            string mail = RegMail.Text;
+            if (!mail.Contains("@") || !mail.Contains("."))
+            {
+                MessageBox.Show("כתובת המייל אינה תקינה. וודא שקיימים '@' ונקודה ");
+                return;
+            }
+            if (DateOfBirth.SelectedDate > DateTime.Now)
+            {
+                MessageBox.Show(".לא ניתן לבחור תאריך לידה עתידי");
+                return;
+            }
             user.FirstName = FirstNameTB.Text;
             user.LastName = LastNameTB.Text;
             user.UserName = RegUser.Text;
@@ -76,17 +97,15 @@ namespace MediProject_Client.GUI
 
             if (result == MessageBoxResult.OK)
             {
-                // כאן אנחנו קוראים לפונקציה המעודכנת בשרת
                 bool success = service.InsertUser(user);
 
-                if (success==true)
+                if (success == true)
                 {
                     MessageBox.Show("!ההרשמה בוצעה בהצלחה");
                     this.NavigationService.Navigate(new Login(this.user));
                 }
                 else
                 {
-                    // הודעה למשתמש אם שם המשתמש תפוס
                     MessageBox.Show(".שגיאה: שם המשתמש כבר קיים במערכת, אנא בחר שם אחר");
                 }
             }

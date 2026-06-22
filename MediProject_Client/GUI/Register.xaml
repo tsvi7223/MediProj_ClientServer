@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MediProject_Client.GUI"
       mc:Ignorable="d" 
-            Title="Pharmacy Care - Login" Height="750" Width="550" >
+            Title="Pharmacy Care - Login" >
 
 
     <Grid>
@@ -75,7 +75,7 @@
                         <DatePicker x:Name="DateOfBirth" SelectedDate="{Binding DateOfBirth}"  Margin="0,5" Height="35" VerticalContentAlignment="Center"/>
 
 
-                        <TextBlock Text="סיסמה:" HorizontalAlignment="Right"/>
+                        <TextBlock Text=":בחר סיסמא" HorizontalAlignment="Right"/>
                         <PasswordBox x:Name="RegPass"  Margin="0,5" Height="35" VerticalContentAlignment="Center"/>
                 <Button Content="סיום הרשמה" Background="#27AE60" Foreground="White" Height="40" Margin="0,15,0,5" Click="BtnFinishRegister_Click"/>
                 <TextBlock Text="חזור להתחברות" Foreground="#666" Cursor="Hand" HorizontalAlignment="Center" MouseLeftButtonUp="BackToLogin_Click"  Margin="0,5"/>

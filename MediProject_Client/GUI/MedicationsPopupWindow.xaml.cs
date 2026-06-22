@@ -54,12 +54,10 @@ namespace MediProject_Client.GUI
 
         private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // השגת ה-View של רשימת התצוגה
             ICollectionView view = CollectionViewSource.GetDefaultView(listView.ItemsSource);
 
             if (view != null)
             {
-                // אם תיבת החיפוש ריקה, מציגים את כל הרשימה
                 if (string.IsNullOrWhiteSpace(txtSearch.Text))
                 {
                     view.Filter = null;
@@ -67,8 +65,6 @@ namespace MediProject_Client.GUI
                 else
                 {
                     string filterText = txtSearch.Text.ToLower();
-
-                    // סינון לפי שם התרופה
                     view.Filter = item =>
                     {
                         Medication medication = item as Medication;

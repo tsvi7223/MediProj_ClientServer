@@ -82,18 +82,13 @@ namespace MediProject_Client.GUI
             purchase.PurchaseDate = DateTime.Parse(this.dpPurchaseDate.ToString());
 
            service.AddPurchase(purchase);
-            // אם הכל תקין - כאן אתה שולח את הנתונים ל-DB או לשרת שלך
             MessageBox.Show("הקניה נשמרה בהצלחה במערכת!", "הצלחה", MessageBoxButton.OK, MessageBoxImage.Information);
-
-            // חזרה לדף הקודם (למשל לרשימת התרופות)
             this.NavigationService.Navigate(new PersonalArea(user));
 
         }
-
-        // 3. לחיצה על ביטול
         private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            // חזרה לדף הקודם ללא שמירה
+        {        
+
             this.NavigationService.Navigate(new PersonalArea(user));
 
         }

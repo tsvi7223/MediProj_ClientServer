@@ -56,28 +56,30 @@ namespace MediProject_Client.GUI
         {
             try
             {
-            
                 if (!int.TryParse(txtSubstanceId.Text, out int substanceId))
                 {
                     MessageBox.Show("שגיאה: קוד חומר פעיל חייב להיות מספר שלם.", "שגיאת קלט", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return; 
+                    return;
                 }
 
-           
                 ServiceReference1.Medication medication = new ServiceReference1.Medication();
                 medication.OriginalName = txtMedName.Text;
                 medication.InHealthBox = chkInHealthBox.IsChecked == true;
                 medication.AvailableInIsrael = chkAvailableInIsr.IsChecked == true;
-
                 medication.MainSubstanceId = substanceId;
+                bool isSuccess = service.AddMedi(medication);
 
-                service.AddMedi(medication);
-
-                MessageBox.Show("התרופה נוספה בהצלחה!");
+                if (isSuccess)
+                {
+                    MessageBox.Show("!התרופה נוספה בהצלחה");
+                }
+                else
+                {
+                    MessageBox.Show("שגיאה!: קוד החומר הפעיל לא נמצא במערכת", "שגיאה", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
             catch (Exception ex)
             {
-               
                 MessageBox.Show("קרתה תקלה בעת הוספת התרופה: " + ex.Message, "שגיאה", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -85,23 +87,32 @@ namespace MediProject_Client.GUI
         {
             try
             {
-
                 if (!int.TryParse(txtDeleteMedName.Text, out int medId))
                 {
                     MessageBox.Show("אנא הכנס קוד תרופה (מספר) תקין למחיקה");
                     return;
                 }
-
-            
-                MediProject_Client.ServiceReference1.Medication medToDelete = new MediProject_Client.ServiceReference1.Medication()
+                var allMeds = service.GetAllMedications(); 
+                bool exists = false;
+                foreach (var m in allMeds)
                 {
-                    ID = medId
-                };
+                    if (m.ID == medId)
+                    {
+                        exists = true;
+                        break;
+                    }
+                }
 
-               
+                if (!exists)
+                {
+                    MessageBox.Show("!שגיאה: קוד תרופה לא נמצא במערכת", "שגיאה", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                ServiceReference1.Medication medToDelete = new ServiceReference1.Medication();
+                medToDelete.ID = medId;
                 service.DeleteMedication(medToDelete);
 
-                MessageBox.Show("הפקודה נשלחה: התרופה נמחקה מהמאגר!");
+                MessageBox.Show("!התרופה נמחקה מהמאגר בהצלחה");
                 txtDeleteMedName.Clear();
             }
             catch (Exception ex)

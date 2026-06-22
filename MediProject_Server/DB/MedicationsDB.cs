@@ -29,7 +29,7 @@ namespace MediProject_Server.DB
             medication.ID = int.Parse(reader["ID"].ToString());
             medication.OriginalName = reader["OriginalName"].ToString();
 
-            // כאן השינוי המרכזי: שימוש רק ב-MainSubstanceId
+            
             int substanceId = int.Parse(reader["MainSubstanceId"].ToString());
             medication.MainSubstanceId = substanceId;
 
@@ -52,7 +52,6 @@ namespace MediProject_Server.DB
 
         public void Update(Medication medication)
         {
-            // עדכון שמשתמש ב-MainSubstanceId בלבד
             command.CommandText = $"UPDATE Medications SET " +
                 $"OriginalName = '{medication.OriginalName}', " +
                 $"InHealthBox = {medication.InHealthBox}, " +
@@ -64,7 +63,7 @@ namespace MediProject_Server.DB
 
         public void Insert(Medication medication)
         {
-            // הוספה שמשתמשת ב-MainSubstanceId בלבד
+        
             command.CommandText = $"INSERT INTO Medications (OriginalName, InHealthBox, AvailableInIsrael, MainSubstanceId) " +
                 $"VALUES ('{medication.OriginalName}', {medication.InHealthBox}, {medication.AvailableInIsrael}, {medication.MainSubstanceId})";
             base.ExecuteNonQuery();

@@ -769,10 +769,10 @@ namespace MediProject_Client.ServiceReference1 {
         System.Threading.Tasks.Task DeleteMedicationAsync(MediProject_Client.ServiceReference1.Medication medication);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddMedi", ReplyAction="http://tempuri.org/IService1/AddMediResponse")]
-        void AddMedi(MediProject_Client.ServiceReference1.Medication medication);
+        bool AddMedi(MediProject_Client.ServiceReference1.Medication medication);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddMedi", ReplyAction="http://tempuri.org/IService1/AddMediResponse")]
-        System.Threading.Tasks.Task AddMediAsync(MediProject_Client.ServiceReference1.Medication medication);
+        System.Threading.Tasks.Task<bool> AddMediAsync(MediProject_Client.ServiceReference1.Medication medication);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMedicationsByUser", ReplyAction="http://tempuri.org/IService1/GetMedicationsByUserResponse")]
         MediProject_Client.ServiceReference1.Medication[] GetMedicationsByUser(int userId);
@@ -918,11 +918,11 @@ namespace MediProject_Client.ServiceReference1 {
             return base.Channel.DeleteMedicationAsync(medication);
         }
         
-        public void AddMedi(MediProject_Client.ServiceReference1.Medication medication) {
-            base.Channel.AddMedi(medication);
+        public bool AddMedi(MediProject_Client.ServiceReference1.Medication medication) {
+            return base.Channel.AddMedi(medication);
         }
         
-        public System.Threading.Tasks.Task AddMediAsync(MediProject_Client.ServiceReference1.Medication medication) {
+        public System.Threading.Tasks.Task<bool> AddMediAsync(MediProject_Client.ServiceReference1.Medication medication) {
             return base.Channel.AddMediAsync(medication);
         }
         
